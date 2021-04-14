@@ -14,3 +14,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+This example project is part of the Create a Complete Online Store ( Android / iOS) with Flutter
+course offered by UDEMY(https://www.udemy.com/course/lojaflutter/)
+
+Learn how to create a complete Virtual Store application. Integrated Client and Manager app, 
+with more than 20 functions.
