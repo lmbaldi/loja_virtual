@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/ui/components/theme/theme.dart';
 import 'package:loja_virtual/ui/screen/screen.dart';
 
 void main() {
@@ -12,10 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Loja do Baldi',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: makeAppTheme(),
       home: ScreenBase()
     );
   }

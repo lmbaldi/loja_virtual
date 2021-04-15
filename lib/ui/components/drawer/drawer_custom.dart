@@ -5,6 +5,7 @@ import 'package:loja_virtual/ui/helpers/i18n/resources.dart';
 class DrawerCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Drawer(
       child: ListView(
         children: [
