@@ -10,5 +10,7 @@ class EnUs implements Translations {
   String get password => 'Password';
   String get email => 'Email';
   String get forgetPassword => 'I forgot my password';
+  String get invalidPassword => 'Invalid password';
+  String get invalidEmail => 'Invalid email';
 
 }

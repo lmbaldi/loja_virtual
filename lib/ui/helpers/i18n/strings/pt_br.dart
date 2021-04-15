@@ -6,8 +6,10 @@ class PtBr implements Translations {
   String get products => 'Produtos';
   String get order => 'Meu pedido';
   String get store => 'Loja';
-  String get enter => "Entrar";
-  String get password => "Senha";
+  String get enter => 'Entrar';
+  String get password => 'Senha';
   String get email => 'Email';
-  String get forgetPassword => "Esqueci minha senha";
+  String get forgetPassword => 'Esqueci minha senha';
+  String get invalidPassword => 'Senha inválida';
+  String get invalidEmail => 'Email inválido';
 }

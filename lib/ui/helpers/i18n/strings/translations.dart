@@ -8,4 +8,6 @@ abstract class Translations {
   String get password;
   String get forgetPassword;
   String get email;
+  String get invalidPassword;
+  String get invalidEmail;
 }
