@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/ui/screen/screen.dart';
 import 'package:provider/provider.dart';
 import 'package:loja_virtual/ui/page_manager/page_manager.dart';
 import 'package:loja_virtual/ui/components/drawer/drawer.dart';
 
-class ScreenBase extends StatelessWidget {
+class BaseScreen extends StatelessWidget {
 
   final PageController pageController = PageController();
 
@@ -15,12 +16,7 @@ class ScreenBase extends StatelessWidget {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          Scaffold(
-            drawer: DrawerCustom(),
-            appBar: AppBar(
-              title: const Text('Home'),
-            ),
-          ),
+          LoginScreen(),
           Container(color: Colors.red,),
           Container(color: Colors.green,),
           Container(color: Colors.blue,),

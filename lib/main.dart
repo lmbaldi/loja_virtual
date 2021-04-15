@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/ui/components/theme/theme.dart';
-import 'package:loja_virtual/ui/screen/screen.dart';
+import 'package:loja_virtual/ui/screen/base/base.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Loja do Baldi',
       debugShowCheckedModeBanner: false,
       theme: makeAppTheme(),
-      home: ScreenBase()
+      home: BaseScreen()
     );
   }
 }

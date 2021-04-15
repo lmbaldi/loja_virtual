@@ -6,4 +6,9 @@ class EnUs implements Translations {
   String get products => 'Products';
   String get order => 'My orders';
   String get store => 'Store';
+  String get enter => 'Enter';
+  String get password => 'Password';
+  String get email => 'Email';
+  String get forgetPassword => 'I forgot my password';
+
 }
