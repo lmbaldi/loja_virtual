@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
           child: Form(
             key: formKey,
             child: ListView(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(4),
               shrinkWrap: true,
               children: [
                 Padding(
@@ -40,7 +40,8 @@ class LoginScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: LoginButton(formKey),
-                )
+                ),
+                SizedBox(height: 25)
               ],
             ),
           ),
