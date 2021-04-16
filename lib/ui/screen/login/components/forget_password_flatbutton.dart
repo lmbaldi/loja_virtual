@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/ui/helpers/i18n/resources.dart';
+import 'package:loja_virtual/core/helpers/i18n/resources.dart';
 
 class ForgetPasswordFlatButton extends StatelessWidget {
 

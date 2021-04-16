@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/ui/helpers/i18n/resources.dart';
-import 'package:loja_virtual/ui/screen/components/app_text_input.dart';
+import 'package:loja_virtual/core/helpers/i18n/resources.dart';
+import 'package:loja_virtual/ui/components/app_text_input.dart';
 import 'package:loja_virtual/ui/screen/helpers/validators.dart';
 
 class EmailInput extends StatelessWidget {

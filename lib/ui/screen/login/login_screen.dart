@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/ui/helpers/i18n/resources.dart';
+import 'package:loja_virtual/core/helpers/i18n/resources.dart';
 
 import '../screen.dart';
 
 class LoginScreen extends StatelessWidget {
-
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +19,18 @@ class LoginScreen extends StatelessWidget {
         child: Card(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Form(
-            key: formKey,
+            key: _formKey,
             child: ListView(
               padding: const EdgeInsets.all(4),
               shrinkWrap: true,
               children: [
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: EmailInput(controller: emailController),
+                  child: EmailInput(controller: _email),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: PasswordInput(controller: passwordController),
+                  child: PasswordInput(controller: _password),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
@@ -39,7 +38,8 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: LoginButton(formKey),
+                  child: LoginButton(
+                      formKey: _formKey, email: _email, password: _password),
                 ),
                 SizedBox(height: 25)
               ],
@@ -50,10 +50,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-

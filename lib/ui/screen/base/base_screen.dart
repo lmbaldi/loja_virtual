@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:loja_virtual/ui/screen/screen.dart';
 import 'package:provider/provider.dart';
 import 'package:loja_virtual/ui/page_manager/page_manager.dart';
-import 'package:loja_virtual/ui/components/drawer/drawer.dart';
 
 class BaseScreen extends StatelessWidget {
 
