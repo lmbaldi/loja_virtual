@@ -10,4 +10,6 @@ abstract class Translations {
   String get email;
   String get invalidPassword;
   String get invalidEmail;
+  String get typeLoginEmail;
+  String get typePassword;
 }

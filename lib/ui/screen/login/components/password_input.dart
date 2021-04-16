@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/ui/helpers/i18n/resources.dart';
+import 'package:loja_virtual/ui/screen/components/app_text_input.dart';
 
 class PasswordInput extends StatelessWidget {
 
@@ -7,20 +8,19 @@ class PasswordInput extends StatelessWidget {
 
   PasswordInput({this.controller});
 
-
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      decoration:  InputDecoration(hintText: R.string.password),
-      autocorrect: false,
-      obscureText: true,
-      validator: (password){
-        if(password.isEmpty || password.length < 6){
-          return R.string.invalidPassword;
-        }
-        return null;
-      },
-    );
+     return AppTextInput(
+       R.string.password,
+       R.string.typePassword,
+       controller: controller,
+       password: true,
+         validator: (pass){
+           if(pass.isEmpty || pass.length < 6){
+             return R.string.invalidPassword;
+           }
+           return null;
+         },
+     );
   }
 }

@@ -12,4 +12,6 @@ class PtBr implements Translations {
   String get forgetPassword => 'Esqueci minha senha';
   String get invalidPassword => 'Senha inválida';
   String get invalidEmail => 'Email inválido';
+  String get typeLoginEmail => 'Digite o login(email)';
+  String get typePassword => 'Digite a senha';
 }
