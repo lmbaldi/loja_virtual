@@ -5,8 +5,9 @@ import 'package:loja_virtual/ui/components/app_text_input.dart';
 class PasswordInput extends StatelessWidget {
 
   TextEditingController controller;
+  bool enabled;
 
-  PasswordInput({this.controller});
+  PasswordInput({this.controller, this.enabled});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class PasswordInput extends StatelessWidget {
        R.string.password,
        R.string.typePassword,
        controller: controller,
+       enabled: enabled,
        password: true,
          validator: (pass){
            if(pass.isEmpty || pass.length < 6){

@@ -7,8 +7,9 @@ class EmailInput extends StatelessWidget {
 
   final TextEditingController controller;
   final _focusSenha = FocusNode();
+  bool enabled;
 
-  EmailInput({this.controller});
+  EmailInput({this.controller, this.enabled});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class EmailInput extends StatelessWidget {
         R.string.typeLoginEmail,
         controller: controller,
         focusNode: _focusSenha,
+        enabled: enabled,
         validator: (email){
           if (!emailValid(email)) {
           return R.string.invalidEmail;

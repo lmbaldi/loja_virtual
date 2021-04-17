@@ -4,9 +4,10 @@ class AppTextInput extends StatelessWidget {
   String label;
   String hint;
   bool password;
+  bool autoCorrect;
+  bool enabled;
   TextEditingController controller;
   FormFieldValidator<String> validator;
-  bool autoCorrect;
   TextInputType keyboardType;
   TextInputAction textInputAction;
   FocusNode focusNode;
@@ -22,7 +23,8 @@ class AppTextInput extends StatelessWidget {
         this.textInputAction,
         this.focusNode,
         this.nextFocus,
-        this.autoCorrect = false
+        this.autoCorrect = false,
+        this.enabled,
       });
 
   @override
@@ -35,6 +37,7 @@ class AppTextInput extends StatelessWidget {
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       focusNode: focusNode,
+      enabled: enabled,
       onFieldSubmitted: (String text) {
         if (nextFocus != null) {
           FocusScope.of(context).requestFocus(nextFocus);
