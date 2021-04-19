@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../models/models.dart';
 import '../helpers/helpers.dart';
+import '../../models/models.dart';
+import '../../helpers/helpers.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text(R.string.enter),
         centerTitle: true,
@@ -31,12 +34,12 @@ class LoginScreen extends StatelessWidget {
                     decoration: InputDecoration(hintText: R.string.email),
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
-                    validator: (email){
-                      if(!emailValid(email)){
+                    validator: (email) {
+                      if (!emailValid(email)) {
                         return R.string.invalidEmail;
                       }
                       return null;
-                      },
+                    },
                   ),
                 ),
                 Padding(
@@ -47,12 +50,12 @@ class LoginScreen extends StatelessWidget {
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     obscureText: true,
-                    validator: (password){
-                      if(password.isEmpty || password.length < 6){
+                    validator: (password) {
+                      if (password.isEmpty || password.length < 6) {
                         return R.string.invalidPassword;
                       }
                       return null;
-                     },
+                    },
                   ),
                 ),
                 Padding(
@@ -60,9 +63,9 @@ class LoginScreen extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: FlatButton(
-                        onPressed: (){},
-                        padding: EdgeInsets.zero,
-                        child: Text(R.string.forgetPassword),
+                      onPressed: () {},
+                      padding: EdgeInsets.zero,
+                      child: Text(R.string.forgetPassword),
                     ),
                   ),
                 ),
@@ -71,24 +74,34 @@ class LoginScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 44,
                     child: RaisedButton(
-                      onPressed: (){
-                        if(formKey.currentState.validate()){
-                        context.read<UserManager>().signIn(
-                          User(
-                            email: emailController.text,
-                            password: passwordController.text
-                          )
-                        );
+                      onPressed: () {
+                        if (formKey.currentState.validate()) {
+                          context.read<UserManager>().signIn(
+                              user: User(
+                                  email: emailController.text,
+                                  password: passwordController.text),
+                              onFail: (error) {
+                                scaffoldKey.currentState.showSnackBar(SnackBar(
+                                  backgroundColor: Colors.red[900],
+                                  content: Text(
+                                    R.string.errorLogin + error,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ));
+                              },
+                              onSuccess: () {
+                                //TODO fechar tela de login
+                              });
                         }
                       },
                       color: Theme.of(context).primaryColor,
                       textColor: Colors.white,
-                     child: Text(
+                      child: Text(
                         R.string.enter,
                         style: TextStyle(
                           fontSize: 18,
                         ),
-                     ),
+                      ),
                     ),
                   ),
                 )
