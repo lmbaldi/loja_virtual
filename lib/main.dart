@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/ui/components/components.dart';
-import 'package:provider/provider.dart';
-import 'package:loja_virtual/ui/screen/base/base.dart';
-import 'package:loja_virtual/core/models/models.dart';
+import 'package:loja_virtual/screens/base/screens.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,15 +9,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserManager(),
-      child: MaterialApp(
+      return MaterialApp(
         title: 'Loja do Baldi',
         debugShowCheckedModeBanner: false,
-        theme: makeAppTheme(),
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity
+        ),
         home: BaseScreen()
-      ),
-    );
+      );
   }
 }
 
