@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/screens/helpers/page_manager.dart';
 import 'package:provider/provider.dart';
+import '../../screens/helpers/helpers.dart';
 
 class DrawerTile extends StatelessWidget {
 
