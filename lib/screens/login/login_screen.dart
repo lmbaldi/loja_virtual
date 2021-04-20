@@ -17,6 +17,17 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(R.string.enter),
         centerTitle: true,
+        actions: [
+          FlatButton(
+           onPressed: (){
+             Navigator.of(context).pushReplacementNamed('/signup');
+           },
+           child: Text(
+             R.string.addAccount,
+             style: TextStyle(fontSize: 14, color: Colors.white),
+           ),
+          )
+        ],
       ),
       body: Center(
         child: Card(
@@ -50,9 +61,7 @@ class LoginScreen extends StatelessWidget {
                       child: TextFormField(
                         controller: passwordController,
                         enabled: !userManager.loading,
-                        decoration:
-                            InputDecoration(hintText: R.string.password),
-                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(hintText: R.string.password),
                         autocorrect: false,
                         obscureText: true,
                         validator: (password) {
@@ -69,6 +78,9 @@ class LoginScreen extends StatelessWidget {
                       child: SizedBox(
                         height: 44,
                         child: RaisedButton(
+                          textColor: Colors.white,
+                          color: Theme.of(context).primaryColor,
+                          disabledColor:Theme.of(context).primaryColor.withAlpha(100),
                           onPressed: userManager.loading
                               ? null
                               : () {
@@ -93,10 +105,7 @@ class LoginScreen extends StatelessWidget {
                                         });
                                   }
                                 },
-                          color: Theme.of(context).primaryColor,
-                          disabledColor:
-                              Theme.of(context).primaryColor.withAlpha(100),
-                          textColor: Colors.white,
+
                           child: userManager.loading
                               ? CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation(Colors.white),
