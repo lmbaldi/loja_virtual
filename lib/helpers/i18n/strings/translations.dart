@@ -14,6 +14,7 @@ abstract class Translations {
   String get errorUndefined;
   String get errorUserDisable;
   String get errorUserNotFound;
+  String get failedRegister;
   String get fillFullName;
   String get forgetPassword;
   String get fullName;

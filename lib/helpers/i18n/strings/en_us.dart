@@ -17,6 +17,7 @@ class EnUs implements Translations {
   String get errorUndefined => 'An undefined error has occurred.';
   String get errorWeakPassword => 'Your password is too weak.';
   String get errorWrongPassword => 'Your password is incorrect.';
+  String get failedRegister => 'Failed register';
   String get fillFullName => 'Fill in your full name';
   String get fullName => 'Full name';
   String get forgetPassword => 'I forgot my password';

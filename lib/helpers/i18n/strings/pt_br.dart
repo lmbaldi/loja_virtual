@@ -16,8 +16,9 @@ class PtBr implements Translations {
   String get errorUserNotFound => 'Não há usuário com este e-mail.';
   String get errorWeakPassword => 'Sua senha é muito fraca.';
   String get errorWrongPassword => 'Sua senha está incorreta.';
-  String get fullName => 'Nome completo';
+  String get failedRegister => 'Falha ao cadastrar.';
   String get fillFullName => 'Preencha seu nome completo';
+  String get fullName => 'Nome completo';
   String get forgetPassword => 'Esqueci minha senha';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';

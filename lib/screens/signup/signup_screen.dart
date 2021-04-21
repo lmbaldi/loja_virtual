@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../helpers/helpers.dart';
 import '../../models/models.dart';
 import '../helpers/helpers.dart';
@@ -118,7 +119,23 @@ class SignUpScreen extends StatelessWidget {
                             );
                             return;
                           }
-                          //usermanager
+                          context.read<UserManager>().signUp(
+                            user: user,
+                            onSuccess: (){
+                              //TODO
+                            },
+                            onFail: (e){
+                              scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  backgroundColor: Colors.red[900],
+                                  content: Text(
+                                    '${R.string.failedRegister}: $e' ,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              );
+                            }
+                          );
                         }
                       },
                     ),
