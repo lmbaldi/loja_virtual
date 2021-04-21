@@ -9,6 +9,13 @@ class User {
 
   User({this.email, this.password, this.name, this.id});
 
+  //recuperando os dados no login
+  User.fromDocument(DocumentSnapshot document){
+    id = document.documentID;
+    name = document.data['name'] as String;
+    email = document.data['email'] as String;
+  }
+
   DocumentReference get fireStoreRef => Firestore.instance.document('users/$id');
 
   Map<String, dynamic> toMap() {
