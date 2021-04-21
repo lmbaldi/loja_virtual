@@ -16,10 +16,12 @@ class PtBr implements Translations {
   String get errorUserNotFound => 'Não há usuário com este e-mail.';
   String get errorWeakPassword => 'Sua senha é muito fraca.';
   String get errorWrongPassword => 'Sua senha está incorreta.';
+  String get exit => 'Sair';
   String get failedRegister => 'Falha ao cadastrar.';
   String get fillFullName => 'Preencha seu nome completo';
   String get fullName => 'Nome completo';
   String get forgetPassword => 'Esqueci minha senha';
+  String get greetings => 'Olá';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
@@ -29,6 +31,7 @@ class PtBr implements Translations {
   String get passwordsDifferents => 'As senhas são diferentes';
   String get products => 'Produtos';
   String get repeatPassword => 'Repita a senha';
+  String get signInSignUp => 'Entre ou cadastre-se';
   String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
   String get start => 'Início';
   String get store => 'Loja';

@@ -14,10 +14,12 @@ abstract class Translations {
   String get errorUndefined;
   String get errorUserDisable;
   String get errorUserNotFound;
+  String get exit;
   String get failedRegister;
   String get fillFullName;
   String get forgetPassword;
   String get fullName;
+  String get greetings;
   String get invalidEmail;
   String get invalidField;
   String get invalidPassword;
@@ -27,6 +29,7 @@ abstract class Translations {
   String get passwordsDifferents;
   String get products;
   String get repeatPassword;
+  String get signInSignUp;
   String get shortPassword;
   String get start;
   String get store;

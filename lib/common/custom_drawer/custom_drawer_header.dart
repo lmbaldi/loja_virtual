@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/helpers/helpers.dart';
 import 'package:loja_virtual/models/models.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,7 @@ class CustomDrawerHeader extends StatelessWidget {
               ),
             ),
             Text(
-              'Olá, ${userManager.user?.name ?? ''}',
+              '${R.string.greetings}, ${userManager.user?.name ?? ''}',
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               style: TextStyle(
@@ -39,8 +40,8 @@ class CustomDrawerHeader extends StatelessWidget {
               },
               child: Text(
                 userManager.isLoggedIn
-                    ? 'Sair'
-                    : 'Entre ou cadastre-se >',
+                    ? R.string.exit
+                    : '${R.string.signInSignUp} >',
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                   fontSize: 16,
