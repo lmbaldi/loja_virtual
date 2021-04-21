@@ -16,6 +16,7 @@ class UserManager extends ChangeNotifier {
   User user;
   bool _loading = false;
   bool get loading => _loading;
+  bool get isLoggedIn => user != null;
 
   Future<void> signIn({User user, Function onFail, Function onSuccess}) async {
     loading = true;
@@ -54,6 +55,12 @@ class UserManager extends ChangeNotifier {
       user = User.fromDocument(docUser);
       notifyListeners();
     }
+  }
+
+  void signOut() {
+    auth.signOut();
+    user = null;
+    notifyListeners();
   }
 
 }

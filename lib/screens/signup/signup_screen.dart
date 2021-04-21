@@ -122,7 +122,7 @@ class SignUpScreen extends StatelessWidget {
                           context.read<UserManager>().signUp(
                             user: user,
                             onSuccess: (){
-                              //TODO
+                              Navigator.of(context).pop();
                             },
                             onFail: (e){
                               scaffoldKey.currentState.showSnackBar(

@@ -14,14 +14,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => UserManager(),
+      lazy: false,
       child: MaterialApp(
         title: 'Loja do Baldi',
         debugShowCheckedModeBanner: false,
         theme: makeAppTheme(),
         initialRoute: '/base',
         onGenerateRoute: (settings) {
+
           switch (settings.name) {
-            case '/signup':
+            case '/login':
+              return MaterialPageRoute(builder: (_) => LoginScreen());
+            case '/signUp':
               return MaterialPageRoute(builder: (_) => SignUpScreen());
             case '/base':
             default:

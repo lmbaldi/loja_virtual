@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
         actions: [
           FlatButton(
            onPressed: (){
-             Navigator.of(context).pushReplacementNamed('/signup');
+             Navigator.of(context).pushReplacementNamed('/signUp');
            },
            child: Text(
              R.string.addAccount,
@@ -101,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                                           );
                                         },
                                         onSuccess: () {
-                                          //TODO fechar tela de login
+                                          Navigator.of(context).pop();
                                         });
                                   }
                                 },
