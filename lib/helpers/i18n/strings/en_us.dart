@@ -20,8 +20,9 @@ class EnUs implements Translations {
   String get exit => 'Exit';
   String get failedRegister => 'Failed register';
   String get fillFullName => 'Fill in your full name';
-  String get fullName => 'Full name';
+  String get from => 'From ';
   String get forgetPassword => 'I forgot my password';
+  String get fullName => 'Full name';
   String get greetings => 'Hello';
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';

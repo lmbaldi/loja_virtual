@@ -18,6 +18,7 @@ abstract class Translations {
   String get failedRegister;
   String get fillFullName;
   String get forgetPassword;
+  String get from;
   String get fullName;
   String get greetings;
   String get invalidEmail;

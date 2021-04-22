@@ -6,15 +6,15 @@ import 'models.dart';
 class ProductManager extends ChangeNotifier {
 
   ProductManager() {
-    _loadAllProducts();
+    loadAllProducts();
   }
 
   final Firestore firestore = Firestore.instance;
-  List<Product> _allProducts = [];
+  List<Product> allProducts = [];
 
-  Future<void> _loadAllProducts() async {
+  Future<void> loadAllProducts() async {
     final QuerySnapshot snapProducts = await firestore.collection('products').getDocuments();
-    _allProducts = snapProducts.documents.map((doc) => Product.fromDocument(doc)).toList();
+    allProducts = snapProducts.documents.map((doc) => Product.fromDocument(doc)).toList();
     notifyListeners();
   }
 

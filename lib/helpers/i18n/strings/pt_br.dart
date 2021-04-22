@@ -19,8 +19,9 @@ class PtBr implements Translations {
   String get exit => 'Sair';
   String get failedRegister => 'Falha ao cadastrar.';
   String get fillFullName => 'Preencha seu nome completo';
-  String get fullName => 'Nome completo';
   String get forgetPassword => 'Esqueci minha senha';
+  String get from => 'A partir de ';
+  String get fullName => 'Nome completo';
   String get greetings => 'Olá';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
