@@ -1,6 +1,7 @@
 abstract class Translations {
   //labels
   String get addAccount;
+  String get description;
   String get email;
   String get enter;
   String get errorEmailAlreadyInUse;

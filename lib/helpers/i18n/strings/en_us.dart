@@ -4,6 +4,7 @@ import 'translations.dart';
 class EnUs implements Translations {
   //labels
   String get addAccount => 'CREATE AN ACCOUNT';
+  String get description => 'Description';
   String get email => 'Email';
   String get enter => 'ENTER';
   String get errorEmailAlreadyInUse => 'E-mail is already being used in another account.';

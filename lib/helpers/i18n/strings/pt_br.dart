@@ -3,6 +3,7 @@ import 'translations.dart';
 class PtBr implements Translations {
   //labels
   String get addAccount => 'CRIAR CONTA';
+  String get description => 'Descrição';
   String get email => 'Email';
   String get enter => 'ENTRAR';
   String get errorEmailAlreadyInUse => 'E-mail já está sendo utilizado em outra conta.';
