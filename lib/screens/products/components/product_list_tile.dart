@@ -3,7 +3,6 @@ import 'package:loja_virtual/helpers/helpers.dart';
 import 'package:loja_virtual/models/models.dart';
 
 class ProductListTile extends StatelessWidget {
-
   final Product product;
 
   const ProductListTile(this.product);
@@ -11,7 +10,7 @@ class ProductListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).pushNamed('/product', arguments: product);
       },
       child: Card(
@@ -27,39 +26,36 @@ class ProductListTile extends StatelessWidget {
                 aspectRatio: 1,
                 child: Image.network(product.images.first),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Expanded(child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.name,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w800
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.name,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.only(top: 4) ,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
                         child: Text(
                           R.string.from,
-                          style: TextStyle(
-                            color: Colors.grey[400],
-                            fontSize:  14
-                          ),
+                          style:
+                              TextStyle(color: Colors.grey[400], fontSize: 14),
                         ),
-                    ),
-                    Text(
-                      'R\$ 19.99',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w800,
-                        color: Theme.of(context).primaryColor,
                       ),
-                    )
-                  ],
-                ),
+                      Text(
+                        'R\$ 19.99',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
