@@ -34,6 +34,7 @@ class PtBr implements Translations {
   String get products => 'Produtos';
   String get repeatPassword => 'Repita a senha';
   String get signInSignUp => 'Entre ou cadastre-se';
+  String get sizes => 'Tamanhos';
   String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
   String get start => 'Início';
   String get store => 'Loja';

@@ -14,7 +14,7 @@ class Product {
     description = document['description'] as String;
     images = List<String>.from(document.data['images']) as List<dynamic>;
     sizes = (document.data['sizes'] as List<dynamic> ?? []).map((s) => ItemSize.fromMap(s)).toList();
-    print('sizes --> $sizes');
+
   }
 
 }

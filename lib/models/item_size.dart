@@ -9,6 +9,8 @@ class ItemSize{
     stock = map['stock'] as int;
   }
 
+  bool get hasStock => stock > 0;
+
   @override
   String toString() {
     return 'ItemSize{name: $name, price: $price, stock: $stock}';

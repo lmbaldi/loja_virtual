@@ -32,6 +32,7 @@ abstract class Translations {
   String get products;
   String get repeatPassword;
   String get signInSignUp;
+  String get sizes;
   String get shortPassword;
   String get start;
   String get store;

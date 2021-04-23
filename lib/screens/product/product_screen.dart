@@ -3,6 +3,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 import '../../helpers/helpers.dart';
 import '../../models/models.dart';
+import '../screens.dart';
 
 class ProductScreen extends StatelessWidget {
 
@@ -81,6 +82,23 @@ class ProductScreen extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 16,
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 8),
+                child: Text(
+                  R.string.sizes,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: product.sizes.map((s) {
+                  return SizeWidget(size: s);
+                }).toList(),
               ),
             ],
           ),
