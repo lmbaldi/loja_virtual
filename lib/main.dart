@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/models/models.dart';
 import 'package:provider/provider.dart';
+import 'models/models.dart';
 import 'common/common.dart';
 import 'screens/screens.dart';
 
@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
           create: (_) => ProductManager(),
           lazy: false,
         ),
+        Provider(
+          create: (_) => CartManager(),
+          lazy: false,
+        ),
       ],
       child: MaterialApp(
         title: 'Loja do Baldi',
@@ -29,7 +33,6 @@ class MyApp extends StatelessWidget {
         theme: makeAppTheme(),
         initialRoute: '/base',
         onGenerateRoute: (settings) {
-
           switch (settings.name) {
             case '/login':
               return MaterialPageRoute(builder: (_) => LoginScreen());
@@ -39,6 +42,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => ProductScreen(
                 settings.arguments as Product
               ));
+            case '/cart':
+              return MaterialPageRoute(builder: (_) => CartScreen());
             case '/base':
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen());

@@ -19,12 +19,12 @@ class Product  extends ChangeNotifier{
 
   }
 
-  ItemSize get selectedSize => _selectedSize;
-
   set selectedSize(ItemSize value){
     _selectedSize = value;
     notifyListeners();
   }
+
+  ItemSize get selectedSize => _selectedSize;
 
   int get totalStock {
     int stock = 0;
@@ -36,6 +36,14 @@ class Product  extends ChangeNotifier{
 
   bool get hasStock {
     return totalStock > 0;
+  }
+
+  ItemSize findSize(String size) {
+    try{
+      return sizes.firstWhere((s) => s.name == name);
+    }catch(e){
+      return null;
+    }
   }
 
 }

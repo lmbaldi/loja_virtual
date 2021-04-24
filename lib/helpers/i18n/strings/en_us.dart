@@ -5,6 +5,7 @@ class EnUs implements Translations {
   //labels
   String get addAccount => 'CREATE AN ACCOUNT';
   String get addToCart => 'Add to cart';
+  String get cart => 'Cart';
   String get description => 'Description';
   String get email => 'Email';
   String get enter => 'ENTER';
@@ -38,6 +39,7 @@ class EnUs implements Translations {
   String get signInToBuy => 'Sign in to buy';
   String get signInSignUp => 'Sign in or sign up';
   String get sizes => 'Sizes';
+  String get size => 'Size';
   String get shortPassword => 'The password must be at least 6 characters long';
   String get start => 'Start';
   String get store => 'Store';

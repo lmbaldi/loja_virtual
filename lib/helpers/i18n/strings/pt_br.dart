@@ -4,6 +4,7 @@ class PtBr implements Translations {
   //labels
   String get addAccount => 'CRIAR CONTA';
   String get addToCart => 'Adicionar ao carrinho';
+  String get cart => 'Carrrinho';
   String get description => 'Descrição';
   String get email => 'Email';
   String get enter => 'ENTRAR';
@@ -37,6 +38,7 @@ class PtBr implements Translations {
   String get signInToBuy => 'Entre para comprar';
   String get signInSignUp => 'Entre ou cadastre-se';
   String get sizes => 'Tamanhos';
+  String get size => 'Tamanho';
   String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
   String get start => 'Início';
   String get store => 'Loja';

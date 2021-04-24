@@ -16,7 +16,8 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final primaryColor = Theme.of(context).primaryColor;
-
+    //produto fica disponivel apenas para este widget
+    //ChangeNotifierProvider.value
     return ChangeNotifierProvider.value(
       value: product,
       child: Scaffold(
@@ -118,13 +119,16 @@ class ProductScreen extends StatelessWidget {
                             userManager.isLoggedIn
                             ? R.string.addToCart
                             : R.string.signInToBuy,
-                            style: TextStyle(fontSize: 18),
+                            style: const TextStyle(fontSize: 18),
                           ),
                           onPressed: product.selectedSize != null
                           ? (){
                               if(userManager.isLoggedIn){
-                                //TODO ADICIONAR AO CARRINHO
+                                //adicionando ao carrinho
+                                context.read<CartManager>().addToCart(product);
+                                Navigator.of(context).pushNamed('/cart');
                               } else {
+                                //navegando para a tela de login
                                 Navigator.of(context).pushNamed('/login');
                               }
                             }
