@@ -81,6 +81,14 @@ class ProductsScreen extends StatelessWidget {
           );
         }
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        foregroundColor:  Theme.of(context).primaryColor,
+        onPressed: (){
+          Navigator.of(context).pushNamed('/cart');
+        },
+        child: Icon(Icons.add_shopping_cart),
+      ),
     );
   }
 }
