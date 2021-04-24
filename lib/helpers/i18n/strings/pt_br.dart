@@ -3,6 +3,7 @@ import 'translations.dart';
 class PtBr implements Translations {
   //labels
   String get addAccount => 'CRIAR CONTA';
+  String get addToCart => 'Adicionar ao carrinho';
   String get description => 'Descrição';
   String get email => 'Email';
   String get enter => 'ENTRAR';
@@ -33,6 +34,7 @@ class PtBr implements Translations {
   String get passwordsDifferents => 'As senhas são diferentes';
   String get products => 'Produtos';
   String get repeatPassword => 'Repita a senha';
+  String get signInToBuy => 'Entre para comprar';
   String get signInSignUp => 'Entre ou cadastre-se';
   String get sizes => 'Tamanhos';
   String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';

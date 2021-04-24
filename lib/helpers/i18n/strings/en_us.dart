@@ -4,6 +4,7 @@ import 'translations.dart';
 class EnUs implements Translations {
   //labels
   String get addAccount => 'CREATE AN ACCOUNT';
+  String get addToCart => 'Add to cart';
   String get description => 'Description';
   String get email => 'Email';
   String get enter => 'ENTER';
@@ -34,6 +35,7 @@ class EnUs implements Translations {
   String get passwordsDifferents => 'Password are differents';
   String get products => 'Products';
   String get repeatPassword => 'Repeat the password';
+  String get signInToBuy => 'Sign in to buy';
   String get signInSignUp => 'Sign in or sign up';
   String get sizes => 'Sizes';
   String get shortPassword => 'The password must be at least 6 characters long';
