@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'models.dart';
 
 class CartProduct {
@@ -7,10 +9,22 @@ class CartProduct {
   int quantity;
   String size;
 
+  final Firestore firestore = Firestore.instance;
+
   CartProduct.fromProduct(this.product){
-    productId = productId;
+    productId = product.id;
     quantity = 1;
     size = product.selectedSize.name;
+  }
+
+  CartProduct.fromDocument(DocumentSnapshot document){
+    productId = document.data['pid'] as String;
+    quantity = document.data['quantity'] as int;
+    size = document.data['size'] as String;
+
+    firestore.document('products/$productId')
+        .get()
+        .then((doc) => product = Product.fromDocument(doc));
   }
 
   ItemSize get itemSize {

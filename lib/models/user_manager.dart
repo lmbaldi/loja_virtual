@@ -33,6 +33,7 @@ class UserManager extends ChangeNotifier {
     _loading = value;
     notifyListeners();
   }
+
   Future<void> signUp({User user, Function onFail, Function onSuccess}) async {
     loading = true;
     try{

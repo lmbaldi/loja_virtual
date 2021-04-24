@@ -17,6 +17,7 @@ class User {
   }
 
   DocumentReference get fireStoreRef => Firestore.instance.document('users/$id');
+  CollectionReference get cartReference => fireStoreRef.collection('cart');
 
   Map<String, dynamic> toMap() {
     return {
