@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:loja_virtual/models/models.dart';
+import 'models.dart';
 
-class Product  extends ChangeNotifier{
+class Product extends ChangeNotifier {
   String id;
   String name;
   String description;
@@ -10,16 +10,17 @@ class Product  extends ChangeNotifier{
   List<ItemSize> sizes;
   ItemSize _selectedSize;
 
-  Product.fromDocument( DocumentSnapshot document ){
+  Product.fromDocument(DocumentSnapshot document) {
     id = document.documentID;
     name = document['name'] as String;
     description = document['description'] as String;
     images = List<String>.from(document.data['images']) as List<dynamic>;
-    sizes = (document.data['sizes'] as List<dynamic> ?? []).map((s) => ItemSize.fromMap(s)).toList();
-
+    sizes = (document.data['sizes'] as List<dynamic> ?? [])
+        .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
+        .toList();
   }
 
-  set selectedSize(ItemSize value){
+  set selectedSize(ItemSize value) {
     _selectedSize = value;
     notifyListeners();
   }
@@ -28,7 +29,7 @@ class Product  extends ChangeNotifier{
 
   int get totalStock {
     int stock = 0;
-    for(final size in sizes){
+    for (final size in sizes) {
       stock += size.stock;
     }
     return stock;
@@ -38,12 +39,11 @@ class Product  extends ChangeNotifier{
     return totalStock > 0;
   }
 
-  ItemSize findSize(String size) {
-    try{
+  ItemSize findSize(String name) {
+    try {
       return sizes.firstWhere((s) => s.name == name);
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
-
 }

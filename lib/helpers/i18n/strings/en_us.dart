@@ -31,6 +31,7 @@ class EnUs implements Translations {
   String get invalidField => 'Invalid field.';
   String get invalidPassword => 'Invalid password';
   String get msgRequiredField => 'Required field.';
+  String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
   String get password => 'Password';
   String get passwordsDifferents => 'Password are differents';

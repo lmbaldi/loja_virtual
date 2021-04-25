@@ -30,6 +30,7 @@ class PtBr implements Translations {
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
   String get msgRequiredField => 'Campo obrigatório.';
+  String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meu pedido';
   String get password => 'Senha';
   String get passwordsDifferents => 'As senhas são diferentes';

@@ -6,6 +6,7 @@ import 'models.dart';
 class CartManager extends ChangeNotifier{
   List<CartProduct> items = [];
   User user;
+  num productsPrice = 0.0;
 
   updateUser(UserManager userManager) {
     user = userManager.user;
@@ -40,16 +41,31 @@ class CartManager extends ChangeNotifier{
     }
   }
 
+  bool get isCartValid {
+    for(final cartProduct in items){
+      if(!cartProduct.hasStock) return false;
+    }
+    return true;
+  }
+
+
   void _onItemUpdated() {
-    for (final cartProduct in items) {
+    productsPrice = 0.0;
+    for (int i = 0; i<items.length; i++) {
+      final cartProduct = items[i];
       if (cartProduct.quantity == 0) {
         removeFromCart(cartProduct);
+        i--;
+        continue;
       }
+      productsPrice += cartProduct.totalPrice;
       _updateCartProduct(cartProduct);
     }
+    print('productsPrice ==> $productsPrice');
   }
 
   void _updateCartProduct(CartProduct cartProduct) {
+    if(cartProduct.id != null)
     user.cartReference
         .document(cartProduct.id)
         .updateData(cartProduct.toCartItemMap());

@@ -28,6 +28,7 @@ abstract class Translations {
   String get invalidField;
   String get invalidPassword;
   String get msgRequiredField;
+  String get noStockAvailable;
   String get order;
   String get password;
   String get passwordsDifferents;

@@ -38,6 +38,15 @@ class CartProduct extends ChangeNotifier {
     }
   }
 
+  bool get hasStock{
+    final size = itemSize;
+    if(size == null){
+      return false;
+    } else {
+      return size.stock >= quantity;
+    }
+  }
+
   num get unitPrice {
     if(product == null){
       return 0;
@@ -45,6 +54,8 @@ class CartProduct extends ChangeNotifier {
       return itemSize?.price ?? 0;
     }
   }
+
+  num get totalPrice => unitPrice * quantity;
 
   Map<String, dynamic> toCartItemMap() {
     return {
