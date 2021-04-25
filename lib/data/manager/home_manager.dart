@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:loja_virtual/models/models.dart';
+import '../data.dart';
 
 class HomeManager {
   HomeManager() {

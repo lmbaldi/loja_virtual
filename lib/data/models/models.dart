@@ -1,9 +1,5 @@
-export 'cart_manager.dart';
 export 'cart_product.dart';
 export 'item_size.dart';
-export 'home_manager.dart';
 export 'product.dart';
-export 'product_manager.dart';
 export 'section.dart';
 export 'user.dart';
-export 'user_manager.dart';

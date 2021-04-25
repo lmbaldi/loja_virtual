@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:provider/provider.dart';
-
+import '../../data/data.dart';
 import '../../helpers/helpers.dart';
-import '../../models/models.dart';
 import '../screens.dart';
 
 class ProductScreen extends StatelessWidget {

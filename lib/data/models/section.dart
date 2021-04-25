@@ -9,4 +9,6 @@ class Section {
     name = document.data['name'] as String;
     type = document.data['type'] as String;
   }
+
+  
 }
