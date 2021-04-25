@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'models.dart';
 
-class CartProduct extends {
+class CartProduct extends ChangeNotifier {
 
   Product product;
   String productId;
@@ -57,11 +58,12 @@ class CartProduct extends {
 
   void increment(){
     quantity++;
-
+    notifyListeners();
   }
 
   void decrement(){
     quantity--;
+    notifyListeners();
   }
 
 }
