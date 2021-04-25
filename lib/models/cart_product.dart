@@ -6,6 +6,7 @@ import 'models.dart';
 class CartProduct extends ChangeNotifier {
 
   Product product;
+  String id;
   String productId;
   int quantity;
   String size;
@@ -19,6 +20,7 @@ class CartProduct extends ChangeNotifier {
   }
 
   CartProduct.fromDocument(DocumentSnapshot document){
+    id = document.documentID;
     productId = document.data['pid'] as String;
     quantity = document.data['quantity'] as int;
     size = document.data['size'] as String;
