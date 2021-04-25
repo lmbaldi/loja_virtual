@@ -3,6 +3,7 @@ abstract class Translations {
   String get addAccount;
   String get addToCart;
   String get cart;
+  String get continueForDelivery;
   String get description;
   String get email;
   String get enter;
@@ -30,6 +31,7 @@ abstract class Translations {
   String get msgRequiredField;
   String get noStockAvailable;
   String get order;
+  String get orderSummary;
   String get password;
   String get passwordsDifferents;
   String get products;
@@ -41,6 +43,8 @@ abstract class Translations {
   String get shortPassword;
   String get start;
   String get store;
+  String get total;
+  String get subTotal;
   String get typeLoginEmail;
   String get typePassword;
 }

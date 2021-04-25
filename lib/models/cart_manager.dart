@@ -48,7 +48,6 @@ class CartManager extends ChangeNotifier{
     return true;
   }
 
-
   void _onItemUpdated() {
     productsPrice = 0.0;
     for (int i = 0; i<items.length; i++) {
@@ -61,7 +60,7 @@ class CartManager extends ChangeNotifier{
       productsPrice += cartProduct.totalPrice;
       _updateCartProduct(cartProduct);
     }
-    print('productsPrice ==> $productsPrice');
+    notifyListeners();
   }
 
   void _updateCartProduct(CartProduct cartProduct) {

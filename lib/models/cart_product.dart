@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'models.dart';
 
 class CartProduct extends ChangeNotifier {
-
   Product product;
   String id;
   String productId;
@@ -13,34 +12,35 @@ class CartProduct extends ChangeNotifier {
 
   final Firestore firestore = Firestore.instance;
 
-  CartProduct.fromProduct(this.product){
+  CartProduct.fromProduct(this.product) {
     productId = product.id;
     quantity = 1;
     size = product.selectedSize.name;
   }
 
-  CartProduct.fromDocument(DocumentSnapshot document){
+  CartProduct.fromDocument(DocumentSnapshot document) {
     id = document.documentID;
     productId = document.data['pid'] as String;
     quantity = document.data['quantity'] as int;
     size = document.data['size'] as String;
 
-    firestore.document('products/$productId')
-        .get()
-        .then((doc) => product = Product.fromDocument(doc));
+    firestore.document('products/$productId').get().then((doc) {
+      product = Product.fromDocument(doc);
+      notifyListeners();
+    });
   }
 
   ItemSize get itemSize {
-    if(product == null){
+    if (product == null) {
       return null;
     } else {
       return product.findSize(size);
     }
   }
 
-  bool get hasStock{
+  bool get hasStock {
     final size = itemSize;
-    if(size == null){
+    if (size == null) {
       return false;
     } else {
       return size.stock >= quantity;
@@ -48,7 +48,7 @@ class CartProduct extends ChangeNotifier {
   }
 
   num get unitPrice {
-    if(product == null){
+    if (product == null) {
       return 0;
     } else {
       return itemSize?.price ?? 0;
@@ -69,14 +69,13 @@ class CartProduct extends ChangeNotifier {
     return product.id == productId && product.selectedSize.name == size;
   }
 
-  void increment(){
+  void increment() {
     quantity++;
     notifyListeners();
   }
 
-  void decrement(){
+  void decrement() {
     quantity--;
     notifyListeners();
   }
-
 }
