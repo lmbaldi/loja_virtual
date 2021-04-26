@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/common/common.dart';
+import 'package:provider/provider.dart';
+import '../../common/common.dart';
+import '../../data/data.dart';
+import 'components/component.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -33,17 +36,30 @@ class HomeScreen extends StatelessWidget {
                 ),
                 actions: [
                   IconButton(
-                      icon: Icon(Icons.shopping_cart),
-                      color: Colors.white,
-                      onPressed: () => Navigator.of(context).pushNamed('/cart'),
+                    icon: Icon(Icons.shopping_cart),
+                    color: Colors.white,
+                    onPressed: () => Navigator.of(context).pushNamed('/cart'),
                   )
                 ],
               ),
-              SliverToBoxAdapter(
-                child: Container(
-                  height: 2000,
-                  width: 200,
-                ),
+              Consumer<HomeManager>(
+                builder: (_, homeManager, __) {
+                  final List<Widget> children = homeManager.sections.map<Widget>(
+                     (section) {
+                        switch(section.type){
+                          case 'List':
+                            return SectionList(section);
+                          case 'Staggered':
+                            return Container();
+                          default:
+                            return Container();
+                        }
+                  }) .toList();
+                  return SliverList(
+                    delegate: SliverChildListDelegate(children),
+                  );
+
+                },
               ),
             ],
           ),
