@@ -3,8 +3,8 @@ import '../../../data/data.dart';
 import 'component.dart';
 
 class SectionList extends StatelessWidget {
-
   final Section section;
+
   SectionList(this.section);
 
   @override
@@ -15,6 +15,25 @@ class SectionList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionHeader(section),
+          SizedBox(
+            height: 120,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) {
+                return AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.network(
+                    section.items[index].image,
+                    fit: BoxFit.cover,
+                  ),
+                );
+              },
+              separatorBuilder: (_, __) => const SizedBox(
+                width: 4,
+              ),
+              itemCount: section.items.length,
+            ),
+          ),
         ],
       ),
     );
