@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import '../../../data/data.dart';
+import 'components.dart';
 
 class ImagesForm extends StatelessWidget {
   final Product product;
@@ -19,7 +20,7 @@ class ImagesForm extends StatelessWidget {
         return AspectRatio(
           aspectRatio: 1.2,
           child: Carousel(
-            images: state.value.map((image) {
+            images: state.value.map<Widget>((image) {
               return Stack(
                 fit: StackFit.expand,
                 children: [
@@ -40,7 +41,22 @@ class ImagesForm extends StatelessWidget {
                   )
                 ],
               );
-            }).toList(),
+            }).toList()..add(
+              Material(
+                color: Colors.grey[200],
+                child: IconButton(
+                    icon: Icon(Icons.add_a_photo),
+                    color: primaryColor,
+                    iconSize: 50,
+                    onPressed: (){
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (_) => ImageSourceSheet()
+                      );
+                    }
+                ),
+              )
+            ),
             dotSize: 4,
             dotSpacing: 15,
             dotBgColor: Colors.transparent,

@@ -2,6 +2,7 @@ abstract class Translations {
   //labels
   String get addAccount;
   String get addToCart;
+  String get camera;
   String get cart;
   String get continueForDelivery;
   String get description;
@@ -25,6 +26,7 @@ abstract class Translations {
   String get forgetPassword;
   String get from;
   String get fullName;
+  String get gallery;
   String get greetings;
   String get invalidEmail;
   String get invalidField;

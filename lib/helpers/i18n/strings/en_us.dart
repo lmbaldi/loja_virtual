@@ -5,6 +5,7 @@ class EnUs implements Translations {
   //labels
   String get addAccount => 'CREATE AN ACCOUNT';
   String get addToCart => 'Add to cart';
+  String get camera => 'Camera';
   String get cart => 'Cart';
   String get continueForDelivery => 'Continue for delivery';
   String get description => 'Description';
@@ -28,6 +29,7 @@ class EnUs implements Translations {
   String get from => 'From ';
   String get forgetPassword => 'I forgot my password';
   String get fullName => 'Full name';
+  String get gallery => 'Gallery';
   String get greetings => 'Hello';
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';

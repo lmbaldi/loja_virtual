@@ -4,6 +4,7 @@ class PtBr implements Translations {
   //labels
   String get addAccount => 'CRIAR CONTA';
   String get addToCart => 'Adicionar ao carrinho';
+  String get camera => 'Câmera';
   String get cart => 'Carrrinho';
   String get continueForDelivery => 'Continuar para entrega';
   String get description => 'Descrição';
@@ -27,6 +28,7 @@ class PtBr implements Translations {
   String get forgetPassword => 'Esqueci minha senha';
   String get from => 'A partir de ';
   String get fullName => 'Nome completo';
+  String get gallery => 'Galeria';
   String get greetings => 'Olá';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
