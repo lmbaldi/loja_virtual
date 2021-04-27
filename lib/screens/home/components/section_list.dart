@@ -20,13 +20,7 @@ class SectionList extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
-                return AspectRatio(
-                  aspectRatio: 1,
-                  child: Image.network(
-                    section.items[index].image,
-                    fit: BoxFit.cover,
-                  ),
-                );
+                return ItemTile(section.items[index]);
               },
               separatorBuilder: (_, __) => const SizedBox(
                 width: 4,
