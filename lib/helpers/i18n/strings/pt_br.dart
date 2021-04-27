@@ -32,7 +32,8 @@ class PtBr implements Translations {
   String get invalidPassword => 'Senha inválida';
   String get msgRequiredField => 'Campo obrigatório.';
   String get noStockAvailable => 'Sem estoque disponível.';
-  String get order => 'Meu pedido';
+  String get order => 'Meus pedidos';
+  String get orders => 'Pedidos';
   String get orderSummary => 'Resumo do Pedido';
   String get password => 'Senha';
   String get passwordsDifferents => 'As senhas são diferentes';
@@ -49,4 +50,5 @@ class PtBr implements Translations {
   String get total => 'Total';
   String get typeLoginEmail => 'Digite o login(email)';
   String get typePassword => 'Digite a senha';
+  String get users => 'Usuários';
 }

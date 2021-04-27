@@ -31,6 +31,7 @@ abstract class Translations {
   String get msgRequiredField;
   String get noStockAvailable;
   String get order;
+  String get orders;
   String get orderSummary;
   String get password;
   String get passwordsDifferents;
@@ -43,8 +44,9 @@ abstract class Translations {
   String get shortPassword;
   String get start;
   String get store;
-  String get total;
   String get subTotal;
+  String get total;
   String get typeLoginEmail;
   String get typePassword;
+  String get users;
 }

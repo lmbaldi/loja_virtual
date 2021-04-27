@@ -34,6 +34,7 @@ class EnUs implements Translations {
   String get msgRequiredField => 'Required field.';
   String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
+  String get orders => 'Orders';
   String get orderSummary => 'Order summary';
   String get password => 'Password';
   String get passwordsDifferents => 'Password are differents';
@@ -50,5 +51,5 @@ class EnUs implements Translations {
   String get total => 'Total';
   String get typeLoginEmail => 'Type the login(email)';
   String get typePassword => 'Type the password';
-
+  String get users => 'Users';
 }
