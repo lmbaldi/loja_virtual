@@ -6,6 +6,7 @@ class EnUs implements Translations {
   String get addAccount => 'CREATE AN ACCOUNT';
   String get addToCart => 'Add to cart';
   String get camera => 'Camera';
+  String get cancel => 'Cancel';
   String get cart => 'Cart';
   String get continueForDelivery => 'Continue for delivery';
   String get description => 'Description';
@@ -43,6 +44,8 @@ class EnUs implements Translations {
   String get passwordsDifferents => 'Password are differents';
   String get products => 'Products';
   String get repeatPassword => 'Repeat the password';
+  String get msgSelectPhotoCupertino => 'Select photo for item';
+  String get msgChooseSourcePhotoCupertino => 'Choose the source of the photo';
   String get signInToBuy => 'Sign in to buy';
   String get signInSignUp => 'Sign in or sign up';
   String get sizes => 'Sizes';

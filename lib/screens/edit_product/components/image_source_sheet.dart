@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
+import 'package:flutter/cupertino.dart';
+import '../../../helpers/helpers.dart';
 
 class ImageSourceSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    if(Platform.isAndroid)
     return BottomSheet(
       onClosing: (){},
       builder: (_) => Column(
@@ -22,5 +26,27 @@ class ImageSourceSheet extends StatelessWidget {
         ],
       ),
     );
+    else
+      return CupertinoActionSheet(
+        title: Text(R.string.msgSelectPhotoCupertino),
+        message: Text(R.string.msgChooseSourcePhotoCupertino),
+        cancelButton: CupertinoActionSheetAction(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(R.string.cancel),
+        ),
+        actions: [
+          CupertinoActionSheetAction(
+            isDefaultAction: true,
+            onPressed: (){},
+            child: Text(R.string.camera),
+          ),
+          CupertinoActionSheetAction(
+            onPressed: (){},
+            child: Text(R.string.gallery),
+          ),
+
+        ],
+
+      );
   }
 }

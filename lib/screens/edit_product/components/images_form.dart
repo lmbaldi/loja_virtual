@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import '../../../data/data.dart';
@@ -24,7 +25,7 @@ class ImagesForm extends StatelessWidget {
               return Stack(
                 fit: StackFit.expand,
                 children: [
-                  if(image is String)
+                  if (image is String)
                     Image.network(image, fit: BoxFit.cover)
                   else
                     Image.file(image as File, fit: BoxFit.cover),
@@ -33,7 +34,7 @@ class ImagesForm extends StatelessWidget {
                     child: IconButton(
                       icon: Icon(Icons.remove),
                       color: Colors.red,
-                      onPressed: (){
+                      onPressed: () {
                         state.value.remove(image);
                         state.didChange(state.value);
                       },
@@ -41,22 +42,24 @@ class ImagesForm extends StatelessWidget {
                   )
                 ],
               );
-            }).toList()..add(
-              Material(
+            }).toList()
+              ..add(Material(
                 color: Colors.grey[200],
                 child: IconButton(
                     icon: Icon(Icons.add_a_photo),
                     color: primaryColor,
                     iconSize: 50,
-                    onPressed: (){
-                      showModalBottomSheet(
-                          context: context,
-                          builder: (_) => ImageSourceSheet()
-                      );
-                    }
-                ),
-              )
-            ),
+                    onPressed: () {
+                      if (Platform.isAndroid)
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (_) => ImageSourceSheet());
+                      else
+                        showCupertinoModalPopup(
+                            context: context,
+                            builder: (_) => ImageSourceSheet());
+                    }),
+              )),
             dotSize: 4,
             dotSpacing: 15,
             dotBgColor: Colors.transparent,

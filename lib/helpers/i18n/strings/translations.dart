@@ -3,6 +3,7 @@ abstract class Translations {
   String get addAccount;
   String get addToCart;
   String get camera;
+  String get cancel;
   String get cart;
   String get continueForDelivery;
   String get description;
@@ -40,6 +41,8 @@ abstract class Translations {
   String get passwordsDifferents;
   String get products;
   String get repeatPassword;
+  String get msgSelectPhotoCupertino;
+  String get msgChooseSourcePhotoCupertino;
   String get signInToBuy;
   String get signInSignUp;
   String get sizes;
