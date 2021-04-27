@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                           case 'List':
                             return SectionList(section);
                           case 'Staggered':
-                            return Container();
+                            return SectionStaggered(section);
                           default:
                             return Container();
                         }
