@@ -1,5 +1,7 @@
+export 'admin_users/admin.dart';
 export 'base/base.dart';
 export 'cart/cart.dart';
+export 'edit_product/edit_product.dart';
 export 'home/home.dart';
 export 'login/login.dart';
 export 'signup/signup_screen.dart';

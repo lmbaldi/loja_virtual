@@ -7,6 +7,7 @@ class PtBr implements Translations {
   String get cart => 'Carrrinho';
   String get continueForDelivery => 'Continuar para entrega';
   String get description => 'Descrição';
+  String get editAd => 'Editar Anúncio';
   String get email => 'Email';
   String get enter => 'ENTRAR';
   String get errorEmailAlreadyInUse => 'E-mail já está sendo utilizado em outra conta.';

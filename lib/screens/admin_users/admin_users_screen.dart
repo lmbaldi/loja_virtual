@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/common/common.dart';
 import 'package:provider/provider.dart';
 import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import '../../data/data.dart';
 import '../../helpers/helpers.dart';
+import '../../common/common.dart';
 
 class AdminUsersScreen extends StatelessWidget {
   @override

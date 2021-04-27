@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
-import 'package:loja_virtual/screens/admin_users/admin_users_screen.dart';
 import 'package:provider/provider.dart';
-import '../../data/data.dart';
-import '../products/products.dart';
 import '../screens.dart';
+import '../../data/data.dart';
 import '../helpers/helpers.dart';
+import '../../helpers/helpers.dart';
 import '../../common/common.dart';
+import '../products/products.dart';
 
 class BaseScreen extends StatelessWidget {
 

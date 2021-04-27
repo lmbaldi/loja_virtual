@@ -5,6 +5,7 @@ abstract class Translations {
   String get cart;
   String get continueForDelivery;
   String get description;
+  String get editAd;
   String get email;
   String get enter;
   String get errorEmailAlreadyInUse;

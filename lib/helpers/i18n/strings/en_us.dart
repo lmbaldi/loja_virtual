@@ -8,6 +8,7 @@ class EnUs implements Translations {
   String get cart => 'Cart';
   String get continueForDelivery => 'Continue for delivery';
   String get description => 'Description';
+  String get editAd => 'Edit Ad';
   String get email => 'Email';
   String get enter => 'ENTER';
   String get errorEmailAlreadyInUse => 'E-mail is already being used in another account.';

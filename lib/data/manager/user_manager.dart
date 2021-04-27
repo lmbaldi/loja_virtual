@@ -60,7 +60,6 @@ class UserManager extends ChangeNotifier {
       if(docAdmin.exists){
         user.admin = true;
       }
-      print('admin ==> ${user.admin}');
       notifyListeners();
     }
   }
