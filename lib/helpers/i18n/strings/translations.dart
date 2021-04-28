@@ -45,6 +45,7 @@ abstract class Translations {
   String get orderSummary;
   String get password;
   String get passwordsDifferents;
+  String get price;
   String get products;
   String get repeatPassword;
   String get msgSelectPhotoCupertino;
@@ -57,6 +58,7 @@ abstract class Translations {
   String get shortTitle;
   String get shortPassword;
   String get start;
+  String get stock;
   String get store;
   String get subTotal;
   String get title;

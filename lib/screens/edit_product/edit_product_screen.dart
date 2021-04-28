@@ -86,6 +86,7 @@ class EditProductScreen extends StatelessWidget {
                       return null;
                     },
                   ),
+                  SizesForm(product),
                   RaisedButton(
                     onPressed: (){
                       if(formKey.currentState.validate()){

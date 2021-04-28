@@ -45,6 +45,7 @@ class EnUs implements Translations {
   String get orderSummary => 'Order summary';
   String get password => 'Password';
   String get passwordsDifferents => 'Password are differents';
+  String get price => 'Price';
   String get products => 'Products';
   String get repeatPassword => 'Repeat the password';
   String get msgSelectPhotoCupertino => 'Select photo for item';
@@ -57,6 +58,7 @@ class EnUs implements Translations {
   String get shortTitle => 'Short title';
   String get shortPassword => 'The password must be at least 6 characters long';
   String get start => 'Start';
+  String get stock => 'Stock';
   String get store => 'Store';
   String get subTotal => 'Subtotal';
   String get title => 'Title';

@@ -44,6 +44,7 @@ class PtBr implements Translations {
   String get orderSummary => 'Resumo do Pedido';
   String get password => 'Senha';
   String get passwordsDifferents => 'As senhas são diferentes';
+  String get price => 'Preço';
   String get products => 'Produtos';
   String get repeatPassword => 'Repita a senha';
   String get msgSelectPhotoCupertino => 'Selecionar foto para o item';
@@ -56,6 +57,7 @@ class PtBr implements Translations {
   String get shortTitle => 'Título muito curto';
   String get start => 'Início';
   String get store => 'Loja';
+  String get stock => 'Estoque';
   String get subTotal => 'Subtotal';
   String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
   String get title => 'Título';
