@@ -17,6 +17,7 @@ class DrawerTile extends StatelessWidget {
     final Color primaryColor = Theme.of(context).primaryColor;
     return InkWell(
       onTap: (){
+        print('page ==> $page');
         context.read<PageManager>().setPage(page);
       },
       child: Row(
