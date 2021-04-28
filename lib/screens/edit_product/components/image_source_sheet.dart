@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 import '../../../helpers/helpers.dart';
 
 class ImageSourceSheet extends StatelessWidget {
@@ -12,7 +13,27 @@ class ImageSourceSheet extends StatelessWidget {
   ImageSourceSheet({this.onImageSelected});
 
   final ImagePicker picker = ImagePicker();
-  
+
+  Future<void> editImage(String path, BuildContext context) async {
+     final File croppedFile =  await ImageCropper.cropImage(
+      sourcePath: path,
+      aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
+      androidUiSettings: AndroidUiSettings(
+        toolbarTitle: R.string.editImage,
+        toolbarColor: Theme.of(context).primaryColor,
+        toolbarWidgetColor: Colors.white
+      ),
+      iosUiSettings: IOSUiSettings(
+        title: R.string.editImage,
+        cancelButtonTitle: R.string.cancel,
+        doneButtonTitle: R.string.conclude
+      )
+    );
+     if(croppedFile != null){
+       onImageSelected(croppedFile);
+     }
+  }
+
   @override
   Widget build(BuildContext context) {
     if(Platform.isAndroid)
@@ -25,14 +46,14 @@ class ImageSourceSheet extends StatelessWidget {
           FlatButton(
               onPressed: () async {
                 final PickedFile file = await picker.getImage(source: ImageSource.camera);
-                 onImageSelected(File(file.path));
+                 editImage(file.path, context);
               },
               child: Text(R.string.camera),
           ),
           FlatButton(
             onPressed: () async {
               final PickedFile file = await picker.getImage(source: ImageSource.gallery);
-              onImageSelected(File(file.path));
+              editImage(file.path, context);
             },
             child: Text(R.string.gallery),
           ),
@@ -51,16 +72,20 @@ class ImageSourceSheet extends StatelessWidget {
         actions: [
           CupertinoActionSheetAction(
             isDefaultAction: true,
-            onPressed: (){},
+            onPressed: () async {
+              final PickedFile file = await picker.getImage(source: ImageSource.camera);
+              editImage(file.path, context);
+            },
             child: Text(R.string.camera),
           ),
           CupertinoActionSheetAction(
-            onPressed: (){},
+            onPressed: () async {
+              final PickedFile file = await picker.getImage(source: ImageSource.camera);
+              editImage(file.path, context);
+            },
             child: Text(R.string.gallery),
           ),
-
         ],
-
       );
   }
 }
