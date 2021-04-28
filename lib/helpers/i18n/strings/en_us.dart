@@ -61,6 +61,7 @@ class EnUs implements Translations {
   String get stock => 'Stock';
   String get store => 'Store';
   String get subTotal => 'Subtotal';
+  String get prefixText => '\$ ';
   String get title => 'Title';
   String get total => 'Total';
   String get typeLoginEmail => 'Type the login(email)';

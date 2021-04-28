@@ -30,10 +30,12 @@ class ImagesForm extends StatelessWidget {
           Navigator.of(context).pop();
         }
         return Column(
+
           children: [
             AspectRatio(
               aspectRatio: 1.2,
               child: Carousel(
+
                 images: state.value.map<Widget>((image) {
                   return Stack(
                     fit: StackFit.expand,

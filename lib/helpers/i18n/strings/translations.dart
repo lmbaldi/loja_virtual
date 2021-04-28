@@ -61,6 +61,7 @@ abstract class Translations {
   String get stock;
   String get store;
   String get subTotal;
+  String get prefixText;
   String get title;
   String get total;
   String get typeLoginEmail;

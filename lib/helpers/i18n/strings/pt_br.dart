@@ -59,6 +59,7 @@ class PtBr implements Translations {
   String get store => 'Loja';
   String get stock => 'Estoque';
   String get subTotal => 'Subtotal';
+  String get prefixText => 'R\$ ';
   String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
   String get title => 'Título';
   String get total => 'Total';
