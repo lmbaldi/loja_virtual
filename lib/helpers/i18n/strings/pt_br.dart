@@ -36,6 +36,7 @@ class PtBr implements Translations {
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
+  String get msgInsertImage => 'Insira ao menos uma imagem';
   String get msgRequiredField => 'Campo obrigatório.';
   String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meus pedidos';
@@ -47,14 +48,17 @@ class PtBr implements Translations {
   String get repeatPassword => 'Repita a senha';
   String get msgSelectPhotoCupertino => 'Selecionar foto para o item';
   String get msgChooseSourcePhotoCupertino => 'Escolha a origem da foto';
+  String get save => 'Salvar';
   String get signInToBuy => 'Entre para comprar';
   String get signInSignUp => 'Entre ou cadastre-se';
   String get sizes => 'Tamanhos';
   String get size => 'Tamanho';
-  String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
+  String get shortTitle => 'Título muito curto';
   String get start => 'Início';
   String get store => 'Loja';
   String get subTotal => 'Subtotal';
+  String get shortPassword => 'A senha deve possuir no mínimo 6 caracteres';
+  String get title => 'Título';
   String get total => 'Total';
   String get typeLoginEmail => 'Digite o login(email)';
   String get typePassword => 'Digite a senha';

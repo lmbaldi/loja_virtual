@@ -1,4 +1,7 @@
+import 'package:flutter/src/widgets/framework.dart';
+
 abstract class Translations {
+
   //labels
   String get addAccount;
   String get addToCart;
@@ -34,6 +37,7 @@ abstract class Translations {
   String get invalidEmail;
   String get invalidField;
   String get invalidPassword;
+  String get msgInsertImage;
   String get msgRequiredField;
   String get noStockAvailable;
   String get order;
@@ -45,14 +49,17 @@ abstract class Translations {
   String get repeatPassword;
   String get msgSelectPhotoCupertino;
   String get msgChooseSourcePhotoCupertino;
+  String get save;
   String get signInToBuy;
   String get signInSignUp;
-  String get sizes;
   String get size;
+  String get sizes;
+  String get shortTitle;
   String get shortPassword;
   String get start;
   String get store;
   String get subTotal;
+  String get title;
   String get total;
   String get typeLoginEmail;
   String get typePassword;

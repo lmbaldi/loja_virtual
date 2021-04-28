@@ -37,6 +37,7 @@ class EnUs implements Translations {
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';
   String get invalidPassword => 'Invalid password';
+  String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
   String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
@@ -48,14 +49,17 @@ class EnUs implements Translations {
   String get repeatPassword => 'Repeat the password';
   String get msgSelectPhotoCupertino => 'Select photo for item';
   String get msgChooseSourcePhotoCupertino => 'Choose the source of the photo';
+  String get save => 'Save';
   String get signInToBuy => 'Sign in to buy';
   String get signInSignUp => 'Sign in or sign up';
   String get sizes => 'Sizes';
   String get size => 'Size';
+  String get shortTitle => 'Short title';
   String get shortPassword => 'The password must be at least 6 characters long';
   String get start => 'Start';
   String get store => 'Store';
   String get subTotal => 'Subtotal';
+  String get title => 'Title';
   String get total => 'Total';
   String get typeLoginEmail => 'Type the login(email)';
   String get typePassword => 'Type the password';
