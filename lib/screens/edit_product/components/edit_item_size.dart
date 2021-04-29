@@ -12,7 +12,7 @@ class EditItemSize extends StatelessWidget {
   EditItemSize(
       {Key key, this.size, this.onRemove, this.onMoveUp, this.onMoveDown})
       : super(key: key);
-
+  //key para identificar o widget
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,6 +25,13 @@ class EditItemSize extends StatelessWidget {
               labelText: R.string.title,
               isDense: true,
             ),
+            validator: (name){
+              if(name.isEmpty){
+                return R.string.invalidField;
+              }
+              return null;
+            },
+            onChanged: (name) => size.name = name,
           ),
         ),
         SizedBox(
@@ -39,6 +46,12 @@ class EditItemSize extends StatelessWidget {
               isDense: true,
             ),
             keyboardType: TextInputType.number,
+            validator: (stock){
+              if(int.tryParse(stock) == null)
+                return R.string.invalidField;
+              return null;
+            },
+            onChanged: (stock) => size.stock = int.tryParse(stock),
           ),
         ),
         SizedBox(
@@ -53,6 +66,12 @@ class EditItemSize extends StatelessWidget {
                 isDense: true,
                 prefixText: R.string.prefixText),
             keyboardType: TextInputType.numberWithOptions(decimal: true),
+            validator: (price){
+              if(num.tryParse(price) == null)
+                return R.string.invalidField;
+              return null;
+            },
+            onChanged: (price) => size.price = num.tryParse(price),
           ),
         ),
         CustomIconButton(

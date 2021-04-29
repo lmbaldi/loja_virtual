@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/common/common.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
+import '../../../common/common.dart';
+import '../../../helpers/helpers.dart';
 import '../../../data/data.dart';
 import 'components.dart';
 
@@ -13,7 +13,12 @@ class SizesForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormField<List<ItemSize>>(
-        initialValue: List.from(product.sizes),
+      initialValue: List.from(product.sizes),
+      validator: (sizes){
+        if(sizes.isEmpty)
+          return R.string.enterSize;
+        return null;
+      },
       builder: (state){
           return Column(
             children: [
@@ -49,9 +54,13 @@ class SizesForm extends StatelessWidget {
                       state.didChange(state.value);
                     } ,
                     onMoveUp: size != state.value.first ? (){
+                      //obtem o indice da lista de tamanhos
                       final index = state.value.indexOf(size);
+                      //removendo o tamanho da lista
                       state.value.remove(size);
+                      //inserir o tamanho em outra posicao da lista
                       state.value.insert(index - 1, size);
+                      //emite a mudanca do valor
                       state.didChange(state.value);
                     } : null,
                     onMoveDown: size != state.value.last ? (){
@@ -63,6 +72,17 @@ class SizesForm extends StatelessWidget {
                   );
                 }).toList(),
               ),
+              if(state.hasError)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    state.errorText,
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
             ],
           );
       },

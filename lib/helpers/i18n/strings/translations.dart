@@ -15,6 +15,7 @@ abstract class Translations {
   String get editImage;
   String get email;
   String get enter;
+  String get enterSize;
   String get errorEmailAlreadyInUse;
   String get errorInvalidEmail;
   String get errorInvalidCredential;

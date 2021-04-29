@@ -14,6 +14,7 @@ class PtBr implements Translations {
   String get editImage => 'Editar Imagem';
   String get email => 'Email';
   String get enter => 'ENTRAR';
+  String get enterSize => 'Insira um tamanho';
   String get errorEmailAlreadyInUse => 'E-mail já está sendo utilizado em outra conta.';
   String get errorInvalidCredential => 'Seu e-mail é inválido.';
   String get errorInvalidEmail => 'Seu e-mail é inválido.';

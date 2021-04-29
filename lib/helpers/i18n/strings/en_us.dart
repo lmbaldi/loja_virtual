@@ -15,6 +15,7 @@ class EnUs implements Translations {
   String get editImage => 'Edit Image';
   String get email => 'Email';
   String get enter => 'ENTER';
+  String get enterSize => 'Enter a size';
   String get errorEmailAlreadyInUse => 'E-mail is already being used in another account.';
   String get errorInvalidCredential => 'Your email is invalid.';
   String get errorInvalidEmail => 'Your email is invalid';
