@@ -8,6 +8,7 @@ import '../../helpers/helpers.dart';
 class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -65,7 +66,23 @@ class ProductsScreen extends StatelessWidget {
                 );
               }
             },
-          )
+          ),
+          Consumer<UserManager>(
+            builder: (_, userManager, __){
+              if(userManager.adminEnabled){
+                return IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: (){
+                    Navigator.of(context).pushNamed(
+                      '/edit_product',
+                    );
+                  },
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
         ],
       ),
       body: Consumer<ProductManager>(

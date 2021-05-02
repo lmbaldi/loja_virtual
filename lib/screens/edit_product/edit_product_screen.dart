@@ -6,8 +6,11 @@ import '../screens.dart';
 class EditProductScreen extends StatelessWidget {
 
   final Product product;
+  final bool editing;
 
-  EditProductScreen(this.product);
+  EditProductScreen(Product p) :
+    editing = p != null,
+    product = p != null ? p.clone() : Product();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -16,7 +19,7 @@ class EditProductScreen extends StatelessWidget {
     final primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
       appBar: AppBar(
-        title: Text(R.string.editAd),
+        title: Text(editing ? R.string.editAd : R.string.createAd),
       ),
       backgroundColor: Colors.white,
       body: Form(
@@ -87,13 +90,22 @@ class EditProductScreen extends StatelessWidget {
                     },
                   ),
                   SizesForm(product),
-                  RaisedButton(
-                    onPressed: (){
-                      if(formKey.currentState.validate()){
-                        print('valido');
-                      }
-                    },
-                    child: Text(R.string.save),
+                  SizedBox(height: 20),
+                  SizedBox(
+                    height: 44,
+                    child: RaisedButton(
+                      child: Text(
+                        R.string.save,
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                      color: primaryColor,
+                      disabledColor: primaryColor.withAlpha(100),
+                      onPressed: (){
+                        if(formKey.currentState.validate()){
+                          print('valido');
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),

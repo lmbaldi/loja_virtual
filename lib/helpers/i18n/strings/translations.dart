@@ -8,6 +8,7 @@ abstract class Translations {
   String get camera;
   String get cancel;
   String get cart;
+  String get createAd;
   String get conclude;
   String get continueForDelivery;
   String get description;

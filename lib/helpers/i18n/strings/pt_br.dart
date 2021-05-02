@@ -7,6 +7,7 @@ class PtBr implements Translations {
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
   String get cart => 'Carrrinho';
+  String get createAd => 'Criar anúncio';
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
   String get description => 'Descrição';

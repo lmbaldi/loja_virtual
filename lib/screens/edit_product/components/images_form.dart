@@ -17,7 +17,8 @@ class ImagesForm extends StatelessWidget {
     final primaryColor = Theme.of(context).primaryColor;
 
     return FormField<List<dynamic>>(
-      initialValue: List.from(product.images),
+      // initialValue: List.from(product.images),//alterado a model product
+      initialValue: product.images,
       validator: (images){
         if(images.isEmpty)
           return R.string.msgInsertImage;
