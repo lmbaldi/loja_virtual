@@ -79,20 +79,33 @@ class Product extends ChangeNotifier {
   }
 
   Future<void> save() async {
+    final List<String> updateImages = [];
+    
     final Map<String, dynamic> data = {
       'name': name,
       'description': description,
       'sizes': exportSizeList(),
     };
+    //salvando produto
+    await salvarProduto(data);
+    //adicionando imagens do produto
+    await adicionarImagens(updateImages);
+    //removendo imagens  do produto  no storage
+    await removerImagens();
+    //atualizar imagens
+    await atualizarImagens(updateImages);
+  }
+
+  Future salvarProduto(Map<String, dynamic> data) async {
     if(id == null){
       final doc = await firestore.collection('products').add(data);
       id = doc.documentID;
     } else {
       await firestoreRef.updateData(data);
     }
+  }
 
-    final List<String> updateImages = [];
-
+  Future adicionarImagens(List<String> updateImages) async {
     for(final newImage in newImages){
       if(images.contains(newImage)){
         updateImages.add(newImage as String);
@@ -103,6 +116,23 @@ class Product extends ChangeNotifier {
         updateImages.add(url);
       }
     }
+  }
+
+  Future removerImagens() async {
+    for (final image in images){
+      if(!newImages.contains(image)){
+        try{
+          final ref = await storage.getReferenceFromUrl(image);
+          await ref.delete();
+        } catch (e){
+          debugPrint('Falha ao deletar $image');
+        }
+      }
+    }
+  }
+
+  Future atualizarImagens(List<String> updateImages) async {
+     await firestoreRef.updateData({'images': updateImages});
   }
 
   Product clone() {
