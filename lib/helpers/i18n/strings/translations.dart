@@ -8,11 +8,11 @@ abstract class Translations {
   String get camera;
   String get cancel;
   String get cart;
-  String get createAd;
+  String get createProduct;
   String get conclude;
   String get continueForDelivery;
   String get description;
-  String get editAd;
+  String get editProduct;
   String get editImage;
   String get email;
   String get enter;

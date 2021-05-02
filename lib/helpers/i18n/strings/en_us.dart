@@ -8,11 +8,11 @@ class EnUs implements Translations {
   String get camera => 'Camera';
   String get cancel => 'Cancel';
   String get cart => 'Cart';
-  String get createAd => 'Create Ad';
+  String get createProduct => 'Create Product';
   String get conclude => 'Conclude';
   String get continueForDelivery => 'Continue for delivery';
   String get description => 'Description';
-  String get editAd => 'Edit Ad';
+  String get editProduct => 'Edit Product';
   String get editImage => 'Edit Image';
   String get email => 'Email';
   String get enter => 'ENTER';

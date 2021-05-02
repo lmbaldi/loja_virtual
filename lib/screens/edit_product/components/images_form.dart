@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
+import '../../../helpers/helpers.dart';
 import '../../../data/data.dart';
 import 'components.dart';
 
@@ -17,13 +17,13 @@ class ImagesForm extends StatelessWidget {
     final primaryColor = Theme.of(context).primaryColor;
 
     return FormField<List<dynamic>>(
-      // initialValue: List.from(product.images),//alterado a model product
-      initialValue: product.images,
+      initialValue: List.from(product.images),
       validator: (images){
         if(images.isEmpty)
           return R.string.msgInsertImage;
         return null;
       },
+      onSaved: (images) => product.newImages = images,
       builder: (state) {
         void onImageSelected(File file) {
           state.value.add(file);

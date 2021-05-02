@@ -20,6 +20,8 @@ class SizesForm extends StatelessWidget {
           return R.string.enterSize;
         return null;
       },
+      //nao precisa porque a lista e passada por referencia
+      //onSaved:  (sizes) => product.sizes = sizes,
       builder: (state){
           return Column(
             children: [

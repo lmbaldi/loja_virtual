@@ -19,7 +19,7 @@ class EditProductScreen extends StatelessWidget {
     final primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
       appBar: AppBar(
-        title: Text(editing ? R.string.editAd : R.string.createAd),
+        title: Text(editing ? R.string.editProduct : R.string.createProduct),
       ),
       backgroundColor: Colors.white,
       body: Form(
@@ -46,6 +46,7 @@ class EditProductScreen extends StatelessWidget {
                           return R.string.shortTitle;
                         return null;
                     },
+                    onSaved: (name) => product.name = name,
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 4),
@@ -88,6 +89,7 @@ class EditProductScreen extends StatelessWidget {
                         return R.string.shortTitle;
                       return null;
                     },
+                    onSaved: (desc) => product.description = desc ,
                   ),
                   SizesForm(product),
                   SizedBox(height: 20),
@@ -102,7 +104,8 @@ class EditProductScreen extends StatelessWidget {
                       disabledColor: primaryColor.withAlpha(100),
                       onPressed: (){
                         if(formKey.currentState.validate()){
-                          print('valido');
+                          formKey.currentState.save();
+                          print(product);
                         }
                       },
                     ),
