@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/rendering.dart';
+import 'package:uuid/uuid.dart';
 import 'models.dart';
 
 class Product extends ChangeNotifier {
@@ -13,6 +17,7 @@ class Product extends ChangeNotifier {
   ItemSize _selectedSize;
 
   final Firestore firestore = Firestore.instance;
+  final FirebaseStorage storage = FirebaseStorage.instance;
 
   Product({this.id, this.name, this.description, this.images, this.sizes}){
     images = images ?? [];
@@ -30,6 +35,7 @@ class Product extends ChangeNotifier {
   }
 
   DocumentReference get firestoreRef => firestore.document('products/$id');
+  StorageReference get storageRef => storage.ref().child('products').child(id);
 
   num get basePrice {
     num lowest = double.infinity;
@@ -83,6 +89,19 @@ class Product extends ChangeNotifier {
       id = doc.documentID;
     } else {
       await firestoreRef.updateData(data);
+    }
+
+    final List<String> updateImages = [];
+
+    for(final newImage in newImages){
+      if(images.contains(newImage)){
+        updateImages.add(newImage as String);
+      } else {
+        final StorageUploadTask task =  storageRef.child(Uuid().v1()).putFile(newImage as File);
+        final StorageTaskSnapshot snapshot = await task.onComplete;
+        final String url = await snapshot.ref.getDownloadURL() as String;
+        updateImages.add(url);
+      }
     }
   }
 
