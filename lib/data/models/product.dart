@@ -12,6 +12,8 @@ class Product extends ChangeNotifier {
   List<dynamic> newImages;
   ItemSize _selectedSize;
 
+  final Firestore firestore = Firestore.instance;
+
   Product({this.id, this.name, this.description, this.images, this.sizes}){
     images = images ?? [];
     sizes = sizes ?? [];
@@ -26,6 +28,8 @@ class Product extends ChangeNotifier {
         .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
         .toList();
   }
+
+  DocumentReference get firestoreRef => firestore.document('products/$id');
 
   num get basePrice {
     num lowest = double.infinity;
@@ -61,6 +65,24 @@ class Product extends ChangeNotifier {
       return sizes.firstWhere((s) => s.name == name);
     } catch (e) {
       return null;
+    }
+  }
+
+  List<Map<String, dynamic>> exportSizeList(){
+    return sizes.map((size) => size.toMap()).toList();
+  }
+
+  Future<void> save() async {
+    final Map<String, dynamic> data = {
+      'name': name,
+      'description': description,
+      'sizes': exportSizeList(),
+    };
+    if(id == null){
+      final doc = await firestore.collection('products').add(data);
+      id = doc.documentID;
+    } else {
+      await firestoreRef.updateData(data);
     }
   }
 
