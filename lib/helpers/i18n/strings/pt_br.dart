@@ -6,6 +6,7 @@ class PtBr implements Translations {
   String get addGrid => 'Adicionar Grade';
   String get addList => 'Adicionar Lista';
   String get addToCart => 'Adicionar ao carrinho';
+  String get link => 'Vincular';
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
   String get cart => 'Carrrinho';
@@ -43,6 +44,7 @@ class PtBr implements Translations {
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
+  String get linkProduct => 'Vincular Produto';
   String get msgInsertImage => 'Insira ao menos uma imagem';
   String get msgRequiredField => 'Campo obrigatório.';
   String get noStockAvailable => 'Sem estoque disponível.';
@@ -72,5 +74,6 @@ class PtBr implements Translations {
   String get total => 'Total';
   String get typeLoginEmail => 'Digite o login(email)';
   String get typePassword => 'Digite a senha';
+  String get unLink => 'Desvincular';
   String get users => 'Usuários';
 }

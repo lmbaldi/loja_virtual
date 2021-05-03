@@ -7,6 +7,7 @@ abstract class Translations {
   String get addGrid;
   String get addList;
   String get addToCart;
+  String get link;
   String get camera;
   String get cancel;
   String get cart;
@@ -44,6 +45,7 @@ abstract class Translations {
   String get invalidEmail;
   String get invalidField;
   String get invalidPassword;
+  String get linkProduct;
   String get msgInsertImage;
   String get msgRequiredField;
   String get noStockAvailable;
@@ -73,5 +75,6 @@ abstract class Translations {
   String get total;
   String get typeLoginEmail;
   String get typePassword;
+  String get unLink;
   String get users;
 }

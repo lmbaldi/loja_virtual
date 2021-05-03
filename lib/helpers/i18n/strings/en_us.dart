@@ -7,6 +7,7 @@ class EnUs implements Translations {
   String get addGrid => 'Add Grid';
   String get addList => 'Add List';
   String get addToCart => 'Add to cart';
+  String get link => 'Lind';
   String get camera => 'Camera';
   String get cancel => 'Cancel';
   String get cart => 'Cart';
@@ -44,6 +45,7 @@ class EnUs implements Translations {
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';
   String get invalidPassword => 'Invalid password';
+  String get linkProduct => 'Link Product';
   String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
   String get noStockAvailable => 'No stock available.';
@@ -73,5 +75,6 @@ class EnUs implements Translations {
   String get total => 'Total';
   String get typeLoginEmail => 'Type the login(email)';
   String get typePassword => 'Type the password';
+  String get unLink => 'Unlink';
   String get users => 'Users';
 }

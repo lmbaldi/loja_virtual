@@ -29,12 +29,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProxyProvider<UserManager, CartManager>(
           create: (_) => CartManager(),
           lazy: false,
-          update: (_,userManager, cartManager) => cartManager..updateUser(userManager),
+          update: (_, userManager, cartManager) =>
+              cartManager..updateUser(userManager),
         ),
         ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
           create: (_) => AdminUsersManager(),
           lazy: false,
-          update: (_,userManager, adminUsersManager) => adminUsersManager..updateUser(userManager),
+          update: (_, userManager, adminUsersManager) =>
+              adminUsersManager..updateUser(userManager),
         ),
       ],
       child: MaterialApp(
@@ -49,15 +51,16 @@ class MyApp extends StatelessWidget {
             case '/signUp':
               return MaterialPageRoute(builder: (_) => SignUpScreen());
             case '/product':
-              return MaterialPageRoute(builder: (_) => ProductScreen(
-                settings.arguments as Product
-              ));
+              return MaterialPageRoute(
+                  builder: (_) => ProductScreen(settings.arguments as Product));
             case '/cart':
               return MaterialPageRoute(builder: (_) => CartScreen());
-              case '/edit_product':
-              return MaterialPageRoute(builder: (_) => EditProductScreen(
-                settings.arguments as Product
-              ));
+            case '/edit_product':
+              return MaterialPageRoute(
+                  builder: (_) =>
+                      EditProductScreen(settings.arguments as Product));
+            case '/select_product':
+              return MaterialPageRoute(builder: (_) => SelectProductScreen());
             case '/base':
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen());
