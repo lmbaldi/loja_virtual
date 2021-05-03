@@ -12,6 +12,7 @@ abstract class Translations {
   String get conclude;
   String get continueForDelivery;
   String get description;
+  String get discard;
   String get editProduct;
   String get editImage;
   String get email;
@@ -47,6 +48,7 @@ abstract class Translations {
   String get orderSummary;
   String get password;
   String get passwordsDifferents;
+  String get prefixText;
   String get price;
   String get products;
   String get repeatPassword;
@@ -63,7 +65,6 @@ abstract class Translations {
   String get stock;
   String get store;
   String get subTotal;
-  String get prefixText;
   String get title;
   String get total;
   String get typeLoginEmail;

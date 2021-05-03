@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/helpers/helpers.dart';
 import 'package:provider/provider.dart';
 import '../../common/common.dart';
 import '../../data/data.dart';
@@ -39,7 +40,37 @@ class HomeScreen extends StatelessWidget {
                     icon: Icon(Icons.shopping_cart),
                     color: Colors.white,
                     onPressed: () => Navigator.of(context).pushNamed('/cart'),
-                  )
+                  ),
+                  Consumer2<UserManager, HomeManager>(
+                    builder: (_, userManager, homeManager, __){
+                      if(userManager.adminEnabled) {
+                        if(homeManager.editing){
+                          return PopupMenuButton(
+                            onSelected: (e){
+                              if( e == R.string.save){
+                                homeManager.saveEditing();
+                              } else {
+                                homeManager.discardEditing();
+                              }
+                            },
+                            itemBuilder: (_){
+                              return [R.string.save, R.string.discard].map((e){
+                                return PopupMenuItem(
+                                  value: e,
+                                  child: Text(e),
+                                );
+                              }).toList();
+                            },
+                          );
+                        }else{
+                          return IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: homeManager.enterEditing,
+                          );
+                        }
+                      } else return Container();
+                    },
+                  ),
                 ],
               ),
               Consumer<HomeManager>(

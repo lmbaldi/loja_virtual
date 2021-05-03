@@ -11,6 +11,7 @@ class PtBr implements Translations {
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
   String get description => 'Descrição';
+  String get discard => 'Descartar';
   String get editProduct => 'Editar Produto';
   String get editImage => 'Editar Imagem';
   String get email => 'Email';

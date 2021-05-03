@@ -12,6 +12,7 @@ class EnUs implements Translations {
   String get conclude => 'Conclude';
   String get continueForDelivery => 'Continue for delivery';
   String get description => 'Description';
+  String get discard => 'Discard';
   String get editProduct => 'Edit Product';
   String get editImage => 'Edit Image';
   String get email => 'Email';
