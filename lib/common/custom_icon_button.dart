@@ -13,6 +13,7 @@ class CustomIconButton extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: Material(
+        color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           child: Padding(

@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../data.dart';
 
 class HomeManager extends ChangeNotifier{
@@ -48,6 +48,11 @@ class HomeManager extends ChangeNotifier{
 
   void addSection(Section section) {
     _editingSections.add(section);
+    notifyListeners();
+  }
+
+  void removeSection(Section section) {
+    _editingSections.remove(section);
     notifyListeners();
   }
 }
