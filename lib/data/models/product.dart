@@ -1,23 +1,19 @@
 import 'dart:io';
 
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/rendering.dart';
 import 'package:uuid/uuid.dart';
 import 'models.dart';
 
 class Product extends ChangeNotifier {
+
   String id;
   String name;
   String description;
   List<String> images;
   List<ItemSize> sizes;
-  List<dynamic> newImages;
-  ItemSize _selectedSize;
-
-  final Firestore firestore = Firestore.instance;
-  final FirebaseStorage storage = FirebaseStorage.instance;
 
   Product({this.id, this.name, this.description, this.images, this.sizes}){
     images = images ?? [];
@@ -34,8 +30,21 @@ class Product extends ChangeNotifier {
         .toList();
   }
 
+  List<dynamic> newImages;
+  ItemSize _selectedSize;
+  bool _loading = false;
+
+  final Firestore firestore = Firestore.instance;
+  final FirebaseStorage storage = FirebaseStorage.instance;
   DocumentReference get firestoreRef => firestore.document('products/$id');
   StorageReference get storageRef => storage.ref().child('products').child(id);
+
+  set loading (bool value){
+    _loading = value;
+    notifyListeners();
+  }
+
+  bool get loading => _loading;
 
   num get basePrice {
     num lowest = double.infinity;
@@ -79,6 +88,9 @@ class Product extends ChangeNotifier {
   }
 
   Future<void> save() async {
+
+    loading = true;
+
     final List<String> updateImages = [];
     
     final Map<String, dynamic> data = {
@@ -94,6 +106,8 @@ class Product extends ChangeNotifier {
     await removerImagens();
     //atualizar imagens
     await atualizarImagens(updateImages);
+
+    loading = false;
   }
 
   Future salvarProduto(Map<String, dynamic> data) async {
@@ -133,6 +147,7 @@ class Product extends ChangeNotifier {
 
   Future atualizarImagens(List<String> updateImages) async {
      await firestoreRef.updateData({'images': updateImages});
+     images = updateImages;
   }
 
   Product clone() {
