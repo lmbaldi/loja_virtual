@@ -3,6 +3,8 @@ import 'translations.dart';
 class PtBr implements Translations {
   //labels
   String get addAccount => 'CRIAR CONTA';
+  String get addGrid => 'Adicionar Grade';
+  String get addList => 'Adicionar Lista';
   String get addToCart => 'Adicionar ao carrinho';
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';

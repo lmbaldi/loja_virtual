@@ -4,6 +4,8 @@ abstract class Translations {
 
   //labels
   String get addAccount;
+  String get addGrid;
+  String get addList;
   String get addToCart;
   String get camera;
   String get cancel;

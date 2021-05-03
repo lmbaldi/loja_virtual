@@ -4,6 +4,8 @@ import 'translations.dart';
 class EnUs implements Translations {
   //labels
   String get addAccount => 'CREATE AN ACCOUNT';
+  String get addGrid => 'Add Grid';
+  String get addList => 'Add List';
   String get addToCart => 'Add to cart';
   String get camera => 'Camera';
   String get cancel => 'Cancel';
