@@ -13,31 +13,38 @@ class SectionList extends StatelessWidget {
 
     final homeManager = context.watch<HomeManager>();
 
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SectionHeader(section),
-          SizedBox(
-            height: 120,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (_, index) {
-                if(index < section.items.length)
-                  return ItemTile(section.items[index]);
-                else
-                  return AddTileWidget();
-              },
-              separatorBuilder: (_, __) => const SizedBox(
-                width: 4,
+    return ChangeNotifierProvider.value(
+      value: section,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SectionHeader(),
+            SizedBox(
+              height: 120,
+              child: Consumer<Section>(
+                builder: (_, section, __){
+                  return ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (_, index) {
+                      if(index < section.items.length)
+                        return ItemTile(section.items[index]);
+                      else
+                        return AddTileWidget();
+                    },
+                    separatorBuilder: (_, __) => const SizedBox(
+                      width: 4,
+                    ),
+                    itemCount: homeManager.editing
+                        ? section.items.length + 1
+                        : section.items.length,
+                  );
+                },
               ),
-              itemCount: homeManager.editing
-                ? section.items.length + 1
-                : section.items.length,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

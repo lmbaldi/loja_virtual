@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -22,11 +24,13 @@ class ItemTile extends StatelessWidget {
       },
       child: AspectRatio(
         aspectRatio: 1,
-        child: FadeInImage.memoryNetwork(
-          placeholder: kTransparentImage,
-          image: item.image,
-          fit: BoxFit.cover,
-        ),
+        child: item.image is String
+          ? FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: item.image,
+              fit: BoxFit.cover,
+            )
+          : Image.file(item.image as File, fit: BoxFit.cover,),
       ),
     );
   }

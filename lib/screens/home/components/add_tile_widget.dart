@@ -2,15 +2,21 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import '../../../data/data.dart';
 
 import '../../screens.dart';
 
 class AddTileWidget extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
 
-    void onImageSelected(File file){
+    final section = context.watch<Section>();
 
+    void onImageSelected(File file) {
+      section.addItem(SectionItem(image: file));
+      Navigator.of(context).pop();
     }
 
     return AspectRatio(
