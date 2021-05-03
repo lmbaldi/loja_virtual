@@ -13,10 +13,12 @@ class EnUs implements Translations {
   String get createProduct => 'Create Product';
   String get conclude => 'Conclude';
   String get continueForDelivery => 'Continue for delivery';
+  String get delete => 'Delete';
   String get description => 'Description';
   String get discard => 'Discard';
-  String get editProduct => 'Edit Product';
   String get editImage => 'Edit Image';
+  String get editItem => 'Edit Item';
+  String get editProduct => 'Edit Product';
   String get email => 'Email';
   String get enter => 'ENTER';
   String get enterSize => 'Enter a size';

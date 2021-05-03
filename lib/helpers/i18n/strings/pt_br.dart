@@ -12,10 +12,12 @@ class PtBr implements Translations {
   String get createProduct => 'Criar Produto';
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
+  String get delete => 'Excluir';
   String get description => 'Descrição';
   String get discard => 'Descartar';
-  String get editProduct => 'Editar Produto';
   String get editImage => 'Editar Imagem';
+  String get editItem => 'Editar Item';
+  String get editProduct => 'Editar Produto';
   String get email => 'Email';
   String get enter => 'ENTRAR';
   String get enterSize => 'Insira um tamanho';

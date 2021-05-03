@@ -13,10 +13,12 @@ abstract class Translations {
   String get createProduct;
   String get conclude;
   String get continueForDelivery;
+  String get delete;
   String get description;
   String get discard;
   String get editProduct;
   String get editImage;
+  String get editItem;
   String get email;
   String get enter;
   String get enterSize;
