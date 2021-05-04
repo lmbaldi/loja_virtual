@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/common/common.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
 import 'package:provider/provider.dart';
+import '../../../common/common.dart';
+import '../../../helpers/helpers.dart';
 import '../../../data/data.dart';
 
 class SectionHeader extends StatelessWidget {
@@ -13,31 +13,47 @@ class SectionHeader extends StatelessWidget {
     final section = context.watch<Section>();
 
     if(homeManager.editing){
-      return Row(
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: TextFormField(
-              initialValue: section.name,
-              decoration: InputDecoration(
-                hintText: R.string.title,
-                isDense: true,
-                border: InputBorder.none,
+          Row(
+            children: [
+              Expanded(
+                child: TextFormField(
+                  initialValue: section.name,
+                  decoration: InputDecoration(
+                    hintText: R.string.title,
+                    isDense: true,
+                    border: InputBorder.none,
+                  ),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 18,
+                  ),
+                  onChanged: (text) => section.name = text,
+                ),
               ),
-              style: TextStyle(
+              CustomIconButton(
+                iconData: Icons.remove,
                 color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 18,
+                onTap: (){
+                  homeManager.removeSection(section);
+                },
               ),
-              onChanged: (text) => section.name = text,
+            ],
+          ),
+          if(section.error != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(
+                section.error,
+                style: TextStyle(
+                  color: Colors.red[900],
+                  fontSize: 18
+                ),
+              ),
             ),
-          ),
-          CustomIconButton(
-            iconData: Icons.remove,
-            color: Colors.white,
-            onTap: (){
-              homeManager.removeSection(section);
-            },
-          ),
         ],
       );
     } else {

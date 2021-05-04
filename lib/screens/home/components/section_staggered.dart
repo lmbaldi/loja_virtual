@@ -28,6 +28,7 @@ class SectionStaggered extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 crossAxisCount: 4,
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: homeManager.editing
                     ? section.items.length + 1
                     : section.items.length,

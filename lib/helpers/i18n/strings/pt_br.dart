@@ -44,6 +44,8 @@ class PtBr implements Translations {
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
+  String get invalidTitle => 'Título inválido';
+  String get isEmptyImage => 'Insira ao menos uma imagem.';
   String get linkProduct => 'Vincular Produto';
   String get msgInsertImage => 'Insira ao menos uma imagem';
   String get msgRequiredField => 'Campo obrigatório.';

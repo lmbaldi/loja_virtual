@@ -45,6 +45,8 @@ abstract class Translations {
   String get invalidEmail;
   String get invalidField;
   String get invalidPassword;
+  String get invalidTitle;
+  String get isEmptyImage;
   String get linkProduct;
   String get msgInsertImage;
   String get msgRequiredField;

@@ -45,6 +45,8 @@ class EnUs implements Translations {
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';
   String get invalidPassword => 'Invalid password';
+  String get invalidTitle => 'Invalid Title';
+  String get isEmptyImage => 'Insert at leat one image.';
   String get linkProduct => 'Link Product';
   String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
