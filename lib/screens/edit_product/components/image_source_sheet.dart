@@ -46,7 +46,7 @@ class ImageSourceSheet extends StatelessWidget {
           FlatButton(
               onPressed: () async {
                 final PickedFile file = await picker.getImage(source: ImageSource.camera);
-                 editImage(file.path, context);
+                 editImage(file?.path, context);
               },
               child: Text(R.string.camera),
           ),
