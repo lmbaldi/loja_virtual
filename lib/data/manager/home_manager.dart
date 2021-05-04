@@ -46,6 +46,8 @@ class HomeManager extends ChangeNotifier{
     for(final section in _editingSections){
       await section.save();
     }
+    editing = false;
+    notifyListeners();
   }
 
   void discardEditing() {
