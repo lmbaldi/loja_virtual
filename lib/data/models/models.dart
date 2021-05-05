@@ -1,4 +1,5 @@
 export 'cart_product.dart';
+export 'cep_aberto_address.dart';
 export 'item_size.dart';
 export 'product.dart';
 export 'section.dart';
