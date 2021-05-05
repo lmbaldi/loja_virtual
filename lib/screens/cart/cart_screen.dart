@@ -23,8 +23,10 @@ class CartScreen extends StatelessWidget {
               PriceCard(
                 buttonText: R.string.continueForDelivery,
                 onPressed: cartManager.isCartValid
-                    ? (){}
-                    : null,
+                ? (){
+                      Navigator.of(context).pushNamed('/address');
+                    }
+                : null,
               ),
             ],
           );

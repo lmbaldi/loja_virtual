@@ -15,6 +15,8 @@ class EnUs implements Translations {
   String get conclude => 'Conclude';
   String get continueForDelivery => 'Continue for delivery';
   String get delete => 'Delete';
+  String get delivery => 'Delivery';
+  String get  deliveryAddress => 'Delivery address';
   String get description => 'Description';
   String get discard => 'Discard';
   String get editImage => 'Edit Image';
@@ -79,4 +81,6 @@ class EnUs implements Translations {
   String get typePassword => 'Type the password';
   String get unLink => 'Unlink';
   String get users => 'Users';
+  String get zipCode => 'Zip Code';
+  String get zipCodeHintText => 'DC 20500';
 }

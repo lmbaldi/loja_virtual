@@ -1,4 +1,3 @@
-import 'package:flutter/src/widgets/framework.dart';
 
 abstract class Translations {
 
@@ -15,6 +14,8 @@ abstract class Translations {
   String get conclude;
   String get continueForDelivery;
   String get delete;
+  String get delivery;
+  String get  deliveryAddress;
   String get description;
   String get discard;
   String get editProduct;
@@ -79,4 +80,6 @@ abstract class Translations {
   String get typePassword;
   String get unLink;
   String get users;
+  String get zipCode;
+  String get zipCodeHintText;
 }

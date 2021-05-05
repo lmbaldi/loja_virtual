@@ -14,6 +14,8 @@ class PtBr implements Translations {
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
   String get delete => 'Excluir';
+  String get delivery => 'Entrega';
+  String get  deliveryAddress => 'Endereço de entrega';
   String get description => 'Descrição';
   String get discard => 'Descartar';
   String get editImage => 'Editar Imagem';
@@ -78,4 +80,6 @@ class PtBr implements Translations {
   String get typePassword => 'Digite a senha';
   String get unLink => 'Desvincular';
   String get users => 'Usuários';
+  String get zipCode => 'CEP';
+  String get zipCodeHintText => '80.000-000';
 }
