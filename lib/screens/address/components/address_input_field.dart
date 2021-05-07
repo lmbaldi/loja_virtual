@@ -18,6 +18,7 @@ class AddressInputField extends StatelessWidget {
     String emptyValidator(String text) =>
         text.isEmpty ? R.string.msgRequiredField : null;
 
+    if(address.zipCode != null)
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -155,5 +156,7 @@ class AddressInputField extends StatelessWidget {
         ),
       ],
     );
+    else
+      return Container();
   }
 }
