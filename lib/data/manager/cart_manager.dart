@@ -1,10 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../services/cep.dart';
 import '../data.dart';
 
 class CartManager extends ChangeNotifier{
   List<CartProduct> items = [];
   User user;
+  Address address;
   num productsPrice = 0.0;
 
   updateUser(UserManager userManager) {
@@ -76,5 +78,26 @@ class CartManager extends ChangeNotifier{
     //remove o listener do cartProduct porque ele nao vai mais ser utilizado
     cartProduct.removeListener(_onItemUpdated);
     notifyListeners();
+  }
+
+   Future<void> getAddress(String cep) async {
+    final cepAbertoService = CepAbertoService();
+    try {
+      final cepAbertoAddress = await cepAbertoService.getAddressFromCep(cep);
+      if(cepAbertoAddress != null){
+        address = Address(
+          street: cepAbertoAddress.logradouro,
+          district: cepAbertoAddress.bairro,
+          zipCode: cepAbertoAddress.cep,
+          city: cepAbertoAddress.cidade.nome,
+          state: cepAbertoAddress.estado.sigla,
+          lat: cepAbertoAddress.latitude,
+          long:  cepAbertoAddress.longitude
+        );
+        notifyListeners();
+      }
+    } catch(e){
+      debugPrint(e.toString());
+    }
   }
 }

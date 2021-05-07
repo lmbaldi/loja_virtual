@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/data/data.dart';
+import 'package:provider/provider.dart';
 
 import '../../../helpers/helpers.dart';
 import '../address.dart';
@@ -9,20 +11,28 @@ class AddressCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              R.string.deliveryAddress,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-              ),
-            ),
-            CepInputField()
-          ],
-        ),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+          child: Consumer<CartManager>(
+            builder: (_, cartManager, __) {
+              final address = cartManager.address;
+              print(address);
+              return Form(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        R.string.deliveryAddress,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      CepInputField()
+                    ],
+                  )
+              );
+            },
+          )
       ),
     );
   }
