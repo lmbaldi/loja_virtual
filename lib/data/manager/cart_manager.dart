@@ -8,6 +8,7 @@ class CartManager extends ChangeNotifier{
   User user;
   Address address;
   num productsPrice = 0.0;
+  bool loading = false;
 
   updateUser(UserManager userManager) {
     user = userManager.user;
