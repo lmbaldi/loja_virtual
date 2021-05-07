@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../data.dart';
+
 class User {
   String id;
   String name;
@@ -20,6 +22,8 @@ class User {
   DocumentReference get fireStoreRef => Firestore.instance.document('users/$id');
   CollectionReference get cartReference => fireStoreRef.collection('cart');
 
+  Address address;
+
   Map<String, dynamic> toMap() {
     return {
       'name': name,
@@ -29,5 +33,10 @@ class User {
 
   Future<void> saveData() async {
     await fireStoreRef.setData(toMap());
+  }
+
+  void setAddress(Address address){
+    this.address = address;
+    saveData();
   }
 }

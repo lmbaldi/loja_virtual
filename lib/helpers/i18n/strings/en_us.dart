@@ -7,6 +7,7 @@ class EnUs implements Translations {
   String get addGrid => 'Add Grid';
   String get addList => 'Add List';
   String get addToCart => 'Add to cart';
+  String get buttonCalculateShipping => 'Calculate Shipping';
   String get link => 'Lind';
   String get camera => 'Camera';
   String get cancel => 'Cancel';
@@ -16,6 +17,7 @@ class EnUs implements Translations {
   String get continueForDelivery => 'Continue for delivery';
   String get delete => 'Delete';
   String get delivery => 'Delivery';
+  String get deliveryError => 'Address outside the delivery radius';
   String get  deliveryAddress => 'Delivery address';
   String get description => 'Description';
   String get discard => 'Discard';

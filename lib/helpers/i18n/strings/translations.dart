@@ -6,6 +6,7 @@ abstract class Translations {
   String get addGrid;
   String get addList;
   String get addToCart;
+  String get buttonCalculateShipping;
   String get link;
   String get camera;
   String get cancel;
@@ -15,6 +16,7 @@ abstract class Translations {
   String get continueForDelivery;
   String get delete;
   String get delivery;
+  String get deliveryError;
   String get  deliveryAddress;
   String get description;
   String get discard;

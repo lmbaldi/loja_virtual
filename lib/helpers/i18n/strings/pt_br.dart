@@ -6,6 +6,7 @@ class PtBr implements Translations {
   String get addGrid => 'Adicionar Grade';
   String get addList => 'Adicionar Lista';
   String get addToCart => 'Adicionar ao carrinho';
+  String get buttonCalculateShipping => 'Calcular Frete';
   String get link => 'Vincular';
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
@@ -15,6 +16,7 @@ class PtBr implements Translations {
   String get continueForDelivery => 'Continuar para entrega';
   String get delete => 'Excluir';
   String get delivery => 'Entrega';
+  String get deliveryError => 'Endereço fora do raio de entrega';
   String get  deliveryAddress => 'Endereço de entrega';
   String get description => 'Descrição';
   String get discard => 'Descartar';

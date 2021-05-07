@@ -142,7 +142,7 @@ class AddressInputField extends StatelessWidget {
                   if (Form.of(context).validate()) {
                     Form.of(context).save();
                     try {
-                      //await context.read<CartManager>().setAddress(address);
+                      await context.read<CartManager>().setAddress(address);
                     } catch (e) {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text('$e'),
@@ -152,7 +152,7 @@ class AddressInputField extends StatelessWidget {
                   }
                 }
               : null,
-          child: const Text('Calcular Frete'),
+          child: Text(R.string.buttonCalculateShipping),
         ),
       ],
     );
