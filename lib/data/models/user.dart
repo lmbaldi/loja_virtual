@@ -17,17 +17,22 @@ class User {
     id = document.documentID;
     name = document.data['name'] as String;
     email = document.data['email'] as String;
+    if(document.data.containsKey('address')){
+      address = Address.fromMap(
+          document.data['address'] as Map<String, dynamic>);
+    }
   }
 
   DocumentReference get fireStoreRef => Firestore.instance.document('users/$id');
   CollectionReference get cartReference => fireStoreRef.collection('cart');
-
   Address address;
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'email': email,
+      if(address != null)
+        'address': address.toMap(),
     };
   }
 

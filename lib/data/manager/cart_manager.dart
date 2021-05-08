@@ -26,10 +26,23 @@ class CartManager extends ChangeNotifier {
 
   updateUser(UserManager userManager) {
     user = userManager.user;
+    num productsPrice = 0.0;
+    //limpa os itens do carrinho qdo eh novo usuario
     items.clear();
+    removeAddress();
+
     //carrega o carrinho para o novo usuario logado
     if (user != null) {
       _loadCartItems();
+      _loadUserAddress();
+    }
+  }
+
+  Future<void> _loadUserAddress() async {
+    if(user.address != null
+        && await calculateDelivery(user.address.lat, user.address.long)){
+      address = user.address;
+      notifyListeners();
     }
   }
 
