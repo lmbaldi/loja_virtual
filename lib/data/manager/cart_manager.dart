@@ -5,7 +5,7 @@ import '../../helpers/helpers.dart';
 import '../../services/cep.dart';
 import '../data.dart';
 
-class CartManager extends ChangeNotifier{
+class CartManager extends ChangeNotifier {
   List<CartProduct> items = [];
   User user;
   Address address;
@@ -17,8 +17,10 @@ class CartManager extends ChangeNotifier{
   num get totalPrice => productsPrice + (deliveryPrice ?? 0);
 
   bool _loading = false;
+
   bool get loading => _loading;
-  set loading(bool value){
+
+  set loading(bool value) {
     _loading = value;
     notifyListeners();
   }
@@ -57,15 +59,17 @@ class CartManager extends ChangeNotifier{
   }
 
   bool get isCartValid {
-    for(final cartProduct in items){
-      if(!cartProduct.hasStock) return false;
+    for (final cartProduct in items) {
+      if (!cartProduct.hasStock) return false;
     }
     return true;
   }
 
+  bool get isAddressValid => address != null && deliveryPrice != null;
+
   void _onItemUpdated() {
     productsPrice = 0.0;
-    for (int i = 0; i<items.length; i++) {
+    for (int i = 0; i < items.length; i++) {
       final cartProduct = items[i];
       if (cartProduct.quantity == 0) {
         removeFromCart(cartProduct);
@@ -79,10 +83,10 @@ class CartManager extends ChangeNotifier{
   }
 
   void _updateCartProduct(CartProduct cartProduct) {
-    if(cartProduct.id != null)
-    user.cartReference
-        .document(cartProduct.id)
-        .updateData(cartProduct.toCartItemMap());
+    if (cartProduct.id != null)
+      user.cartReference
+          .document(cartProduct.id)
+          .updateData(cartProduct.toCartItemMap());
   }
 
   void removeFromCart(CartProduct cartProduct) {
@@ -94,43 +98,42 @@ class CartManager extends ChangeNotifier{
     notifyListeners();
   }
 
-   Future<void> getAddress(String cep) async {
+  Future<void> getAddress(String cep) async {
     final cepAbertoService = CepAbertoService();
     try {
       final cepAbertoAddress = await cepAbertoService.getAddressFromCep(cep);
-      if(cepAbertoAddress != null){
+      if (cepAbertoAddress != null) {
         address = Address(
-          street: cepAbertoAddress.logradouro,
-          district: cepAbertoAddress.bairro,
-          zipCode: cepAbertoAddress.cep,
-          city: cepAbertoAddress.cidade.nome,
-          state: cepAbertoAddress.estado.sigla,
-          lat: cepAbertoAddress.latitude,
-          long:  cepAbertoAddress.longitude
-        );
+            street: cepAbertoAddress.logradouro,
+            district: cepAbertoAddress.bairro,
+            zipCode: cepAbertoAddress.cep,
+            city: cepAbertoAddress.cidade.nome,
+            state: cepAbertoAddress.estado.sigla,
+            lat: cepAbertoAddress.latitude,
+            long: cepAbertoAddress.longitude);
         notifyListeners();
       }
-    } catch(e){
+    } catch (e) {
       debugPrint(e.toString());
     }
   }
 
-  void setAddress(Address address) async {
+  Future<void> setAddress(Address address) async {
     loading = true;
 
     this.address = address;
 
-    if(await calculateDelivery(address.lat, address.long)){
-    user.setAddress(address);
-    loading = false;
+    if (await calculateDelivery(address.lat, address.long)) {
+      user.setAddress(address);
+      loading = false;
+      notifyListeners();
     } else {
-    loading = false;
-    return Future.error('${R.string.deliveryError} :(');
+      loading = false;
+      return Future.error('${R.string.deliveryError} :(');
     }
-
   }
 
-  void removeAddress(){
+  void removeAddress() {
     address = null;
     deliveryPrice = null;
     notifyListeners();
@@ -144,23 +147,24 @@ class CartManager extends ChangeNotifier{
 
     final base = doc.data['base'] as num;
     final km = doc.data['km'] as num;
-    final maxkm = doc.data['maxkm'] as num;
+    final maxKm = doc.data['maxKm'] as num;
 
     //obtem  a distancia
-    double dis = await Geolocator().distanceBetween(latStore, longStore, lat, long);
+    double dis =
+        await Geolocator().distanceBetween(latStore, longStore, lat, long);
 
     //converte para km
     dis /= 1000.0;
 
     debugPrint('Distance $dis');
     //verifica a distancia maxima para entrega
-    if(dis > maxkm){
+    if (dis > maxKm) {
+      debugPrint('entrou if');
       return false;
     }
-
+    //valor da entrega(preco base + distancia * valor por km)
     deliveryPrice = base + dis * km;
+
     return true;
   }
-
-
 }

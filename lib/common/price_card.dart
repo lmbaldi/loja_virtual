@@ -15,6 +15,8 @@ class PriceCard extends StatelessWidget {
 
     final cartManager = context.watch<CartManager>();
     final productsPrice = cartManager.productsPrice;
+    final deliveryPrice = cartManager.deliveryPrice;
+    final totalPrice = cartManager.totalPrice;
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -40,6 +42,16 @@ class PriceCard extends StatelessWidget {
               ],
             ),
             const Divider(),
+           if(deliveryPrice != null)
+             ...[
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                   Text(R.string.delivery),
+                   Text('R\$ ${deliveryPrice.toStringAsFixed(2)}')
+                 ],
+               ),
+             ],
             const SizedBox(height: 12,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +61,7 @@ class PriceCard extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  'R\$ ${productsPrice.toStringAsFixed(2)}',
+                  'R\$ ${totalPrice.toStringAsFixed(2)}',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 16.0,

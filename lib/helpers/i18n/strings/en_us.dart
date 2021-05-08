@@ -8,6 +8,7 @@ class EnUs implements Translations {
   String get addList => 'Add List';
   String get addToCart => 'Add to cart';
   String get buttonCalculateShipping => 'Calculate Shipping';
+  String get buttonProceedPayment => 'Proceed to Payment';
   String get link => 'Lind';
   String get camera => 'Camera';
   String get cancel => 'Cancel';

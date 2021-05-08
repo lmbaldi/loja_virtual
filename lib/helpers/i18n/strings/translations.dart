@@ -7,6 +7,7 @@ abstract class Translations {
   String get addList;
   String get addToCart;
   String get buttonCalculateShipping;
+  String get buttonProceedPayment;
   String get link;
   String get camera;
   String get cancel;
