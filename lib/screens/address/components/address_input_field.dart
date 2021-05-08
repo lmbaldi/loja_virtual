@@ -23,6 +23,7 @@ class AddressInputField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextFormField(
+            enabled: !cartManager.loading,
             initialValue: address.street,
             decoration: InputDecoration(
               isDense: true,
@@ -36,7 +37,7 @@ class AddressInputField extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: TextFormField(
-                  // enabled: !cartManager.loading,
+                  enabled: !cartManager.loading,
                   initialValue: address.number,
                   decoration: InputDecoration(
                     isDense: true,
@@ -56,7 +57,7 @@ class AddressInputField extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
-                  // enabled: !cartManager.loading,
+                  enabled: !cartManager.loading,
                   initialValue: address.complement,
                   decoration: InputDecoration(
                     isDense: true,
@@ -69,6 +70,7 @@ class AddressInputField extends StatelessWidget {
             ],
           ),
           TextFormField(
+            enabled: !cartManager.loading,
             initialValue: address.district,
             decoration: InputDecoration(
                 isDense: true,

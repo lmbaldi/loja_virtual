@@ -17,7 +17,6 @@ class CartManager extends ChangeNotifier {
   num get totalPrice => productsPrice + (deliveryPrice ?? 0);
 
   bool _loading = false;
-
   bool get loading => _loading;
 
   set loading(bool value) {
@@ -100,6 +99,7 @@ class CartManager extends ChangeNotifier {
 
   Future<void> getAddress(String cep) async {
     final cepAbertoService = CepAbertoService();
+    loading = true;
     try {
       final cepAbertoAddress = await cepAbertoService.getAddressFromCep(cep);
       if (cepAbertoAddress != null) {
@@ -111,16 +111,16 @@ class CartManager extends ChangeNotifier {
             state: cepAbertoAddress.estado.sigla,
             lat: cepAbertoAddress.latitude,
             long: cepAbertoAddress.longitude);
-        notifyListeners();
       }
+      loading = false;
     } catch (e) {
-      debugPrint(e.toString());
+      loading = false;
+      return Future.error('CEP invalido');
     }
   }
 
   Future<void> setAddress(Address address) async {
     loading = true;
-
     this.address = address;
 
     if (await calculateDelivery(address.lat, address.long)) {

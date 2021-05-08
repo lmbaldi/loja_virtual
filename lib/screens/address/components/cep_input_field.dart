@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:loja_virtual/common/common.dart';
 import 'package:provider/provider.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import '../../../data/data.dart';
+import '../../../common/common.dart';
 import '../../../helpers/helpers.dart';
 
-class CepInputField extends StatelessWidget {
+class CepInputField extends StatefulWidget {
 
   final Address address;
 
   CepInputField(this.address);
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  @override
+  _CepInputFieldState createState() => _CepInputFieldState();
+}
+
+class _CepInputFieldState extends State<CepInputField> {
+
   final TextEditingController cepController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
+    final cartManager = context.watch<CartManager>();
     final primaryColor = Theme.of(context).primaryColor;
-    if(address.zipCode == null)
+    if(widget.address.zipCode == null)
       return Column(
         children: [
           TextFormField(
+            enabled: !cartManager.loading,
             controller: cepController,
             decoration: InputDecoration(
               isDense: true,
@@ -44,13 +50,26 @@ class CepInputField extends StatelessWidget {
               }
             },
           ),
+          if(cartManager.loading)
+          LinearProgressIndicator(
+            valueColor: AlwaysStoppedAnimation(primaryColor),
+            backgroundColor: Colors.transparent,
+          ),
           RaisedButton(
-            onPressed: (){
+            onPressed: !cartManager.loading ? () async {
               if(Form.of(context).validate()){
-                print(cepController.text);
-                context.read<CartManager>().getAddress(cepController.text);
+                try {
+                  await context.read<CartManager>().getAddress(cepController.text);
+                } catch (e){
+                  Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('$e'),
+                        backgroundColor: Colors.red,
+                      )
+                  );
+                }
               }
-            },
+            }: null,
             textColor: Colors.white,
             color: primaryColor,
             disabledColor: primaryColor.withAlpha(100),
@@ -65,7 +84,7 @@ class CepInputField extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                '${R.string.zipCode}: ${address.zipCode}',
+                '${R.string.zipCode}: ${widget.address.zipCode}',
                 style: TextStyle(
                   color: primaryColor,
                   fontWeight: FontWeight.w600
