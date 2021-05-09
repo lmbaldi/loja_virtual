@@ -11,7 +11,7 @@ class EditProductScreen extends StatelessWidget {
 
   EditProductScreen(Product p)
       : editing = p != null,
-        product = p != null ? p.clone() : Product();
+        product = p != null ? p.clone() : Product.fromObject();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 

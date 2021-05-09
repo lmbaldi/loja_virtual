@@ -8,7 +8,6 @@ class PtBr implements Translations {
   String get addToCart => 'Adicionar ao carrinho';
   String get buttonCalculateShipping => 'Calcular Frete';
   String get buttonProceedPayment => 'Continuar para o Pagamento';
-  String get link => 'Vincular';
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
   String get cart => 'Carrrinho';
@@ -63,11 +62,14 @@ class PtBr implements Translations {
   String get labelTextNumber => 'Número';
   String get labelTextState => 'UF';
   String get labelTextStreet => 'Rua/Avenida';
+  String get link => 'Vincular';
   String get linkProduct => 'Vincular Produto';
+  String get loginAccess => 'Faça o login para acessar';
   String get msgInsertImage => 'Insira ao menos uma imagem';
   String get msgRequiredField => 'Campo obrigatório.';
   String get msgSelectPhotoCupertino => 'Selecionar foto para o item';
   String get msgChooseSourcePhotoCupertino => 'Escolha a origem da foto';
+  String get noProductsCart => 'No products in the cart';
   String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';

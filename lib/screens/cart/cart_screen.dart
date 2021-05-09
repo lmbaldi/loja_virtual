@@ -15,6 +15,18 @@ class CartScreen extends StatelessWidget {
       ),
       body: Consumer<CartManager>(
         builder: (_, cartManager, __){
+
+          if(cartManager.user == null){
+            return LoginCard();
+          }
+
+          if(cartManager.items.isEmpty){
+            return EmptyCard(
+              iconData: Icons.remove_shopping_cart,
+              title: R.string.noProductsCart,
+            );
+          }
+
           return ListView(
             children: [
               Column(

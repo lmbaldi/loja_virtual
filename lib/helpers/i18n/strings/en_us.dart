@@ -9,7 +9,6 @@ class EnUs implements Translations {
   String get addToCart => 'Add to cart';
   String get buttonCalculateShipping => 'Calculate Shipping';
   String get buttonProceedPayment => 'Proceed to Payment';
-  String get link => 'Lind';
   String get camera => 'Camera';
   String get cancel => 'Cancel';
   String get cart => 'Cart';
@@ -64,9 +63,12 @@ class EnUs implements Translations {
   String get labelTextNumber => 'Number';
   String get labelTextState => 'ST';
   String get labelTextStreet => 'Avenue/Street';
+  String get link => 'Lind';
   String get linkProduct => 'Link Product';
+  String get loginAccess => 'Login to access';
   String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
+  String get noProductsCart => 'Nenhum produto no carrinho';
   String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
   String get orders => 'Orders';

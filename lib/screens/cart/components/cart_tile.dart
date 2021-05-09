@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 import '../../../common/common.dart';
 import '../../../data/data.dart';
 import '../../../helpers/helpers.dart';
@@ -11,6 +12,7 @@ class CartTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ChangeNotifierProvider.value(
       value: cartProduct,
       child: Card(
@@ -22,7 +24,7 @@ class CartTile extends StatelessWidget {
               SizedBox(
                 height: 80,
                 width: 80,
-                child: Image.network(cartProduct.product.images.first),
+                child: Image.network(cartProduct.product?.images?.first ?? kTransparentImage ),
               ),
               Expanded(
                 child: Padding(
@@ -31,7 +33,7 @@ class CartTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        cartProduct.product.name,
+                        cartProduct.product?.name,
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 17),
                       ),

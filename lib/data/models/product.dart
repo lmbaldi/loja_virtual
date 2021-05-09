@@ -12,11 +12,13 @@ class Product extends ChangeNotifier {
   String id;
   String name;
   String description;
-  List<String> images;
+  List<String> images = [];
   List<ItemSize> sizes;
 
-  Product({this.id, this.name, this.description, this.images, this.sizes}){
-    images = images ?? [];
+  Product();
+
+  Product.fromObject({this.id, this.name, this.description, this.images, this.sizes}){
+    images  = images ?? [];
     sizes = sizes ?? [];
   }
 
@@ -24,7 +26,8 @@ class Product extends ChangeNotifier {
     id = document.documentID;
     name = document['name'] as String;
     description = document['description'] as String;
-    images = List<String>.from(document.data['images']) as List<dynamic>;
+    images  = List<String>.from(document.data['images'] as List<dynamic>) ;
+
     sizes = (document.data['sizes'] as List<dynamic> ?? [])
         .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
         .toList();
@@ -151,7 +154,7 @@ class Product extends ChangeNotifier {
   }
 
   Product clone() {
-    return Product(
+    return Product.fromObject(
       id: id,
       name : name,
       description: description,

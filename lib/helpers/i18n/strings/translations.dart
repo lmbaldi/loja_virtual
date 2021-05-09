@@ -8,7 +8,6 @@ abstract class Translations {
   String get addToCart;
   String get buttonCalculateShipping;
   String get buttonProceedPayment;
-  String get link;
   String get camera;
   String get cancel;
   String get cart;
@@ -64,8 +63,11 @@ abstract class Translations {
   String get labelTextNumber;
   String get labelTextState;
   String get labelTextStreet;
+  String get link;
+  String get loginAccess;
   String get msgInsertImage;
   String get msgRequiredField;
+  String get noProductsCart;
   String get noStockAvailable;
   String get order;
   String get orders;

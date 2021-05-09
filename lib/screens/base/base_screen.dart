@@ -7,8 +7,13 @@ import '../../helpers/helpers.dart';
 import '../../common/common.dart';
 import '../products/products.dart';
 
-class BaseScreen extends StatelessWidget {
+class BaseScreen extends StatefulWidget {
 
+  @override
+  _BaseScreenState createState() => _BaseScreenState();
+}
+
+class _BaseScreenState extends State<BaseScreen> {
   final PageController pageController = PageController();
 
   @override

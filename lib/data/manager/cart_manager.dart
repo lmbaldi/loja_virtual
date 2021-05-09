@@ -26,7 +26,7 @@ class CartManager extends ChangeNotifier {
 
   updateUser(UserManager userManager) {
     user = userManager.user;
-    num productsPrice = 0.0;
+    productsPrice = 0.0;
     //limpa os itens do carrinho qdo eh novo usuario
     items.clear();
     removeAddress();
