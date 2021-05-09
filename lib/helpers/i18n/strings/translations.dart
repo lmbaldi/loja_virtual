@@ -11,6 +11,7 @@ abstract class Translations {
   String get camera;
   String get cancel;
   String get cart;
+  String get checkOut;
   String get createProduct;
   String get conclude;
   String get continueForDelivery;
@@ -77,6 +78,7 @@ abstract class Translations {
   String get prefixText;
   String get price;
   String get products;
+  String get payment;
   String get repeatPassword;
   String get msgSelectPhotoCupertino;
   String get msgChooseSourcePhotoCupertino;

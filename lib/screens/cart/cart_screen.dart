@@ -10,12 +10,11 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(R.string.cart),
+        title: const Text('Carrinho'),
         centerTitle: true,
       ),
       body: Consumer<CartManager>(
         builder: (_, cartManager, __){
-
           if(cartManager.user == null){
             return LoginCard();
           }
@@ -28,17 +27,17 @@ class CartScreen extends StatelessWidget {
           }
 
           return ListView(
-            children: [
+            children: <Widget>[
               Column(
-                children: cartManager.items.map((cartProduct) => CartTile(cartProduct)).toList(),
+                children: cartManager.items.map(
+                        (cartProduct) => CartTile(cartProduct)
+                ).toList(),
               ),
               PriceCard(
                 buttonText: R.string.continueForDelivery,
-                onPressed: cartManager.isCartValid
-                ? (){
-                      Navigator.of(context).pushNamed('/address');
-                    }
-                : null,
+                onPressed: cartManager.isCartValid ? (){
+                  Navigator.of(context).pushNamed('/address');
+                } : null,
               ),
             ],
           );

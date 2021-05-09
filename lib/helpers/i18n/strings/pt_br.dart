@@ -11,6 +11,7 @@ class PtBr implements Translations {
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
   String get cart => 'Carrrinho';
+  String get checkOut => 'Finalizar Pedido';
   String get createProduct => 'Criar Produto';
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
@@ -78,6 +79,7 @@ class PtBr implements Translations {
   String get passwordsDifferents => 'As senhas são diferentes';
   String get price => 'Preço';
   String get products => 'Produtos';
+  String get payment => 'Pagamento';
   String get repeatPassword => 'Repita a senha';
   String get save => 'Salvar';
   String get signInToBuy => 'Entre para comprar';
