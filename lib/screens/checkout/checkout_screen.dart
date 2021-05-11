@@ -18,13 +18,19 @@ class CheckoutScreen extends StatelessWidget {
           title: Text(R.string.payment),
           centerTitle: true,
         ),
-        body: ListView(
-          children: [
-            PriceCard(
-              buttonText: R.string.checkOut,
-              onPressed: (){},
-            )
-          ],
+        body: Consumer<CheckoutManager>(
+          builder: (_, checkoutManager, __){
+            return ListView(
+              children: [
+                PriceCard(
+                  buttonText: R.string.checkOut,
+                  onPressed: (){
+                    checkoutManager.checkout();
+                  },
+                )
+              ],
+            );
+          },
         ),
       ),
     );

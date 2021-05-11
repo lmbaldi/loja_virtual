@@ -41,6 +41,7 @@ class EnUs implements Translations {
   String get errorWrongPassword => 'Your password is incorrect.';
   String get exit => 'Exit';
   String get failedRegister => 'Failed register';
+  String get failedGenerateOrderNumber => 'Failed to generate order number';
   String get fillFullName => 'Fill in your full name';
   String get from => 'From ';
   String get forgetPassword => 'I forgot my password';

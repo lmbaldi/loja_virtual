@@ -40,6 +40,7 @@ class PtBr implements Translations {
   String get errorWrongPassword => 'Sua senha está incorreta.';
   String get exit => 'Sair';
   String get failedRegister => 'Falha ao cadastrar.';
+  String get failedGenerateOrderNumber => 'Falha ao gerar número do pedido';
   String get fillFullName => 'Preencha seu nome completo';
   String get forgetPassword => 'Esqueci minha senha';
   String get from => 'A partir de ';
@@ -70,7 +71,7 @@ class PtBr implements Translations {
   String get msgRequiredField => 'Campo obrigatório.';
   String get msgSelectPhotoCupertino => 'Selecionar foto para o item';
   String get msgChooseSourcePhotoCupertino => 'Escolha a origem da foto';
-  String get noProductsCart => 'No products in the cart';
+  String get noProductsCart => 'Nenhum produto no carrinho!';
   String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';

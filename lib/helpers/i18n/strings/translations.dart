@@ -40,6 +40,7 @@ abstract class Translations {
   String get errorUserNotFound;
   String get exit;
   String get failedRegister;
+  String get failedGenerateOrderNumber;
   String get fillFullName;
   String get forgetPassword;
   String get from;
