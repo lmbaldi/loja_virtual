@@ -79,6 +79,7 @@ class EnUs implements Translations {
   String get passwordsDifferents => 'Password are differents';
   String get price => 'Price';
   String get products => 'Products';
+  String get productsWithoutStock => ' products without stock';
   String get payment => 'Payment';
   String get repeatPassword => 'Repeat the password';
   String get msgSelectPhotoCupertino => 'Select photo for item';

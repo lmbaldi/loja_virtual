@@ -79,6 +79,7 @@ abstract class Translations {
   String get prefixText;
   String get price;
   String get products;
+  String get productsWithoutStock;
   String get payment;
   String get repeatPassword;
   String get msgSelectPhotoCupertino;

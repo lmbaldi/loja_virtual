@@ -14,9 +14,12 @@ class CheckoutManager extends ChangeNotifier{
     print('cartmanager => ${cartManager.productsPrice}');
   }
 
-  void checkout(){
-    _decrementStock();
-
+  Future<void> checkout() async {
+    try{
+      await _decrementStock();
+    }catch(e){
+      debugPrint(e.toString());
+    }
   }
 
   Future<int> _getOrderId() async {
@@ -35,8 +38,49 @@ class CheckoutManager extends ChangeNotifier{
     }
   }
 
-  void _decrementStock() {
-    //
+  Future<void> _decrementStock() async {
+    return firestore.runTransaction((tx) async {
+
+      final List<Product> productsToUpdate = [];
+      final List<Product> productsWithoutStock = [];
+
+      for( final cartProdutc in cartManager.items){
+        Product product;
+
+        //verificar se o produto jah esta na lista  atualizada
+        if(productsToUpdate.any((p) => p.id == cartProdutc.productId)){
+          product = productsToUpdate.firstWhere((p) => p.id == cartProdutc.productId);
+        }else {
+         final doc = await tx.get(firestore.document('products/${cartProdutc.productId}'));
+         product = Product.fromDocument(doc);
+        }
+
+        //obtem o estoque mais atualizado
+        cartProdutc.product = product;
+
+       final size = product.findSize(cartProdutc.size);
+
+       //verifica se existe quantidade disponivel no estoque
+       if(size.stock - cartProdutc.quantity < 0){
+          productsWithoutStock.add(product);
+       }else{
+        size.stock -= cartProdutc.quantity;
+        productsToUpdate.add(product);
+       }
+      }
+
+      //verfica se a lista sem estoque nao esta vazia
+      if(productsWithoutStock.isNotEmpty){
+        return Future.error('${productsWithoutStock.length} ${R.string.productsWithoutStock}');
+      }
+
+      //atualizar estoque dos produtos conforme os tamanhos
+      for(final product in productsToUpdate){
+        tx.update(firestore.document('products/${product.id}'),
+            {'sizes': product.exportSizeList()});
+      }
+
+    });
   }
 
 }

@@ -80,6 +80,7 @@ class PtBr implements Translations {
   String get passwordsDifferents => 'As senhas são diferentes';
   String get price => 'Preço';
   String get products => 'Produtos';
+  String get productsWithoutStock => ' produtos sem estoque';
   String get payment => 'Pagamento';
   String get repeatPassword => 'Repita a senha';
   String get save => 'Salvar';
