@@ -22,6 +22,19 @@ class CheckoutScreen extends StatelessWidget {
         ),
         body: Consumer<CheckoutManager>(
           builder: (_, checkoutManager, __){
+            if(checkoutManager.loading){
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(Colors.white),
+                    ),
+                    const SizedBox(height: 16,),
+                  ],
+                ),
+              );
+            }
             return ListView(
               children: [
                 PriceCard(
@@ -31,6 +44,10 @@ class CheckoutScreen extends StatelessWidget {
                         onStockFail: (e) {
                           Navigator.of(context).popUntil((route) =>
                           route.settings.name == '/cart');
+                        },
+                        onSuccess: (e) {
+                          Navigator.of(context).popUntil((route) =>
+                          route.settings.name == '/base');
                         }
                     );
                   },
