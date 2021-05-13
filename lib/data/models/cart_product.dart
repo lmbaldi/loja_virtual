@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'models.dart';
 
 class CartProduct extends ChangeNotifier {
-  Product product;
+  Product _product;
   String id;
   String productId;
   int quantity;
@@ -12,7 +12,7 @@ class CartProduct extends ChangeNotifier {
 
   final Firestore firestore = Firestore.instance;
 
-  CartProduct.fromProduct(this.product) {
+  CartProduct.fromProduct(this._product) {
     productId = product.id;
     quantity = 1;
     size = product.selectedSize.name;
@@ -26,8 +26,12 @@ class CartProduct extends ChangeNotifier {
 
     firestore.document('products/$productId').get().then((doc) {
       product = Product?.fromDocument(doc) ;
-      notifyListeners();
     });
+  }
+  Product get product => _product;
+  set product(Product value){
+    _product = value;
+    notifyListeners();
   }
 
   ItemSize get itemSize {
@@ -65,6 +69,15 @@ class CartProduct extends ChangeNotifier {
     };
   }
 
+  Map<String, dynamic> toOrderItemMap() {
+    return {
+      'pid': productId,
+      'quantity': quantity,
+      'size': size,
+
+    };
+  }
+
   bool stackable(Product product) {
     return product.id == productId && product.selectedSize.name == size;
   }
@@ -79,8 +92,10 @@ class CartProduct extends ChangeNotifier {
     notifyListeners();
   }
 
+
   @override
   String toString() {
     return 'CartProduct{product: $product, id: $id, productId: $productId, quantity: $quantity, size: $size, firestore: $firestore}';
   }
+
 }

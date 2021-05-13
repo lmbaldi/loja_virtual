@@ -53,6 +53,7 @@ abstract class Translations {
   String get hintTextDistrict;
   String get hintTextState;
   String get hintTextStreet;
+  String get insufficientStock;
   String get invalidEmail;
   String get invalidField;
   String get invalidPassword;

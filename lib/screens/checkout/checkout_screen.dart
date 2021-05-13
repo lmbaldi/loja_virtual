@@ -5,7 +5,8 @@ import '../../data/data.dart';
 import '../../helpers/helpers.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({Key key}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class CheckoutScreen extends StatelessWidget {
       update: (_, cartManager, checkoutManager) => checkoutManager..updateCart(cartManager),
       lazy: false,
       child: Scaffold(
+        key: scaffoldKey,
         appBar: AppBar(
           title: Text(R.string.payment),
           centerTitle: true,
@@ -24,8 +26,13 @@ class CheckoutScreen extends StatelessWidget {
               children: [
                 PriceCard(
                   buttonText: R.string.checkOut,
-                  onPressed: (){
-                    checkoutManager.checkout();
+                  onPressed: () {
+                    checkoutManager.checkout(
+                        onStockFail: (e) {
+                          Navigator.of(context).popUntil((route) =>
+                          route.settings.name == '/cart');
+                        }
+                    );
                   },
                 )
               ],

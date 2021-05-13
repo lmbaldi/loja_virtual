@@ -53,7 +53,8 @@ class EnUs implements Translations {
   String get hintTextNumber => '1600';
   String get hintTextOptional => 'Optional';
   String get hintTextState => 'MA';
-  String get hintTextStreet => 'Pennsylvania Avenue NW';
+  String get hintTextStreet => 'Pennsylvania Avenue ';
+  String get insufficientStock => 'There is not enough stock';
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';
   String get invalidPassword => 'Invalid password';

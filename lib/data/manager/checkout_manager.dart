@@ -14,12 +14,20 @@ class CheckoutManager extends ChangeNotifier{
     print('cartmanager => ${cartManager.productsPrice}');
   }
 
-  Future<void> checkout() async {
+  Future<void> checkout({Function onStockFail}) async {
     try{
       await _decrementStock();
     }catch(e){
+      onStockFail(e);
       debugPrint(e.toString());
+      return;
     }
+    //PROCESSAR PAGAMENTO
+
+    final orderId = await _getOrderId();
+    final order = Order.fromCartManager(cartManager);
+    order.orderId = orderId.toString();
+    await order.save();
   }
 
   Future<int> _getOrderId() async {

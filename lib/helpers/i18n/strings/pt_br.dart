@@ -53,6 +53,7 @@ class PtBr implements Translations {
   String get hintTextOptional => 'Opcional';
   String get hintTextState => 'PR';
   String get hintTextStreet => 'Av. Brasil';
+  String get insufficientStock => 'Não há estoque suficiente';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
