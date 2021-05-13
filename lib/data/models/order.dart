@@ -10,6 +10,8 @@ class Order {
   Address address;
   List<CartProduct> items;
   final Firestore firestore = Firestore.instance;
+  String get formattedId => '#${orderId.padLeft(6, '0')}';
+
 
   Order.fromCartManager(CartManager cartManager){
     items = List.from(cartManager.items);

@@ -73,6 +73,7 @@ class PtBr implements Translations {
   String get msgSelectPhotoCupertino => 'Selecionar foto para o item';
   String get msgChooseSourcePhotoCupertino => 'Escolha a origem da foto';
   String get noProductsCart => 'Nenhum produto no carrinho!';
+  String get noPurchasesFound => 'Nenhuma compra encontrada!';
   String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';

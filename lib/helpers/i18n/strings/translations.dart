@@ -71,6 +71,7 @@ abstract class Translations {
   String get msgInsertImage;
   String get msgRequiredField;
   String get noProductsCart;
+  String get noPurchasesFound;
   String get noStockAvailable;
   String get order;
   String get orders;

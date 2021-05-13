@@ -29,12 +29,7 @@ class _BaseScreenState extends State<BaseScreen> {
             children: [
               HomeScreen(),
               ProductsScreen(),
-              Scaffold(
-                drawer: CustomDrawer(),
-                appBar: AppBar(
-                  title: const  Text('Home1'),
-                ),
-              ),
+              OrdersScreen(),
               Scaffold(
                 drawer: CustomDrawer(),
                 appBar: AppBar(

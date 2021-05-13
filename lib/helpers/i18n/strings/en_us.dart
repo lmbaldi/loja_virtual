@@ -71,6 +71,7 @@ class EnUs implements Translations {
   String get loginAccess => 'Login to access';
   String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
+  String get noPurchasesFound => 'No purchases found!';
   String get noProductsCart => 'Nenhum produto no carrinho';
   String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
