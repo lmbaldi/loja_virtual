@@ -9,6 +9,7 @@ class CartProduct extends ChangeNotifier {
   String productId;
   int quantity;
   String size;
+  num fixedPrice;
 
   final Firestore firestore = Firestore.instance;
 
@@ -74,6 +75,7 @@ class CartProduct extends ChangeNotifier {
       'pid': productId,
       'quantity': quantity,
       'size': size,
+      'fixedPrice': fixedPrice ?? unitPrice //se o valor for corrigido nao afeta o carrinho do cliente
 
     };
   }
