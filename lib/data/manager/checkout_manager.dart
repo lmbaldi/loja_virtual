@@ -28,7 +28,6 @@ class CheckoutManager extends ChangeNotifier{
     }catch(e){
       onStockFail(e);
       loading = false;
-      onSuccess();
       return;
     }
     //PROCESSAR PAGAMENTO
@@ -38,6 +37,7 @@ class CheckoutManager extends ChangeNotifier{
     order.orderId = orderId.toString();
     await order.save();
     cartManager.clear();
+    onSuccess(order);
     loading = false;
   }
 

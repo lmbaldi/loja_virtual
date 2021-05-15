@@ -76,6 +76,7 @@ class EnUs implements Translations {
   String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
   String get orders => 'Orders';
+  String get orderConfirmed => 'Order confirmed';
   String get orderSummary => 'Order summary';
   String get password => 'Password';
   String get passwordsDifferents => 'Password are differents';

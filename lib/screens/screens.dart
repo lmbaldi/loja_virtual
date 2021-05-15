@@ -2,6 +2,7 @@ export 'admin_users/admin.dart';
 export 'address/address.dart';
 export 'base/base.dart';
 export 'cart/cart.dart';
+export 'confirmation/confirmation.dart';
 export 'checkout/checkout_screen.dart';
 export 'edit_product/edit_product.dart';
 export 'home/home.dart';

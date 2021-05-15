@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/data.dart';
+import 'component.dart';
 
 class OrderTile extends StatelessWidget {
 
@@ -45,9 +46,16 @@ class OrderTile extends StatelessWidget {
               color: primaryColor,
             ),
           ),
-
           ],
         ),
+        children: <Widget>[
+          Column(
+            children: order.items.map((e){
+              return OrderProductTile(e);
+            }).toList(),
+          ),
+
+        ],
       ),
     );
   }

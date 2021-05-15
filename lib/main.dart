@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/screens/confirmation/confirmation_screen.dart';
 import 'package:provider/provider.dart';
 import 'data/data.dart';
 import 'common/common.dart';
@@ -49,7 +50,6 @@ class MyApp extends StatelessWidget {
         title: 'Loja do Baldi',
         debugShowCheckedModeBanner: false,
         theme: makeAppTheme(),
-        initialRoute: '/base',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/login':
@@ -71,7 +71,9 @@ class MyApp extends StatelessWidget {
                       EditProductScreen(settings.arguments as Product));
             case '/select_product':
               return MaterialPageRoute(builder: (_) => SelectProductScreen());
-            case '/base':
+            case '/confirmation':
+              return MaterialPageRoute(builder: (_) => ConfirmationScreen(settings.arguments as Order));
+            case '/':
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen(),
                 settings: settings

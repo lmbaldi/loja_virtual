@@ -77,6 +77,7 @@ class PtBr implements Translations {
   String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';
+  String get orderConfirmed => 'Confirmar Pedido';
   String get orderSummary => 'Resumo do Pedido';
   String get password => 'Senha';
   String get passwordsDifferents => 'As senhas são diferentes';

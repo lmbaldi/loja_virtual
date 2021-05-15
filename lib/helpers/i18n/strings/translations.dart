@@ -75,6 +75,7 @@ abstract class Translations {
   String get noStockAvailable;
   String get order;
   String get orders;
+  String get orderConfirmed;
   String get orderSummary;
   String get password;
   String get passwordsDifferents;
