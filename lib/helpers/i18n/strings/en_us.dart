@@ -7,6 +7,7 @@ class EnUs implements Translations {
   String get addGrid => 'Add Grid';
   String get addList => 'Add List';
   String get addToCart => 'Add to cart';
+  String get allOrders => 'All orders';
   String get buttonCalculateShipping => 'Calculate Shipping';
   String get buttonProceedPayment => 'Proceed to Payment';
   String get camera => 'Camera';
@@ -72,7 +73,8 @@ class EnUs implements Translations {
   String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
   String get noPurchasesFound => 'No purchases found!';
-  String get noProductsCart => 'Nenhum produto no carrinho';
+  String get noProductsCart => 'No products in the Cart';
+  String get noSalesMade => 'No sales made';
   String get noStockAvailable => 'No stock available.';
   String get order => 'Order';
   String get orders => 'Orders';

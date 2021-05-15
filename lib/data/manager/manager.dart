@@ -1,3 +1,4 @@
+export 'admin_orders_manager.dart';
 export 'admin_users_manager.dart';
 export 'cart_manager.dart';
 export 'checkout_manager.dart';

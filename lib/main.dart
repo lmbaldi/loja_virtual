@@ -45,6 +45,12 @@ class MyApp extends StatelessWidget {
           update: (_, userManager, adminUsersManager) =>
               adminUsersManager..updateUser(userManager),
         ),
+        ChangeNotifierProxyProvider<UserManager, AdminOrdersManager>(
+          create: (_) => AdminOrdersManager(),
+          lazy: false,
+          update: (_, userManager, adminOrdersManager) =>
+          adminOrdersManager..updateAdmin(userManager.adminEnabled),
+        ),
       ],
       child: MaterialApp(
         title: 'Loja do Baldi',

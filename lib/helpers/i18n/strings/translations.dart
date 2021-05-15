@@ -6,6 +6,7 @@ abstract class Translations {
   String get addGrid;
   String get addList;
   String get addToCart;
+  String get allOrders;
   String get buttonCalculateShipping;
   String get buttonProceedPayment;
   String get camera;
@@ -72,6 +73,7 @@ abstract class Translations {
   String get msgRequiredField;
   String get noProductsCart;
   String get noPurchasesFound;
+  String get noSalesMade;
   String get noStockAvailable;
   String get order;
   String get orders;

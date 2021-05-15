@@ -39,12 +39,7 @@ class _BaseScreenState extends State<BaseScreen> {
               if(userManager.adminEnabled)
                 ...[
                   AdminUsersScreen(),
-                  Scaffold(
-                    drawer: CustomDrawer(),
-                    appBar: AppBar(
-                      title: Text(R.string.orders),
-                    ),
-                  ),
+                  AdminUsersScreen(),
                 ]
             ],
           );

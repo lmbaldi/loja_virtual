@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../common/common.dart';
 import '../../helpers/helpers.dart';
-import '../screens.dart';
 import '../../data/data.dart';
 
 class ConfirmationScreen extends StatelessWidget {

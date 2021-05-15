@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../data/data.dart';
-import 'component.dart';
+import '../data/data.dart';
+import 'common.dart';
 
 class OrderTile extends StatelessWidget {
 

@@ -6,6 +6,7 @@ class PtBr implements Translations {
   String get addGrid => 'Adicionar Grade';
   String get addList => 'Adicionar Lista';
   String get addToCart => 'Adicionar ao carrinho';
+  String get allOrders => 'Todos os pedidos';
   String get buttonCalculateShipping => 'Calcular Frete';
   String get buttonProceedPayment => 'Continuar para o Pagamento';
   String get camera => 'Câmera';
@@ -74,6 +75,7 @@ class PtBr implements Translations {
   String get msgChooseSourcePhotoCupertino => 'Escolha a origem da foto';
   String get noProductsCart => 'Nenhum produto no carrinho!';
   String get noPurchasesFound => 'Nenhuma compra encontrada!';
+  String get noSalesMade => 'Nenhuma venda realizada';
   String get noStockAvailable => 'Sem estoque disponível.';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';
