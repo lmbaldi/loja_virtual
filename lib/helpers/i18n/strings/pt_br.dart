@@ -13,6 +13,7 @@ class PtBr implements Translations {
   String get buttonProceedPayment => 'Continuar para o Pagamento';
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
+  String get cancelOrder => 'Cancelar Pedido';
   String get canceled => 'Cancelado';
   String get cart => 'Carrrinho';
   String get checkOut => 'Finalizar Pedido';
@@ -44,6 +45,7 @@ class PtBr implements Translations {
   String get errorWeakPassword => 'Sua senha é muito fraca.';
   String get errorWrongPassword => 'Sua senha está incorreta.';
   String get exit => 'Sair';
+  String get export => 'Exportar';
   String get failedRegister => 'Falha ao cadastrar.';
   String get failedGenerateOrderNumber => 'Falha ao gerar número do pedido';
   String get fillFullName => 'Preencha seu nome completo';
@@ -75,6 +77,7 @@ class PtBr implements Translations {
   String get link => 'Vincular';
   String get linkProduct => 'Vincular Produto';
   String get loginAccess => 'Faça o login para acessar';
+  String get msgCancelOrderDialog => 'Esta é uma ação que não poderá ser desfeita!';
   String get msgInsertImage => 'Insira ao menos uma imagem';
   String get msgRequiredField => 'Campo obrigatório.';
   String get msgSelectPhotoCupertino => 'Selecionar foto para o item';

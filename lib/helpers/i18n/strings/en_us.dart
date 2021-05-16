@@ -15,6 +15,7 @@ class EnUs implements Translations {
   String get camera => 'Camera';
   String get cancel => 'Cancel';
   String get canceled => 'Canceled';
+  String get cancelOrder => 'Cancel Order';
   String get cart => 'Cart';
   String get checkOut => 'Check Out';
   String get createProduct => 'Create Product';
@@ -45,6 +46,7 @@ class EnUs implements Translations {
   String get errorWeakPassword => 'Your password is too weak.';
   String get errorWrongPassword => 'Your password is incorrect.';
   String get exit => 'Exit';
+  String get export => 'Export';
   String get failedRegister => 'Failed register';
   String get failedGenerateOrderNumber => 'Failed to generate order number';
   String get fillFullName => 'Fill in your full name';
@@ -76,6 +78,7 @@ class EnUs implements Translations {
   String get link => 'Lind';
   String get linkProduct => 'Link Product';
   String get loginAccess => 'Login to access';
+  String get msgCancelOrderDialog => 'This is an action that cannot be undone!';
   String get msgInsertImage => 'Insert at least one image';
   String get msgRequiredField => 'Required field.';
   String get noPurchasesFound => 'No purchases found!';

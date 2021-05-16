@@ -14,6 +14,7 @@ abstract class Translations {
   String get camera;
   String get cancel;
   String get canceled;
+  String get cancelOrder;
   String get cart;
   String get checkOut;
   String get createProduct;
@@ -44,6 +45,7 @@ abstract class Translations {
   String get errorUserDisable;
   String get errorUserNotFound;
   String get exit;
+  String get export;
   String get failedRegister;
   String get failedGenerateOrderNumber;
   String get fillFullName;
@@ -95,6 +97,7 @@ abstract class Translations {
   String get productsWithoutStock;
   String get payment;
   String get repeatPassword;
+  String get msgCancelOrderDialog;
   String get msgSelectPhotoCupertino;
   String get msgChooseSourcePhotoCupertino;
   String get save;
