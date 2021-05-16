@@ -85,7 +85,8 @@ class EnUs implements Translations {
   String get onCarriage => 'On carriage';
   String get order => 'Order';
   String get orders => 'Orders';
-  String get orderConfirmed => 'Order confirmed';
+  String get orderConfirm => 'Order Confirm';
+  String get orderConfirmed => 'Order Confirmed';
   String get orderSummary => 'Order summary';
   String get password => 'Password';
   String get passwordsDifferents => 'Password are differents';

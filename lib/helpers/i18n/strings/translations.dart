@@ -84,6 +84,7 @@ abstract class Translations {
   String get onCarriage;
   String get order;
   String get orders;
+  String get orderConfirm;
   String get orderConfirmed;
   String get orderSummary;
   String get password;

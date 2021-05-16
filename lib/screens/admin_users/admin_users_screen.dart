@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/screens/helpers/helpers.dart';
 import 'package:provider/provider.dart';
 import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import '../../data/data.dart';
@@ -39,6 +40,10 @@ class AdminUsersScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
+                onTap: (){
+                  context.read<AdminOrdersManager>().setUserFilter(adminUsersManager.users[index]);
+                  context.read<PageManager>().setPage(5);
+                },
               );
             },
           );
