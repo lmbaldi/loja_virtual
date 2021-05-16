@@ -4,8 +4,6 @@ import '../../common/common.dart';
 import '../../data/data.dart';
 import '../../helpers/helpers.dart';
 
-import '../screens.dart';
-
 class AdminOrdersScreen extends StatelessWidget {
 
   @override
@@ -18,7 +16,9 @@ class AdminOrdersScreen extends StatelessWidget {
       ),
       body: Consumer<AdminOrdersManager>(
         builder: (_, ordersManager, __){
+
           if(ordersManager.orders.isEmpty){
+            debugPrint('${ordersManager.orders}');
             return EmptyCard(
               title: R.string.noSalesMade,
               iconData: Icons.border_clear,

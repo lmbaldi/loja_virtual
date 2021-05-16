@@ -5,8 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../data.dart';
 
-class AdminOrdersManager extends ChangeNotifier{
-
+class AdminOrdersManager extends ChangeNotifier {
   List<Order> orders = [];
   final Firestore firestore = Firestore.instance;
   StreamSubscription _subscription;
@@ -20,23 +19,29 @@ class AdminOrdersManager extends ChangeNotifier{
   }
 
   void _listenToOrders() {
-    _subscription = firestore
-        .collection('orders')
-        .snapshots()
-        .listen((event) {
-      orders.clear();
-      for(final doc in event.documents){
-        orders.add(Order.fromDocument(doc));
+    _subscription = firestore.collection('orders').snapshots().listen((event) {
+      for (final change in event.documentChanges) {
+        switch (change.type) {
+          case DocumentChangeType.added:
+            orders.add(Order.fromDocument(change.document));
+            break;
+          case DocumentChangeType.modified:
+            final modOrder = orders
+                .firstWhere((o) => o.orderId == change.document.documentID);
+            modOrder.updateFromDocument(change.document);
+            break;
+          case DocumentChangeType.removed:
+            break;
+        }
       }
       notifyListeners();
-    }
-    );
+    });
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _subscription?.cancel();
   }
-
 }
