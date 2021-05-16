@@ -89,7 +89,6 @@ class OrderTile extends StatelessWidget {
                         builder: (_) => ExportAddressDialog(order.address)
                     );
                   },
-                  textColor: Colors.red,
                   child: Text(R.string.address),
                 ),
               ],
