@@ -137,7 +137,8 @@ class Product extends ChangeNotifier {
 
   Future removerImagens() async {
     for (final image in images){
-      if(!newImages.contains(image)){
+      //correcao de bug, no iOS ocorre um erro com as imagens, para diferenciar a origem do firebase e da internet
+      if(!newImages.contains(image) && image.contains('firebase')){
         try{
           final ref = await storage.getReferenceFromUrl(image);
           await ref.delete();
