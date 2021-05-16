@@ -5,18 +5,22 @@ class PtBr implements Translations {
   String get addAccount => 'CRIAR CONTA';
   String get addGrid => 'Adicionar Grade';
   String get addList => 'Adicionar Lista';
+  String get address => 'Endereço';
   String get addToCart => 'Adicionar ao carrinho';
   String get allOrders => 'Todos os pedidos';
+  String get backOff => 'Recuar';
   String get buttonCalculateShipping => 'Calcular Frete';
   String get buttonProceedPayment => 'Continuar para o Pagamento';
   String get camera => 'Câmera';
   String get cancel => 'Cancelar';
+  String get canceled => 'Cancelado';
   String get cart => 'Carrrinho';
   String get checkOut => 'Finalizar Pedido';
   String get createProduct => 'Criar Produto';
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
   String get delete => 'Excluir';
+  String get delivered => 'Entregue';
   String get delivery => 'Entrega';
   String get deliveryError => 'Endereço fora do raio de entrega';
   String get  deliveryAddress => 'Endereço de entrega';
@@ -47,6 +51,7 @@ class PtBr implements Translations {
   String get from => 'A partir de ';
   String get fullName => 'Nome completo';
   String get gallery => 'Galeria';
+  String get advance => 'Avançar';
   String get greetings => 'Olá';
   String get hintTextCity => 'Curitiba';
   String get hintTextDistrict => 'Centro Civico';
@@ -54,6 +59,7 @@ class PtBr implements Translations {
   String get hintTextOptional => 'Opcional';
   String get hintTextState => 'PR';
   String get hintTextStreet => 'Av. Brasil';
+  String get inPreparation => 'Em preparação';
   String get insufficientStock => 'Não há estoque suficiente';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
@@ -77,6 +83,7 @@ class PtBr implements Translations {
   String get noPurchasesFound => 'Nenhuma compra encontrada!';
   String get noSalesMade => 'Nenhuma venda realizada';
   String get noStockAvailable => 'Sem estoque disponível.';
+  String get onCarriage => 'Em transporte';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';
   String get orderConfirmed => 'Confirmar Pedido';

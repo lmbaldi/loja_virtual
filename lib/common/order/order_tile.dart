@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import '../data/data.dart';
-import 'common.dart';
+import 'package:loja_virtual/helpers/helpers.dart';
+import '../../data/data.dart';
+import '../common.dart';
 
 class OrderTile extends StatelessWidget {
 
-  const OrderTile(this.order);
-
   final Order order;
+  final bool showControls;
+
+  const OrderTile(this.order, {this.showControls = false});
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +42,11 @@ class OrderTile extends StatelessWidget {
               ],
             ),
           Text(
-            'Em transporte',
+            order.statusText,
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 14,
-              color: primaryColor,
+              color: order.status == Status.canceled ? Colors.red : primaryColor,
             ),
           ),
           ],
@@ -54,7 +57,31 @@ class OrderTile extends StatelessWidget {
               return OrderProductTile(e);
             }).toList(),
           ),
-
+          if(showControls && order.status != Status.canceled)
+          SizedBox(height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                FlatButton(
+                  onPressed: (){},
+                  textColor: Colors.red,
+                  child: Text(R.string.cancel),
+                ),
+                FlatButton(
+                  onPressed: order.back,
+                  child: Text(R.string.backOff),
+                ),
+                FlatButton(
+                  onPressed: order.advance,
+                  child: Text(R.string.advance),
+                ),
+                FlatButton(
+                  onPressed: (){},
+                  child: Text(R.string.address),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

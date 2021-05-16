@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../screens.dart';
 import '../../data/data.dart';
 import '../helpers/helpers.dart';
-import '../../helpers/helpers.dart';
 import '../../common/common.dart';
 import '../products/products.dart';
 
@@ -39,7 +38,7 @@ class _BaseScreenState extends State<BaseScreen> {
               if(userManager.adminEnabled)
                 ...[
                   AdminUsersScreen(),
-                  AdminUsersScreen(),
+                  AdminOrdersScreen(),
                 ]
             ],
           );
