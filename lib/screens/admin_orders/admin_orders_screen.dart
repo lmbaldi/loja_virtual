@@ -63,7 +63,8 @@ class AdminOrdersScreen extends StatelessWidget {
                           showControls: true,
                         );
                       }),
-                )
+                ),
+              const SizedBox(height: 100,),
             ]),
             minHeight: 40,
             maxHeight: 250,
@@ -100,8 +101,12 @@ class AdminOrdersScreen extends StatelessWidget {
                         title: Text(Order.getStatusText(s)),
                         dense: true,
                         activeColor: Theme.of(context).primaryColor,
+                        value: ordersManager.statusFilter.contains(s),
                         onChanged: (v){
-
+                          ordersManager.setStatusFilter(
+                              status: s,
+                              enabled: v
+                          );
                         },
                       );
                     }).toList(),
