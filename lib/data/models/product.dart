@@ -14,12 +14,14 @@ class Product extends ChangeNotifier {
   String description;
   List<String> images = [];
   List<ItemSize> sizes;
+  bool deleted;
 
   Product();
 
-  Product.fromObject({this.id, this.name, this.description, this.images, this.sizes}){
+  Product.fromObject({this.id, this.name, this.description, this.images, this.sizes, this.deleted = false}){
     images  = images ?? [];
     sizes = sizes ?? [];
+
   }
 
   Product.fromDocument(DocumentSnapshot document) {
@@ -27,7 +29,7 @@ class Product extends ChangeNotifier {
     name = document['name'] as String;
     description = document['description'] as String;
     images  = List<String>.from(document.data['images'] as List<dynamic>) ;
-
+    deleted = (document.data['deleted'] ?? false ) as bool;
     sizes = (document.data['sizes'] as List<dynamic> ?? [])
         .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
         .toList();
@@ -100,6 +102,7 @@ class Product extends ChangeNotifier {
       'name': name,
       'description': description,
       'sizes': exportSizeList(),
+      'deleted': deleted
     };
     //salvando produto
     await salvarProduto(data);
@@ -161,11 +164,17 @@ class Product extends ChangeNotifier {
       description: description,
       images: List.from(images),
       sizes: sizes.map((size) => size.clone()).toList(),
+      deleted: deleted,
     );
+  }
+
+  void delete() {
+    firestoreRef.updateData({'deleted': true});
   }
 
   @override
   String toString() {
     return 'Product{id: $id, name: $name, description: $description, images: $images, sizes: $sizes, newImages: $newImages}';
   }
+
 }

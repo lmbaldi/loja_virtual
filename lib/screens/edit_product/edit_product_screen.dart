@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/data/data.dart';
 import 'package:provider/provider.dart';
+import '../../data/data.dart';
 import '../../data/models/models.dart';
 import '../../helpers/helpers.dart';
 import '../screens.dart';
@@ -23,6 +23,17 @@ class EditProductScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(editing ? R.string.editProduct : R.string.createProduct),
+          centerTitle: true,
+          actions: [
+            if(editing)
+              IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: (){
+                      context.read<ProductManager>().delete(product);
+                      Navigator.of(context).pop();
+                  },
+              )
+          ],
         ),
         backgroundColor: Colors.white,
         body: Form(
