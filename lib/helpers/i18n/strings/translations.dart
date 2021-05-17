@@ -115,8 +115,10 @@ abstract class Translations {
   String get total;
   String get typeLoginEmail;
   String get typePassword;
+  String get unavailable;
   String get unLink;
   String get users;
+  String get withoutStock;
   String get zipCode;
   String get zipCodeHintText;
 }

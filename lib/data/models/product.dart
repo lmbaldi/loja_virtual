@@ -54,7 +54,7 @@ class Product extends ChangeNotifier {
   num get basePrice {
     num lowest = double.infinity;
     for(final size in sizes){
-      if(size.price < lowest && size.hasStock){
+      if(size.price < lowest ){
         lowest = size.price;
       }
     }
@@ -77,7 +77,7 @@ class Product extends ChangeNotifier {
   }
 
   bool get hasStock {
-    return totalStock > 0;
+    return totalStock > 0 && !deleted;
   }
 
   ItemSize findSize(String name) {
@@ -170,6 +170,7 @@ class Product extends ChangeNotifier {
 
   void delete() {
     firestoreRef.updateData({'deleted': true});
+    notifyListeners();
   }
 
   @override

@@ -116,8 +116,10 @@ class EnUs implements Translations {
   String get total => 'Total';
   String get typeLoginEmail => 'Type the login(email)';
   String get typePassword => 'Type the password';
+  String get unavailable => 'This product is no longer available';
   String get unLink => 'Unlink';
   String get users => 'Users';
+  String get withoutStock => 'Without Stock';
   String get zipCode => 'Zip Code';
   String get zipCodeHintText => 'DC 20500';
 }

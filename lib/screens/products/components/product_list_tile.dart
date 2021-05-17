@@ -14,11 +14,12 @@ class ProductListTile extends StatelessWidget {
         Navigator.of(context).pushNamed('/product', arguments: product);
       },
       child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
         child: Container(
-          height: 100,
+          height: 120,
           padding: const EdgeInsets.all(8),
           child: Row(
             children: [
@@ -53,7 +54,18 @@ class ProductListTile extends StatelessWidget {
                           fontWeight: FontWeight.w800,
                           color: Theme.of(context).primaryColor,
                         ),
-                      )
+                      ),
+                      if(!product.hasStock)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(
+                            R.string.withoutStock,
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.red,
+                            ),
+                          ),
+                        )
                     ],
                   ),
                 ),

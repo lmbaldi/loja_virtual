@@ -6,14 +6,12 @@ import '../../helpers/helpers.dart';
 import '../screens.dart';
 
 class ProductScreen extends StatelessWidget {
-
   final Product product;
 
   ProductScreen(this.product);
 
   @override
   Widget build(BuildContext context) {
-
     final primaryColor = Theme.of(context).primaryColor;
     //produto fica disponivel apenas para este widget
     //ChangeNotifierProvider.value
@@ -25,11 +23,11 @@ class ProductScreen extends StatelessWidget {
           centerTitle: true,
           actions: [
             Consumer<UserManager>(
-              builder: (_, userManager, __){
-                if(userManager.adminEnabled){
+              builder: (_, userManager, __) {
+                if (userManager.adminEnabled && !product.deleted) {
                   return IconButton(
                     icon: Icon(Icons.edit),
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.of(context).pushReplacementNamed(
                         '/edit_product',
                         arguments: product,
@@ -45,32 +43,28 @@ class ProductScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
         body: ListView(
-         children: [
-           AspectRatio(
-             aspectRatio: 1.2,
-             child: Carousel(
-               images: product.images.map((url) {
-                 return NetworkImage(url);
-               }).toList(),
-               dotSize: 4,
-               dotSpacing: 15,
-               dotBgColor: Colors.transparent,
-               dotColor: primaryColor,
-               autoplay: false,
-             ),
-           ),
-           Padding(
-             padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Text(
-                  product.name,
-                  style: TextStyle(
-                      fontSize:  20,
-                      fontWeight: FontWeight.w600
-                    )
-                  ),
+          children: [
+            AspectRatio(
+              aspectRatio: 1.2,
+              child: Carousel(
+                images: product.images.map((url) {
+                  return NetworkImage(url);
+                }).toList(),
+                dotSize: 4,
+                dotSpacing: 15,
+                dotBgColor: Colors.transparent,
+                dotColor: primaryColor,
+                autoplay: false,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(product.name,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
@@ -84,50 +78,63 @@ class ProductScreen extends StatelessWidget {
                   Text(
                     'R\$ 19.99',
                     style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      color: primaryColor
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16, bottom: 8),
+                    child: Text(
+                      R.string.description,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                Padding(
-                  padding: const EdgeInsets.only(top:  16, bottom: 8),
-                  child: Text(
-                    R.string.description,
-                    style: TextStyle(
+                  Text(
+                    product.description,
+                    style: const TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
-                Text(
-                  product.description,
-                  style: const TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 8),
-                  child: Text(
-                    R.string.sizes,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                  if (product.deleted)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 8),
+                      child: Text(
+                        R.string.unavailable,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red,
+                        ),
+                      ),
+                    )
+                  else ...[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 8),
+                      child: Text(
+                        R.string.sizes,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: product.sizes.map((s) {
-                    return SizeWidget(size: s);
-                  }).toList(),
-                ),
-                const SizedBox(height: 20),
-                //botao depende de dois estados:usario logado e valor selecionado
-                //O consumer faz o rebuild apenas uma parte do widget
-                if(product.hasStock)
-                Consumer2<UserManager, Product>(
-                    builder: (_, userManager, product, __){
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: product.sizes.map((s) {
+                        return SizeWidget(size: s);
+                      }).toList(),
+                    ),
+                  ],
+                  const SizedBox(height: 20),
+                  //botao depende de dois estados:usario logado e valor selecionado
+                  //O consumer faz o rebuild apenas uma parte do widget
+                  if (product.hasStock)
+                    Consumer2<UserManager, Product>(
+                        builder: (_, userManager, product, __) {
                       return SizedBox(
                         height: 44,
                         child: RaisedButton(
@@ -135,30 +142,31 @@ class ProductScreen extends StatelessWidget {
                           textColor: Colors.white,
                           child: Text(
                             userManager.isLoggedIn
-                            ? R.string.addToCart
-                            : R.string.signInToBuy,
+                                ? R.string.addToCart
+                                : R.string.signInToBuy,
                             style: const TextStyle(fontSize: 18),
                           ),
                           onPressed: product.selectedSize != null
-                          ? (){
-                              if(userManager.isLoggedIn){
-                                //adicionando ao carrinho
-                                context.read<CartManager>().addToCart(product);
-                                Navigator.of(context).pushNamed('/cart');
-                              } else {
-                                //navegando para a tela de login
-                                Navigator.of(context).pushNamed('/login');
-                              }
-                            }
-                          : null,
+                              ? () {
+                                  if (userManager.isLoggedIn) {
+                                    //adicionando ao carrinho
+                                    context
+                                        .read<CartManager>()
+                                        .addToCart(product);
+                                    Navigator.of(context).pushNamed('/cart');
+                                  } else {
+                                    //navegando para a tela de login
+                                    Navigator.of(context).pushNamed('/login');
+                                  }
+                                }
+                              : null,
                         ),
                       );
-                    }
-                ),
-              ],
-            ),
-           )
-         ],
+                    }),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

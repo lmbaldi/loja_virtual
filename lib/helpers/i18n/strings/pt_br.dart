@@ -115,8 +115,10 @@ class PtBr implements Translations {
   String get total => 'Total';
   String get typeLoginEmail => 'Digite o login(email)';
   String get typePassword => 'Digite a senha';
+  String get unavailable => 'Este produto não está mais disponível';
   String get unLink => 'Desvincular';
   String get users => 'Usuários';
+  String get withoutStock => 'Sem estoque';
   String get zipCode => 'CEP';
   String get zipCodeHintText => '80.000-000';
 }
