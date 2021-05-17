@@ -100,56 +100,54 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        height: 44,
-                        child: RaisedButton(
-                          textColor: Colors.white,
-                          color: Theme.of(context).primaryColor,
-                          disabledColor: Theme.of(context).primaryColor.withAlpha(100),
-                          child: userManager.loading
-                              ? CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation(Colors.white),
-                                )
-                              : Text(
-                                  R.string.addAccount,
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                          onPressed: userManager.loading ? null : (){
-                            if(formKey.currentState.validate()){
-                              formKey.currentState.save();
-                              if(user.password != user.confirmPassword){
-                                scaffoldKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    backgroundColor: Colors.red[900],
-                                    content: Text(
-                                      R.string.passwordsDifferents,
-                                      textAlign: TextAlign.center,
-                                    ),
+                      child: RaisedButton(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        textColor: Colors.white,
+                        color: Theme.of(context).primaryColor,
+                        disabledColor: Theme.of(context).primaryColor.withAlpha(100),
+                        child: userManager.loading
+                            ? CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : Text(
+                                R.string.addAccount,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                        onPressed: userManager.loading ? null : (){
+                          if(formKey.currentState.validate()){
+                            formKey.currentState.save();
+                            if(user.password != user.confirmPassword){
+                              scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  backgroundColor: Colors.red[900],
+                                  content: Text(
+                                    R.string.passwordsDifferents,
+                                    textAlign: TextAlign.center,
                                   ),
-                                );
-                                return;
-                              }
-                              userManager.signUp(
-                                  user: user,
-                                  onSuccess: (){
-                                    Navigator.of(context).pop();
-                                  },
-                                  onFail: (e){
-                                    scaffoldKey.currentState.showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.red[900],
-                                        content: Text(
-                                          '${R.string.failedRegister}: $e' ,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    );
-                                  }
+                                ),
                               );
+                              return;
                             }
-                          },
+                            userManager.signUp(
+                                user: user,
+                                onSuccess: (){
+                                  Navigator.of(context).pop();
+                                },
+                                onFail: (e){
+                                  scaffoldKey.currentState.showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red[900],
+                                      content: Text(
+                                        '${R.string.failedRegister}: $e' ,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  );
+                                }
+                            );
+                          }
+                        },
 
-                        ),
                       ),
                     )
                   ],

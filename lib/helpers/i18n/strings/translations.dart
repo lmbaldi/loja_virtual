@@ -33,6 +33,7 @@ abstract class Translations {
   String get email;
   String get enter;
   String get enterSize;
+  String get enterWithFacebook;
   String get errorEmailAlreadyInUse;
   String get errorInvalidEmail;
   String get errorInvalidCredential;

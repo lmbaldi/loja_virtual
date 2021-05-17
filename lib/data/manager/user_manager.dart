@@ -70,4 +70,6 @@ class UserManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  void facebookLogin() {}
+
 }

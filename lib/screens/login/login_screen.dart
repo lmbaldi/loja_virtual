@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:provider/provider.dart';
 import '../../data/data.dart';
 import '../helpers/helpers.dart';
@@ -19,13 +20,13 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           FlatButton(
-           onPressed: (){
-             Navigator.of(context).pushReplacementNamed('/signUp');
-           },
-           child: Text(
-             R.string.addAccount,
-             style: TextStyle(fontSize: 14, color: Colors.white),
-           ),
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed('/signUp');
+            },
+            child: Text(
+              R.string.addAccount,
+              style: TextStyle(fontSize: 14, color: Colors.white),
+            ),
           )
         ],
       ),
@@ -61,7 +62,8 @@ class LoginScreen extends StatelessWidget {
                       child: TextFormField(
                         controller: passwordController,
                         enabled: !userManager.loading,
-                        decoration: InputDecoration(hintText: R.string.password),
+                        decoration:
+                            InputDecoration(hintText: R.string.password),
                         autocorrect: false,
                         obscureText: true,
                         validator: (password) {
@@ -75,50 +77,59 @@ class LoginScreen extends StatelessWidget {
                     child,
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        height: 44,
-                        child: RaisedButton(
-                          textColor: Colors.white,
-                          color: Theme.of(context).primaryColor,
-                          disabledColor:Theme.of(context).primaryColor.withAlpha(100),
-                          onPressed: userManager.loading
-                              ? null
-                              : () {
-                                  if (formKey.currentState.validate()) {
-                                    userManager.signIn(
-                                        user: User(
-                                            email: emailController.text,
-                                            password: passwordController.text),
-                                        onFail: (error) {
-                                          scaffoldKey.currentState.showSnackBar(
-                                            SnackBar(
-                                              backgroundColor: Colors.red[900],
-                                              content: Text(
-                                                R.string.errorLogin + error,
-                                                textAlign: TextAlign.center,
-                                              ),
+                      child: RaisedButton(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        textColor: Colors.white,
+                        color: Theme.of(context).primaryColor,
+                        disabledColor:
+                            Theme.of(context).primaryColor.withAlpha(100),
+                        onPressed: userManager.loading
+                            ? null
+                            : () {
+                                if (formKey.currentState.validate()) {
+                                  userManager.signIn(
+                                      user: User(
+                                          email: emailController.text,
+                                          password: passwordController.text),
+                                      onFail: (error) {
+                                        scaffoldKey.currentState.showSnackBar(
+                                          SnackBar(
+                                            backgroundColor: Colors.red[900],
+                                            content: Text(
+                                              R.string.errorLogin + error,
+                                              textAlign: TextAlign.center,
                                             ),
-                                          );
-                                        },
-                                        onSuccess: () {
-                                          Navigator.of(context).pop();
-                                        });
-                                  }
-                                },
-
-                          child: userManager.loading
-                              ? CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation(Colors.white),
-                                )
-                              : Text(
-                                  R.string.enter,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                  ),
+                                          ),
+                                        );
+                                      },
+                                      onSuccess: () {
+                                        Navigator.of(context).pop();
+                                      });
+                                }
+                              },
+                        child: userManager.loading
+                            ? CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : Text(
+                                R.string.enter,
+                                style: TextStyle(
+                                  fontSize: 16,
                                 ),
-                        ),
+                              ),
                       ),
-                    )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                      child: SignInButton(
+                        Buttons.Facebook,
+                        text: R.string.enterWithFacebook,
+                        onPressed: () {
+                          userManager.facebookLogin();
+                        },
+                      ),
+                    ),
                   ],
                 );
               },
