@@ -35,6 +35,10 @@ class UserManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  void facebookLogin() {
+
+  }
+
   Future<void> signUp({User user, Function onFail, Function onSuccess}) async {
     loading = true;
     try{
@@ -69,7 +73,4 @@ class UserManager extends ChangeNotifier {
     user = null;
     notifyListeners();
   }
-
-  void facebookLogin() {}
-
 }
