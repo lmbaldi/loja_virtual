@@ -15,8 +15,7 @@ class UserManager extends ChangeNotifier {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final Firestore firestore = Firestore.instance;
   User user;
-  bool _loading = false;
-  bool get loading => _loading;
+
   bool get isLoggedIn => user != null;
   bool get adminEnabled => user != null && user.admin;
 
@@ -31,13 +30,23 @@ class UserManager extends ChangeNotifier {
     }
     loading = false;
   }
+
+  bool _loading = false;
+  bool get loading => _loading;
   set loading(bool value){
     _loading = value;
     notifyListeners();
   }
 
+  bool _loadingFace = false;
+  bool get loadingFace => _loadingFace;
+  set loadingFace(bool value){
+    _loadingFace = value;
+    notifyListeners();
+  }
+
   void facebookLogin({Function onFail, Function onSuccess}) async {
-    loading = true;
+    loadingFace = true;
     final result = await FacebookLogin().logIn(['email', 'public_profile']);
     switch(result.status){
       case FacebookLoginStatus.loggedIn:
@@ -63,7 +72,7 @@ class UserManager extends ChangeNotifier {
         onFail(result.errorMessage);
         break;
     }
-    loading = true;
+    loadingFace = true;
   }
 
   Future<void> signUp({User user, Function onFail, Function onSuccess}) async {
