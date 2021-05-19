@@ -121,12 +121,25 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 2, horizontal: 8),
                       child: SignInButton(
                         Buttons.Facebook,
                         text: R.string.enterWithFacebook,
                         onPressed: () {
-                          userManager.facebookLogin();
+                          userManager.facebookLogin(onFail: (error) {
+                            scaffoldKey.currentState.showSnackBar(
+                              SnackBar(
+                                backgroundColor: Colors.red[900],
+                                content: Text(
+                                  R.string.errorLogin + error,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            );
+                          }, onSuccess: () {
+                            Navigator.of(context).pop();
+                          });
                         },
                       ),
                     ),

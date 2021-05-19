@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import '../../helpers/helpers.dart';
 import '../data.dart';
 
@@ -35,8 +36,34 @@ class UserManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  void facebookLogin() {
+  void facebookLogin({Function onFail, Function onSuccess}) async {
+    loading = true;
+    final result = await FacebookLogin().logIn(['email', 'public_profile']);
+    switch(result.status){
+      case FacebookLoginStatus.loggedIn:
+        final credential = FacebookAuthProvider.getCredential(
+          accessToken: result.accessToken.token
+        );
+        final authResult = await auth.signInWithCredential(credential);
+        if(authResult.user != null ){
+          final firebaseUser = authResult.user;
 
+          user = User(
+            id: firebaseUser.uid,
+            name: firebaseUser.displayName,
+            email: firebaseUser.email,
+          );
+          await user.saveData();
+          onSuccess();
+        }
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        break;
+      case FacebookLoginStatus.error:
+        onFail(result.errorMessage);
+        break;
+    }
+    loading = true;
   }
 
   Future<void> signUp({User user, Function onFail, Function onSuccess}) async {

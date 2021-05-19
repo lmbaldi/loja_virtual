@@ -36,12 +36,6 @@ class _BaseScreenState extends State<BaseScreen> {
               HomeScreen(),
               ProductsScreen(),
               OrdersScreen(),
-              Scaffold(
-                drawer: CustomDrawer(),
-                appBar: AppBar(
-                  title: const  Text('Home 2'),
-                ),
-              ),
               if(userManager.adminEnabled)
                 ...[
                   AdminUsersScreen(),
