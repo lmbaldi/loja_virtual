@@ -36,6 +36,7 @@ class _BaseScreenState extends State<BaseScreen> {
               HomeScreen(),
               ProductsScreen(),
               OrdersScreen(),
+              StoresScreen(),
               if(userManager.adminEnabled)
                 ...[
                   AdminUsersScreen(),

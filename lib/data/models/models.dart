@@ -6,5 +6,6 @@ export 'order.dart';
 export 'product.dart';
 export 'section.dart';
 export 'section_item.dart';
+export 'store.dart';
 export 'user.dart';
 

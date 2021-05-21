@@ -5,4 +5,5 @@ export 'checkout_manager.dart';
 export 'home_manager.dart';
 export 'orders_manager.dart';
 export 'product_manager.dart';
+export 'stores_manager.dart';
 export 'user_manager.dart';
