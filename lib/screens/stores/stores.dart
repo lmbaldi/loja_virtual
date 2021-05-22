@@ -1,2 +1,2 @@
 export 'stores_screen.dart';
-export 'component/component_store.dart';
+export 'component/components_store.dart';

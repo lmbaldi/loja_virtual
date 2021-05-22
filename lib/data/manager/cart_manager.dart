@@ -172,8 +172,7 @@ class CartManager extends ChangeNotifier {
     debugPrint('Distance $dis');
     //verifica a distancia maxima para entrega
     if (dis > maxKm) {
-      debugPrint('entrou if');
-      return false;
+       return false;
     }
     //valor da entrega(preco base + distancia * valor por km)
     deliveryPrice = base + dis * km;

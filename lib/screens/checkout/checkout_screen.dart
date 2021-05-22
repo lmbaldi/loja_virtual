@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/screens/checkout/checkout.dart';
 import 'package:loja_virtual/screens/helpers/helpers.dart';
 import 'package:provider/provider.dart';
 import '../../common/common.dart';
@@ -38,6 +39,7 @@ class CheckoutScreen extends StatelessWidget {
             }
             return ListView(
               children: [
+                CreditCardWidget(),
                 PriceCard(
                   buttonText: R.string.checkOut,
                   onPressed: () {
