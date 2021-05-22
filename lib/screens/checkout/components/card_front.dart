@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
-import 'package:loja_virtual/screens/checkout/checkout.dart';
+import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:brasil_fields/brasil_fields.dart';
+
+import '../../../helpers/helpers.dart';
+import '../checkout.dart';
 
 class CardFront extends StatelessWidget {
+
+  final MaskTextInputFormatter dateFormatter = MaskTextInputFormatter(
+      mask: '!#/####', filter: {'#': RegExp('[0-9]'), '!': RegExp('[0-1]')}
+  );
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,12 +33,17 @@ class CardFront extends StatelessWidget {
                           hint: '0000 0000 0000 0000',
                           textInputType: TextInputType.number,
                           bold: true,
+                          inputFormatters: [
+                            WhitelistingTextInputFormatter.digitsOnly,
+                            CartaoBancarioInputFormatter(),
+                          ],
                         ),
                         CardTextField(
                           title: R.string.labelTextExpirationDate,
                           hint: '11/2025',
-                          textInputType: TextInputType.text,
+                          textInputType: TextInputType.number,
                           bold: true,
+                          inputFormatters: [dateFormatter],
                         ),
                         CardTextField(
                           title: R.string.labelTextNameOnCard,
