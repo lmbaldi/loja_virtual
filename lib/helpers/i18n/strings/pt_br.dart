@@ -52,6 +52,7 @@ class PtBr implements Translations {
   String get failedRegister => 'Falha ao cadastrar.';
   String get failedGenerateOrderNumber => 'Falha ao gerar número do pedido';
   String get fillFullName => 'Preencha seu nome completo';
+  String get flipCard => 'Virar Cartão';
   String get forgetPassword => 'Esqueci minha senha';
   String get from => 'A partir de ';
   String get fullName => 'Nome completo';
@@ -67,6 +68,7 @@ class PtBr implements Translations {
   String get hintTextStreet => 'Av. Brasil';
   String get inPreparation => 'Em preparação';
   String get insufficientStock => 'Não há estoque suficiente';
+  String get invalid => 'Inválido';
   String get invalidEmail => 'Email inválido';
   String get invalidField => 'Campo inválido.';
   String get invalidPassword => 'Senha inválida';
@@ -75,9 +77,11 @@ class PtBr implements Translations {
   String get labelTextCity => 'Cidade';
   String get labelTextComplement => 'Complemento';
   String get labelTextDistrict => 'Bairro';
+  String get labelTextExpirationDate => 'Data de expiração';
   String get labelTextNumber => 'Número';
   String get labelTextState => 'UF';
   String get labelTextStreet => 'Rua/Avenida';
+  String get labelTextNameOnCard => 'Nome no cartão';
   String get link => 'Vincular';
   String get linkProduct => 'Vincular Produto';
   String get loginAccess => 'Faça o login para acessar';

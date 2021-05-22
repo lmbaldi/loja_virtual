@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:loja_virtual/screens/checkout/checkout.dart';
+import '../../../helpers/helpers.dart';
+import '../checkout.dart';
 
 class CreditCardWidget extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class CreditCardWidget extends StatelessWidget {
             },
             textColor: Colors.white,
             padding: EdgeInsets.zero,
-            child:  Text('Virar cartão'),
+            child:  Text(R.string.flipCard),
           )
         ],
       ),

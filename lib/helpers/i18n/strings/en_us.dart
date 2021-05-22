@@ -53,6 +53,7 @@ class EnUs implements Translations {
   String get failedRegister => 'Failed register';
   String get failedGenerateOrderNumber => 'Failed to generate order number';
   String get fillFullName => 'Fill in your full name';
+  String get flipCard => 'Flip Card';
   String get from => 'From ';
   String get forgetPassword => 'I forgot my password';
   String get fullName => 'Full name';
@@ -68,6 +69,7 @@ class EnUs implements Translations {
   String get hintTextStreet => 'Pennsylvania Avenue ';
   String get inPreparation => 'In preparation';
   String get insufficientStock => 'There is not enough stock';
+  String get invalid => 'Invalid';
   String get invalidEmail => 'Invalid email';
   String get invalidField => 'Invalid field.';
   String get invalidPassword => 'Invalid password';
@@ -76,9 +78,11 @@ class EnUs implements Translations {
   String get labelTextCity => 'City';
   String get labelTextComplement => 'Complement';
   String get labelTextDistrict => 'District';
+  String get labelTextExpirationDate => 'Expiration date';
   String get labelTextNumber => 'Number';
   String get labelTextState => 'ST';
   String get labelTextStreet => 'Avenue/Street';
+  String get labelTextNameOnCard => 'Name on card';
   String get link => 'Lind';
   String get linkProduct => 'Link Product';
   String get loginAccess => 'Login to access';

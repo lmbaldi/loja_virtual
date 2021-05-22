@@ -52,6 +52,7 @@ abstract class Translations {
   String get failedRegister;
   String get failedGenerateOrderNumber;
   String get fillFullName;
+  String get flipCard;
   String get forgetPassword;
   String get from;
   String get fullName;
@@ -67,6 +68,7 @@ abstract class Translations {
   String get hintTextStreet;
   String get inPreparation;
   String get insufficientStock;
+  String get invalid;
   String get invalidEmail;
   String get invalidField;
   String get invalidPassword;
@@ -76,9 +78,11 @@ abstract class Translations {
   String get labelTextCity;
   String get labelTextComplement;
   String get labelTextDistrict;
+  String get labelTextExpirationDate;
   String get labelTextNumber;
   String get labelTextState;
   String get labelTextStreet;
+  String get labelTextNameOnCard;
   String get link;
   String get loginAccess;
   String get msgInsertImage;
