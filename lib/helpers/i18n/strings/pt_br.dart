@@ -55,6 +55,7 @@ class PtBr implements Translations {
   String get forgetPassword => 'Esqueci minha senha';
   String get from => 'A partir de ';
   String get fullName => 'Nome completo';
+  String get functionNotAvailable => 'Esta função não está disponível neste dispositivo';
   String get gallery => 'Galeria';
   String get advance => 'Avançar';
   String get greetings => 'Olá';

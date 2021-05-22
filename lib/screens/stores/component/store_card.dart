@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../helpers/helpers.dart';
 import '../../../common/common.dart';
 import '../../../data/data.dart';
 
@@ -10,6 +13,36 @@ class StoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
+
+    void showError() {
+      Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text(R.string.functionNotAvailable),
+            backgroundColor: Colors.red,
+          )
+      );
+    }
+
+    Color colorForStatus(StoreStatus status) {
+      switch (status) {
+        case StoreStatus.closed:
+          return Colors.red;
+        case StoreStatus.open:
+          return Colors.green;
+        case StoreStatus.closing:
+          return Colors.orange;
+        default:
+          return Colors.green;
+      }
+    }
+
+    Future<void> openPhone() async {
+      if (await canLaunch('tel:${store.cleanPhone}')) {
+        launch('tel:${store.cleanPhone}');
+      } else {
+        showError();
+      }
+    }
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -86,9 +119,9 @@ class StoreCard extends StatelessWidget {
                       onTap: () {},
                     ),
                     CustomIconButton(
-                      iconData: Icons.phone,
-                      color: primaryColor,
-                      onTap: () {},
+                        iconData: Icons.phone,
+                        color: primaryColor,
+                        onTap: openPhone,
                     ),
                   ],
                 )
@@ -98,20 +131,6 @@ class StoreCard extends StatelessWidget {
         ],
       ),
     );
-
-
   }
-  Color colorForStatus(StoreStatus status) {
-    switch (status) {
-      case StoreStatus.closed:
-        return Colors.red;
-      case StoreStatus.open:
-        return Colors.green;
-      case StoreStatus.closing:
-        return Colors.orange;
-      default:
-        return Colors.green;
-    }
-  }
-
 }
+

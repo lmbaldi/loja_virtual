@@ -55,6 +55,7 @@ abstract class Translations {
   String get forgetPassword;
   String get from;
   String get fullName;
+  String get functionNotAvailable;
   String get gallery;
   String get advance;
   String get greetings;

@@ -55,6 +55,8 @@ class Store {
           'Dom: ${formattedPeriod(opening['sunday'])}';
   }
 
+  String get cleanPhone => phone.replaceAll(RegExp(r"[^\d]"), "");
+
   void updateStatus(){
     final weekDay = DateTime.now().weekday;
 
@@ -95,7 +97,4 @@ class Store {
         return '';
     }
   }
-
-
-
 }

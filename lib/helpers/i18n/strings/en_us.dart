@@ -56,6 +56,7 @@ class EnUs implements Translations {
   String get from => 'From ';
   String get forgetPassword => 'I forgot my password';
   String get fullName => 'Full name';
+  String get functionNotAvailable => 'This function is not available on this device';
   String get gallery => 'Gallery';
   String get advance => 'Go';
   String get greetings => 'Hello';
