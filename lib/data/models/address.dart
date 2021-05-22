@@ -30,8 +30,8 @@ class Address{
     zipCode = map['zipCode'] as String;
     city = map['city'] as String;
     state = map['state'] as String;
-    lat = map['lat'] as double;
-    long = map['long'] as double;
+    lat = map['latitude'] as double;
+    long = map['longitude'] as double;
   }
 
   Map<String, dynamic> toMap() {

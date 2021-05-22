@@ -47,5 +47,16 @@
     <string>Acessar camera para adicionar imagem</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Acessar camera para adicionar imagem</string>
-</dict>
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+         <string>comgooglemaps</string>
+        <string>iosamap</string>
+        <string>waze</string>
+    </array>
+    </dict>
 </plist>

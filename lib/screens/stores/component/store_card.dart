@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../helpers/helpers.dart';
 import '../../../common/common.dart';
@@ -40,6 +42,44 @@ class StoreCard extends StatelessWidget {
       if (await canLaunch('tel:${store.cleanPhone}')) {
         launch('tel:${store.cleanPhone}');
       } else {
+        showError();
+      }
+    }
+
+    Future<void > openMap() async {
+      try {
+        final availableMaps = await MapLauncher.installedMaps;
+
+        showModalBottomSheet(
+            context: context,
+            builder: (_) {
+              return SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    for(final map in availableMaps)
+                      ListTile(
+                        onTap: (){
+                          map.showMarker(
+                            coords: Coords(store.address.lat, store.address.long),
+                            title: store.name,
+                            description: store.addressText,
+                          );
+                          Navigator.of(context).pop();
+                        },
+                        title: Text(map.mapName),
+                        leading: SvgPicture.asset(
+                         map.icon,
+                         width: 30,
+                         height: 30,
+                        ),
+                      )
+                  ],
+                ),
+              );
+            }
+        );
+      } catch (e){
         showError();
       }
     }
@@ -116,7 +156,7 @@ class StoreCard extends StatelessWidget {
                     CustomIconButton(
                       iconData: Icons.map,
                       color: primaryColor,
-                      onTap: () {},
+                      onTap: openMap,
                     ),
                     CustomIconButton(
                         iconData: Icons.phone,

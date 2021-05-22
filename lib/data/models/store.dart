@@ -65,7 +65,6 @@ class Store {
       period = opening['monfri'];
     } else if(weekDay == 6){
       period = opening['saturday'];
-      print('perido ==> $period');
     } else {
       period = opening['sunday'];
     }
