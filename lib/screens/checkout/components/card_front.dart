@@ -37,6 +37,12 @@ class CardFront extends StatelessWidget {
                             WhitelistingTextInputFormatter.digitsOnly,
                             CartaoBancarioInputFormatter(),
                           ],
+                          validator: (number){
+                            if(number.length != 19) return R.string.invalid;
+                            else if(detectCCType(number) == CreditCardType.unknown)
+                              return R.string.invalid;
+                            return null;
+                          },
                         ),
                         CardTextField(
                           title: R.string.labelTextExpirationDate,
@@ -44,12 +50,20 @@ class CardFront extends StatelessWidget {
                           textInputType: TextInputType.number,
                           bold: true,
                           inputFormatters: [dateFormatter],
+                          validator: (date){
+                            if(date.length != 7) return R.string.invalid;
+                            return null;
+                          },
                         ),
                         CardTextField(
                           title: R.string.labelTextNameOnCard,
                           hint: 'John Smith',
                           textInputType: TextInputType.text,
                           bold: true,
+                          validator: (name){
+                            if(name.isEmpty) return R.string.invalid;
+                            return null;
+                          },
                         ),
                       ]
                   ),

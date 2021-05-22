@@ -4,6 +4,20 @@ import 'package:loja_virtual/helpers/helpers.dart';
 
 class CardTextField extends StatelessWidget {
 
+  final String title;
+  final bool bold;
+  final String hint;
+  final TextInputType textInputType;
+  final List<TextInputFormatter> inputFormatters;
+  final FormFieldValidator<String> validator;
+  final int maxLength;
+  final TextAlign textAlign;
+  final FocusNode focusNode;
+  final Function(String) onSubmitted;
+  final TextInputAction textInputAction;
+  final FormFieldSetter<String> onSaved;
+  final String initialValue;
+
   const CardTextField({
     this.title,
     this.bold = false,
@@ -20,20 +34,6 @@ class CardTextField extends StatelessWidget {
   }) : textInputAction = onSubmitted == null
       ? TextInputAction.done
       : TextInputAction.next;
-
-  final String title;
-  final bool bold;
-  final String hint;
-  final TextInputType textInputType;
-  final List<TextInputFormatter> inputFormatters;
-  final FormFieldValidator<String> validator;
-  final int maxLength;
-  final TextAlign textAlign;
-  final FocusNode focusNode;
-  final Function(String) onSubmitted;
-  final TextInputAction textInputAction;
-  final FormFieldSetter<String> onSaved;
-  final String initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class CardTextField extends StatelessWidget {
                     ),
                     if(state.hasError)
                       Text(
-                        R.string.invalid,
+                        ' ${R.string.invalid}',
                         style: TextStyle(
                           color: Colors.red,
                           fontSize: 9,

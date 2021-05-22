@@ -7,14 +7,15 @@ import '../../data/data.dart';
 import '../../helpers/helpers.dart';
 
 class CheckoutScreen extends StatelessWidget {
-
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProxyProvider<CartManager, CheckoutManager>(
       create: (_) => CheckoutManager(),
-      update: (_, cartManager, checkoutManager) => checkoutManager..updateCart(cartManager),
+      update: (_, cartManager, checkoutManager) =>
+          checkoutManager..updateCart(cartManager),
       lazy: false,
       child: Scaffold(
         key: scaffoldKey,
@@ -23,8 +24,8 @@ class CheckoutScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: Consumer<CheckoutManager>(
-          builder: (_, checkoutManager, __){
-            if(checkoutManager.loading){
+          builder: (_, checkoutManager, __) {
+            if (checkoutManager.loading) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -32,31 +33,37 @@ class CheckoutScreen extends StatelessWidget {
                     CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation(Colors.white),
                     ),
-                    const SizedBox(height: 16,),
+                    const SizedBox(
+                      height: 16,
+                    ),
                   ],
                 ),
               );
             }
-            return ListView(
-              children: [
-                CreditCardWidget(),
-                PriceCard(
-                  buttonText: R.string.checkOut,
-                  onPressed: () {
-                    checkoutManager.checkout(
-                        onStockFail: (e) {
-                          Navigator.of(context).popUntil((route) =>
-                          route.settings.name == '/cart');
-                        },
-                        onSuccess: (order) {
-                          Navigator.of(context).popUntil((route) =>
-                          route.settings.name == '/');
-                          Navigator.of(context).pushNamed('/confirmation', arguments: order);
-                        }
-                    );
-                  },
-                )
-              ],
+            return Form(
+              key: formKey,
+              child: ListView(
+                children: [
+                  CreditCardWidget(),
+                  PriceCard(
+                    buttonText: R.string.checkOut,
+                    onPressed: () {
+                      if (formKey.currentState.validate()) {
+                        print('enviar---->');
+                        // checkoutManager.checkout(onStockFail: (e) {
+                        //   Navigator.of(context).popUntil(
+                        //       (route) => route.settings.name == '/cart');
+                        // }, onSuccess: (order) {
+                        //   Navigator.of(context)
+                        //       .popUntil((route) => route.settings.name == '/');
+                        //   Navigator.of(context)
+                        //       .pushNamed('/confirmation', arguments: order);
+                        // });
+                      }
+                    },
+                  )
+                ],
+              ),
             );
           },
         ),
