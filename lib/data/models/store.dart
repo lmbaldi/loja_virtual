@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../data.dart';
+import '../../helpers/helpers.dart';
 
-class Store{
-
+class Store {
   String name;
   String image;
   String phone;
   Address address;
-  Map<String, Map> opening;
+  Map<String, Map<String, TimeOfDay>> opening;
 
-  Store.fromDocument(DocumentSnapshot doc){
+  Store.fromDocument(DocumentSnapshot doc) {
     name = doc.data['name'] as String;
     image = doc.data['image'] as String;
     phone = doc.data['phone'] as String;
@@ -23,22 +23,32 @@ class Store{
       if (timesString != null && timesString.isNotEmpty) {
         final splitted = timesString.split(RegExp("[:-]"));
 
-        return MapEntry(
-            key,
-            {
-              "from": TimeOfDay(
-                  hour: int.parse(splitted[0]),
-                  minute: int.parse(splitted[1])
-              ),
-              "to": TimeOfDay(
-                  hour: int.parse(splitted[2]),
-                  minute: int.parse(splitted[3])
-              ),
-            }
-        );
+        return MapEntry(key, {
+          "from": TimeOfDay(
+              hour: int.parse(splitted[0]), minute: int.parse(splitted[1])),
+          "to": TimeOfDay(
+              hour: int.parse(splitted[2]), minute: int.parse(splitted[3])),
+        });
       } else {
         return MapEntry(key, null);
       }
     });
   }
+
+  String get addressText =>
+      '${address.street}, ${address.number}${address.complement.isNotEmpty ? ' - ${address.complement}' : ''} - '
+      '${address.district}, ${address.city}/${address.state}';
+
+  String formattedPeriod(Map<String, TimeOfDay> period){
+    if(period == null) return "Fechada";
+    return '${period['from'].formatted()} - ${period['to'].formatted()}';
+  }
+
+  String get openingText {
+    return
+      'Seg-Sex: ${formattedPeriod(opening['monfri'])}\n'
+          'Sab: ${formattedPeriod(opening['saturday'])}\n'
+          'Dom: ${formattedPeriod(opening['sunday'])}';
+  }
+
 }

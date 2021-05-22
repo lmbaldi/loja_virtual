@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/common/common.dart';
+import 'package:provider/provider.dart';
+import '../../common/common.dart';
+import '../../data/data.dart';
+import 'stores.dart';
 
 class StoresScreen extends StatelessWidget {
 
@@ -12,6 +15,23 @@ class StoresScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Lojas'),
         centerTitle: true,
+      ),
+      body: Consumer<StoresManager>(
+        builder: (_, storesManager, __){
+          if(storesManager.stores.isEmpty){
+            return LinearProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.white),
+              backgroundColor: Colors.transparent,
+            );
+          }
+
+          return ListView.builder(
+            itemCount: storesManager.stores.length,
+            itemBuilder: (_, index){
+              return StoreCard(storesManager.stores[index]);
+            },
+          );
+        },
       ),
     );
   }
