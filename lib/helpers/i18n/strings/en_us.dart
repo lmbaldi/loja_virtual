@@ -18,6 +18,8 @@ class EnUs implements Translations {
   String get cancelOrder => 'Cancel Order';
   String get cart => 'Cart';
   String get checkOut => 'Check Out';
+  String get closed => 'Closed';
+  String get closing => 'Closing';
   String get createProduct => 'Create Product';
   String get conclude => 'Conclude';
   String get continueForDelivery => 'Continue for delivery';
@@ -87,6 +89,7 @@ class EnUs implements Translations {
   String get noSalesMade => 'No sales made';
   String get noStockAvailable => 'No stock available.';
   String get onCarriage => 'On carriage';
+  String get open => 'Open';
   String get order => 'Order';
   String get orders => 'Orders';
   String get orderConfirm => 'Order Confirm';

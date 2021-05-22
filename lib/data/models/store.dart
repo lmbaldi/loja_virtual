@@ -36,6 +36,7 @@ class Store {
         return MapEntry(key, null);
       }
     });
+    updateStatus();
   }
 
   String get addressText =>
@@ -43,7 +44,7 @@ class Store {
       '${address.district}, ${address.city}/${address.state}';
 
   String formattedPeriod(Map<String, TimeOfDay> period){
-    if(period == null) return "Fechada";
+    if(period == null) return R.string.closed;
     return '${period['from'].formatted()} - ${period['to'].formatted()}';
   }
 
@@ -62,6 +63,7 @@ class Store {
       period = opening['monfri'];
     } else if(weekDay == 6){
       period = opening['saturday'];
+      print('perido ==> $period');
     } else {
       period = opening['sunday'];
     }
@@ -80,5 +82,20 @@ class Store {
       status = StoreStatus.closed;
     }
   }
+
+  String get statusText {
+    switch(status){
+      case StoreStatus.closed:
+        return R.string.closed;
+      case StoreStatus.open:
+        return R.string.open;
+      case StoreStatus.closing:
+        return R.string.closing;
+      default:
+        return '';
+    }
+  }
+
+
 
 }

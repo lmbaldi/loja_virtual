@@ -17,6 +17,8 @@ abstract class Translations {
   String get cancelOrder;
   String get cart;
   String get checkOut;
+  String get closed;
+  String get closing;
   String get createProduct;
   String get conclude;
   String get continueForDelivery;
@@ -85,6 +87,7 @@ abstract class Translations {
   String get noSalesMade;
   String get noStockAvailable;
   String get onCarriage;
+  String get open;
   String get order;
   String get orders;
   String get orderConfirm;

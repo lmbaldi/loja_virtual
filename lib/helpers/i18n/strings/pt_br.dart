@@ -17,6 +17,8 @@ class PtBr implements Translations {
   String get canceled => 'Cancelado';
   String get cart => 'Carrrinho';
   String get checkOut => 'Finalizar Pedido';
+  String get closed => 'Fechada';
+  String get closing => 'Fechando';
   String get createProduct => 'Criar Produto';
   String get conclude => 'Concluir';
   String get continueForDelivery => 'Continuar para entrega';
@@ -88,6 +90,7 @@ class PtBr implements Translations {
   String get noSalesMade => 'Nenhuma venda realizada';
   String get noStockAvailable => 'Sem estoque disponível.';
   String get onCarriage => 'Em transporte';
+  String get open => 'Aberto';
   String get order => 'Meus pedidos';
   String get orders => 'Pedidos';
   String get orderConfirmed => 'Pedido confirmado';
@@ -107,7 +110,7 @@ class PtBr implements Translations {
   String get size => 'Tamanho';
   String get shortTitle => 'Título muito curto';
   String get start => 'Início';
-  String get store => 'Loja';
+  String get store => 'Lojas';
   String get stock => 'Estoque';
   String get subTotal => 'Subtotal';
   String get prefixText => 'R\$ ';

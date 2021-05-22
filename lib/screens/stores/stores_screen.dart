@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/helpers/helpers.dart';
 import 'package:provider/provider.dart';
 import '../../common/common.dart';
 import '../../data/data.dart';
@@ -13,7 +14,7 @@ class StoresScreen extends StatelessWidget {
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
-        title: Text('Lojas'),
+        title: Text(R.string.store),
         centerTitle: true,
       ),
       body: Consumer<StoresManager>(
