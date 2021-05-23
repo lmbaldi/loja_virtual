@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:credit_card_type_detector/credit_card_type_detector.dart';
 
 import '../../../helpers/helpers.dart';
 import '../checkout.dart';
@@ -38,7 +39,7 @@ class CardFront extends StatelessWidget {
                             CartaoBancarioInputFormatter(),
                           ],
                           validator: (number){
-                            if(number.length != 19) return R.string.invalid;
+                            if(number?.length != 19) return R.string.invalid;
                             else if(detectCCType(number) == CreditCardType.unknown)
                               return R.string.invalid;
                             return null;
@@ -51,7 +52,7 @@ class CardFront extends StatelessWidget {
                           bold: true,
                           inputFormatters: [dateFormatter],
                           validator: (date){
-                            if(date.length != 7) return R.string.invalid;
+                            if(date?.length != 7) return R.string.invalid;
                             return null;
                           },
                         ),

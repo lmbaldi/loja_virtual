@@ -54,6 +54,7 @@ dependencies:
   flutter_svg:
   flip_card: ^0.4.4
   mask_text_input_formatter: ^1.2.1
+  credit_card_type_detector: ^1.1.0
 
 dev_dependencies:
   flutter_test:
