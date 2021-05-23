@@ -9,6 +9,13 @@ import '../checkout.dart';
 
 class CardFront extends StatelessWidget {
 
+  final FocusNode numberFocus;
+  final FocusNode dateFocus;
+  final FocusNode nameFocus;
+  final VoidCallback finished;
+
+  CardFront({this.numberFocus, this.dateFocus, this.nameFocus, this.finished});
+
   final MaskTextInputFormatter dateFormatter = MaskTextInputFormatter(
       mask: '!#/####', filter: {'#': RegExp('[0-9]'), '!': RegExp('[0-1]')}
   );
@@ -44,6 +51,10 @@ class CardFront extends StatelessWidget {
                               return R.string.invalid;
                             return null;
                           },
+                          onSubmitted: (_){
+                            dateFocus.requestFocus();
+                          },
+                          focusNode: numberFocus,
                         ),
                         CardTextField(
                           title: R.string.labelTextExpirationDate,
@@ -55,6 +66,10 @@ class CardFront extends StatelessWidget {
                             if(date?.length != 7) return R.string.invalid;
                             return null;
                           },
+                          onSubmitted: (_){
+                            nameFocus.requestFocus();
+                          },
+                          focusNode: dateFocus,
                         ),
                         CardTextField(
                           title: R.string.labelTextNameOnCard,
@@ -62,9 +77,13 @@ class CardFront extends StatelessWidget {
                           textInputType: TextInputType.text,
                           bold: true,
                           validator: (name){
-                            if(name.isEmpty) return R.string.invalid;
+                            if(name == null) return R.string.invalid;
                             return null;
                           },
+                          onSubmitted: (_){
+                            finished();
+                          },
+                          focusNode: nameFocus,
                         ),
                       ]
                   ),

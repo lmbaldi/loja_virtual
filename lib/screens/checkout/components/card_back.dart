@@ -4,6 +4,11 @@ import 'package:loja_virtual/helpers/helpers.dart';
 import 'package:loja_virtual/screens/checkout/checkout.dart';
 
 class CardBack extends StatelessWidget {
+
+  final FocusNode cvvFocus;
+
+  CardBack({this.cvvFocus});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -37,9 +42,10 @@ class CardBack extends StatelessWidget {
                         WhitelistingTextInputFormatter.digitsOnly,
                       ],
                       validator: (cvv){
-                        if(cvv.length != 3) return R.string.invalid;
+                        if(cvv == null || cvv.length != 3) return R.string.invalid;
                         return null;
                       },
+                      focusNode: cvvFocus,
                     ),
                   ),
                 ),

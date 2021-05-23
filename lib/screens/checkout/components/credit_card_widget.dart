@@ -9,6 +9,11 @@ class CreditCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
 
+    final FocusNode numberFocus = FocusNode();
+    final FocusNode dateFocus = FocusNode();
+    final FocusNode nameFocus = FocusNode();
+    final FocusNode cvvFocus = FocusNode();
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
       child: Column(
@@ -19,8 +24,18 @@ class CreditCardWidget extends StatelessWidget {
             direction: FlipDirection.HORIZONTAL,
             speed: 700,
             flipOnTouch: false,
-            front: CardFront(),
-            back: CardBack(),
+            front: CardFront(
+              numberFocus: numberFocus,
+              dateFocus: dateFocus,
+              nameFocus: nameFocus,
+              finished: (){
+                cardKey.currentState.toggleCard();
+                cvvFocus.requestFocus();
+              },
+            ),
+            back: CardBack(
+              cvvFocus: cvvFocus,
+            ),
           ),
           FlatButton(
             onPressed: (){
