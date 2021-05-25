@@ -29,6 +29,7 @@ class PtBr implements Translations {
   String get  deliveryAddress => 'Endereço de entrega';
   String get description => 'Descrição';
   String get discard => 'Descartar';
+  String get done => 'Continue';
   String get editImage => 'Editar Imagem';
   String get editItem => 'Editar Item';
   String get editProduct => 'Editar Produto';

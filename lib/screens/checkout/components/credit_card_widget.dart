@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 import '../../../helpers/helpers.dart';
 import '../checkout.dart';
 
-class CreditCardWidget extends StatelessWidget {
+class CreditCardWidget extends StatefulWidget {
 
+  @override
+  _CreditCardWidgetState createState() => _CreditCardWidgetState();
+}
+
+class _CreditCardWidgetState extends State<CreditCardWidget> {
+  //obs: alterado para Statefull para nao reiniciar todos os focusnode
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
@@ -14,38 +21,70 @@ class CreditCardWidget extends StatelessWidget {
     final FocusNode nameFocus = FocusNode();
     final FocusNode cvvFocus = FocusNode();
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FlipCard(
-            key: cardKey,
-            direction: FlipDirection.HORIZONTAL,
-            speed: 700,
-            flipOnTouch: false,
-            front: CardFront(
-              numberFocus: numberFocus,
-              dateFocus: dateFocus,
-              nameFocus: nameFocus,
-              finished: (){
+    KeyboardActionsConfig _buildConfig(BuildContext context){
+      return KeyboardActionsConfig(
+          keyboardActionsPlatform: KeyboardActionsPlatform.IOS,
+          keyboardBarColor: Colors.grey[200],
+          actions: [
+            KeyboardActionsItem(focusNode: numberFocus, displayDoneButton: false),
+            KeyboardActionsItem(focusNode: dateFocus, displayDoneButton: false),
+            KeyboardActionsItem(
+                focusNode: nameFocus,
+                toolbarButtons: [
+                      (_){
+                    return GestureDetector(
+                      onTap: (){
+                        cardKey.currentState.toggleCard();
+                        cvvFocus.requestFocus();
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 8),
+                        child: Text(R.string.done),
+                      ),
+                    );
+                  }
+                ]
+            ),
+          ]
+      );
+    }
+
+    return KeyboardActions(
+      config: _buildConfig(context),
+      autoScroll: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            FlipCard(
+              key: cardKey,
+              direction: FlipDirection.HORIZONTAL,
+              speed: 700,
+              flipOnTouch: false,
+              front: CardFront(
+                numberFocus: numberFocus,
+                dateFocus: dateFocus,
+                nameFocus: nameFocus,
+                finished: (){
+                  cardKey.currentState.toggleCard();
+                  cvvFocus.requestFocus();
+                },
+              ),
+              back: CardBack(
+                cvvFocus: cvvFocus,
+              ),
+            ),
+            FlatButton(
+              onPressed: (){
                 cardKey.currentState.toggleCard();
-                cvvFocus.requestFocus();
               },
-            ),
-            back: CardBack(
-              cvvFocus: cvvFocus,
-            ),
-          ),
-          FlatButton(
-            onPressed: (){
-              cardKey.currentState.toggleCard();
-            },
-            textColor: Colors.white,
-            padding: EdgeInsets.zero,
-            child:  Text(R.string.flipCard),
-          )
-        ],
+              textColor: Colors.white,
+              padding: EdgeInsets.zero,
+              child:  Text(R.string.flipCard),
+            )
+          ],
+        ),
       ),
     );
   }

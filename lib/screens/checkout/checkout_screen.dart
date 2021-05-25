@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/screens/checkout/checkout.dart';
-import 'package:loja_virtual/screens/helpers/helpers.dart';
 import 'package:provider/provider.dart';
 import '../../common/common.dart';
 import '../../data/data.dart';
@@ -23,49 +22,54 @@ class CheckoutScreen extends StatelessWidget {
           title: Text(R.string.payment),
           centerTitle: true,
         ),
-        body: Consumer<CheckoutManager>(
-          builder: (_, checkoutManager, __) {
-            if (checkoutManager.loading) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+        body: GestureDetector(
+          onTap: (){
+            FocusScope.of(context).unfocus();
+          } ,
+          child: Consumer<CheckoutManager>(
+            builder: (_, checkoutManager, __) {
+              if (checkoutManager.loading) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return Form(
+                key: formKey,
+                child: ListView(
                   children: [
-                    CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
+                    CreditCardWidget(),
+                    PriceCard(
+                      buttonText: R.string.checkOut,
+                      onPressed: () {
+                        if (formKey.currentState.validate()) {
+                          print('enviar---->');
+                          // checkoutManager.checkout(onStockFail: (e) {
+                          //   Navigator.of(context).popUntil(
+                          //       (route) => route.settings.name == '/cart');
+                          // }, onSuccess: (order) {
+                          //   Navigator.of(context)
+                          //       .popUntil((route) => route.settings.name == '/');
+                          //   Navigator.of(context)
+                          //       .pushNamed('/confirmation', arguments: order);
+                          // });
+                        }
+                      },
+                    )
                   ],
                 ),
               );
-            }
-            return Form(
-              key: formKey,
-              child: ListView(
-                children: [
-                  CreditCardWidget(),
-                  PriceCard(
-                    buttonText: R.string.checkOut,
-                    onPressed: () {
-                      if (formKey.currentState.validate()) {
-                        print('enviar---->');
-                        // checkoutManager.checkout(onStockFail: (e) {
-                        //   Navigator.of(context).popUntil(
-                        //       (route) => route.settings.name == '/cart');
-                        // }, onSuccess: (order) {
-                        //   Navigator.of(context)
-                        //       .popUntil((route) => route.settings.name == '/');
-                        //   Navigator.of(context)
-                        //       .pushNamed('/confirmation', arguments: order);
-                        // });
-                      }
-                    },
-                  )
-                ],
-              ),
-            );
-          },
+            },
+          ),
         ),
       ),
     );

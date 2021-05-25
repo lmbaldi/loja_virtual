@@ -29,6 +29,7 @@ abstract class Translations {
   String get deliveryError;
   String get description;
   String get discard;
+  String get done;
   String get editProduct;
   String get editImage;
   String get editItem;

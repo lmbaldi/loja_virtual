@@ -30,6 +30,7 @@ class EnUs implements Translations {
   String get deliveryError => 'Address outside the delivery radius';
   String get description => 'Description';
   String get discard => 'Discard';
+  String get done => 'Continue';
   String get editImage => 'Edit Image';
   String get editItem => 'Edit Item';
   String get editProduct => 'Edit Product';

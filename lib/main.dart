@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/screens/confirmation/confirmation_screen.dart';
 import 'package:provider/provider.dart';
@@ -5,8 +6,10 @@ import 'data/data.dart';
 import 'common/common.dart';
 import 'screens/screens.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+   final response = await CloudFunctions.instance.getHttpsCallable(functionName: 'helloWorld').call();
+   print('response ==> ${response.data}');
 }
 
 class MyApp extends StatelessWidget {
