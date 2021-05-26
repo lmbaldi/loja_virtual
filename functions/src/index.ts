@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable space-before-blocks */
 import * as functions from "firebase-functions";
@@ -38,3 +39,9 @@ admin.initializeApp(functions.config().firebase);
    return {"success": snapshot.id};
  // eslint-disable-next-line eol-last
  });
+
+export const onNewOrder = functions.firestore.document("/orders/{orderId}")
+      .onCreate((snapshot, context) => {
+        const orderId = context.params.orderId;
+        console.log(orderId);
+});

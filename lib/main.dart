@@ -8,10 +8,6 @@ import 'screens/screens.dart';
 
 void main() async {
   runApp(MyApp());
-   final response = await CloudFunctions.instance.getHttpsCallable(functionName: 'addMessage').call(
-     {"teste": "Baldi"}
-   );
-   print('response ==> ${response.data}');
 }
 
 class MyApp extends StatelessWidget {
