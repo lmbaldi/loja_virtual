@@ -48,10 +48,12 @@ class CheckoutScreen extends StatelessWidget {
                 child: ListView(
                   children: [
                     CreditCardWidget(),
+                    CpfField(),
                     PriceCard(
                       buttonText: R.string.checkOut,
                       onPressed: () {
                         if (formKey.currentState.validate()) {
+                          formKey.currentState.validate();
                           print('enviar---->');
                           // checkoutManager.checkout(onStockFail: (e) {
                           //   Navigator.of(context).popUntil(
