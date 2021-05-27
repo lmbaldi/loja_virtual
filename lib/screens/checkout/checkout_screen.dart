@@ -8,6 +8,7 @@ import '../../helpers/helpers.dart';
 class CheckoutScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final CreditCard creditCard = CreditCard();
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,9 @@ class CheckoutScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: GestureDetector(
-          onTap: (){
+          onTap: () {
             FocusScope.of(context).unfocus();
-          } ,
+          },
           child: Consumer<CheckoutManager>(
             builder: (_, checkoutManager, __) {
               if (checkoutManager.loading) {
@@ -47,23 +48,25 @@ class CheckoutScreen extends StatelessWidget {
                 key: formKey,
                 child: ListView(
                   children: [
-                    CreditCardWidget(),
+                    CreditCardWidget(creditCard),
                     CpfField(),
                     PriceCard(
                       buttonText: R.string.checkOut,
                       onPressed: () {
                         if (formKey.currentState.validate()) {
-                          formKey.currentState.validate();
-                          print('enviar---->');
-                          // checkoutManager.checkout(onStockFail: (e) {
-                          //   Navigator.of(context).popUntil(
-                          //       (route) => route.settings.name == '/cart');
-                          // }, onSuccess: (order) {
-                          //   Navigator.of(context)
-                          //       .popUntil((route) => route.settings.name == '/');
-                          //   Navigator.of(context)
-                          //       .pushNamed('/confirmation', arguments: order);
-                          // });
+                          formKey.currentState.save();
+                          checkoutManager.checkout(
+                            creditCard: creditCard,
+                            onStockFail: (e) {
+                              Navigator.of(context).popUntil(
+                                  (route) => route.settings.name == '/cart');
+                            },
+                            onSuccess: (order) {
+                              Navigator.of(context).popUntil(
+                                  (route) => route.settings.name == '/');
+                              Navigator.of(context).pushNamed('/confirmation',
+                                  arguments: order);
+                            });
                         }
                       },
                     )

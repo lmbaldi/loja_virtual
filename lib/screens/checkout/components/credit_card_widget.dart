@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
+import '../../../data/data.dart';
 import '../../../helpers/helpers.dart';
 import '../checkout.dart';
 
 class CreditCardWidget extends StatefulWidget {
+  final CreditCard creditCard;
+
+  CreditCardWidget(this.creditCard);
 
   @override
   _CreditCardWidgetState createState() => _CreditCardWidgetState();
@@ -20,6 +24,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
     final FocusNode dateFocus = FocusNode();
     final FocusNode nameFocus = FocusNode();
     final FocusNode cvvFocus = FocusNode();
+    // final CreditCard creditCard = CreditCard();
+
 
     KeyboardActionsConfig _buildConfig(BuildContext context){
       return KeyboardActionsConfig(
@@ -63,6 +69,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
               speed: 700,
               flipOnTouch: false,
               front: CardFront(
+                creditCard: widget.creditCard,
                 numberFocus: numberFocus,
                 dateFocus: dateFocus,
                 nameFocus: nameFocus,
@@ -72,6 +79,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                 },
               ),
               back: CardBack(
+                creditCard: widget.creditCard,
                 cvvFocus: cvvFocus,
               ),
             ),

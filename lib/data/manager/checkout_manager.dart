@@ -21,7 +21,7 @@ class CheckoutManager extends ChangeNotifier{
     print('cartmanager => ${cartManager.productsPrice}');
   }
 
-  Future<void> checkout({Function onStockFail, Function onSuccess}) async {
+  Future<void> checkout({CreditCard creditCard, Function onStockFail, Function onSuccess}) async {
     loading = true;
     try{
       await _decrementStock();
