@@ -2,10 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/data/data.dart';
 import 'package:loja_virtual/helpers/helpers.dart';
+import 'package:loja_virtual/services/cielo_payment.dart';
 
 class CheckoutManager extends ChangeNotifier{
 
   CartManager cartManager;
+  final Firestore firestore = Firestore.instance;
+  final CieloPayment cieloPayment = CieloPayment();
 
   bool _loading = false;
   bool get loading => _loading;
@@ -14,7 +17,6 @@ class CheckoutManager extends ChangeNotifier{
     notifyListeners();
   }
 
-  final Firestore firestore = Firestore.instance;
 
   void updateCart(CartManager cartManager){
     this.cartManager = cartManager;
@@ -23,21 +25,27 @@ class CheckoutManager extends ChangeNotifier{
 
   Future<void> checkout({CreditCard creditCard, Function onStockFail, Function onSuccess}) async {
     loading = true;
-    try{
-      await _decrementStock();
-    }catch(e){
-      onStockFail(e);
-      loading = false;
-      return;
-    }
-    //PROCESSAR PAGAMENTO
-
     final orderId = await _getOrderId();
-    final order = Order.fromCartManager(cartManager);
-    order.orderId = orderId.toString();
-    await order.save();
-    cartManager.clear();
-    onSuccess(order);
+
+    cieloPayment.authorize(
+        creditCard: creditCard,
+        price: cartManager.totalPrice,
+        orderId: orderId.toString(),
+        user: cartManager.user,
+    );
+
+    // try{
+    //   await _decrementStock();
+    // }catch(e){
+    //   onStockFail(e);
+    //   loading = false;
+    //   return;
+    // }
+    // final order = Order.fromCartManager(cartManager);
+    // order.orderId = orderId.toString();
+    // await order.save();
+    // cartManager.clear();
+    // onSuccess(order);
     loading = false;
   }
 
