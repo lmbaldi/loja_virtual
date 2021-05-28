@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cloud_functions/cloud_functions.dart';
 import '../data/data.dart';
 
@@ -7,6 +9,7 @@ class CieloPayment{
 
   Future<void> authorize(
       {CreditCard creditCard, num price, String orderId, User user}) async {
+    try {
     final Map<String, dynamic> dataSale = {
       'merchantOrderId': orderId,
       //'amount': 10 * 100,
@@ -22,6 +25,17 @@ class CieloPayment{
         functionName: 'authorizeCreditCard'
     );
     final response = await callable.call(dataSale);
-    print("response ==> ${response.data}");
+    final data = Map<String,dynamic>.from(response.data as LinkedHashMap);
+    if (data['success'] as bool) {
+      return data['paymentId'] as String;
+    } else {
+      return Future.error(data['error']['message']);
+    }
+
+    } catch (e){
+      //debugPrint('$e');
+      return Future.error('Falha ao processar transação. Tente novamente.');
+    }
+
   }
 }
