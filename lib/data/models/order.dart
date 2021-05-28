@@ -8,6 +8,7 @@ class Order {
   num price;
   String userId;
   String orderId;
+  String payId;
   Timestamp date;
   Address address;
   List<CartProduct> items;
@@ -38,8 +39,8 @@ class Order {
     address = Address.fromMap(doc.data['address'] as Map<String, dynamic>);
     date = doc.data['date'] as Timestamp;
     status = Status.values[doc.data['status'] as int];
+    payId = doc.data['payId'] as String;
   }
-
 
   void updateFromDocument(DocumentSnapshot doc){
     status = Status.values[doc.data['status'] as int];
@@ -53,6 +54,7 @@ class Order {
       'address': address.toMap(),
       'status': status.index,
       'data': Timestamp.now(),
+      'payId': payId,
     });
   }
 

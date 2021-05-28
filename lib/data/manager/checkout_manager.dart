@@ -20,7 +20,6 @@ class CheckoutManager extends ChangeNotifier {
 
   void updateCart(CartManager cartManager) {
     this.cartManager = cartManager;
-    print('cartmanager => ${cartManager.productsPrice}');
   }
 
   Future<void> checkout(
@@ -46,7 +45,6 @@ class CheckoutManager extends ChangeNotifier {
       return;
     }
 
-
     try {
       await _decrementStock();
     } catch (e) {
@@ -54,8 +52,18 @@ class CheckoutManager extends ChangeNotifier {
       loading = false;
       return;
     }
+
+    try {
+      await cieloPayment.capture(payId);
+    } catch (e){
+      onPayFail(e);
+      loading = false;
+      return;
+    }
+
     final order = Order.fromCartManager(cartManager);
     order.orderId = orderId.toString();
+    order.payId = payId;
     await order.save();
     cartManager.clear();
     onSuccess(order);
