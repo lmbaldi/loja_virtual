@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/data/data.dart';
-import 'package:loja_virtual/helpers/helpers.dart';
-import 'package:loja_virtual/services/cielo_payment.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../data.dart';
+import '../../helpers/helpers.dart';
+import '../../services/cielo_payment.dart';
 
 class CheckoutManager extends ChangeNotifier {
   CartManager cartManager;
@@ -47,18 +47,18 @@ class CheckoutManager extends ChangeNotifier {
     }
 
 
-    // try{
-    //   await _decrementStock();
-    // }catch(e){
-    //   onStockFail(e);
-    //   loading = false;
-    //   return;
-    // }
-    // final order = Order.fromCartManager(cartManager);
-    // order.orderId = orderId.toString();
-    // await order.save();
-    // cartManager.clear();
-    // onSuccess(order);
+    try {
+      await _decrementStock();
+    } catch (e) {
+      onStockFail(e);
+      loading = false;
+      return;
+    }
+    final order = Order.fromCartManager(cartManager);
+    order.orderId = orderId.toString();
+    await order.save();
+    cartManager.clear();
+    onSuccess(order);
     loading = false;
   }
 

@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/material.dart';
 import '../data/data.dart';
 
 class CieloPayment{
@@ -36,6 +37,27 @@ class CieloPayment{
       //debugPrint('$e');
       return Future.error('Falha ao processar transação. Tente novamente.');
     }
-
   }
+
+  Future<void> capture(String payId) async {
+    final Map<String, dynamic> captureData = {
+      'payId': payId
+    };
+    final HttpsCallable callable = functions.getHttpsCallable(
+        functionName: 'captureCreditCard'
+    );
+    callable.timeout = const Duration(seconds: 60);
+    final response = await callable.call(captureData);
+    final data = Map<String, dynamic>.from(response.data as LinkedHashMap);
+
+    if (data['success'] as bool) {
+      debugPrint('Captura realizada com sucesso');
+    } else {
+      debugPrint('${data['error']['message']}');
+      return Future.error(data['error']['message']);
+    }
+  }
+
+
+
 }
