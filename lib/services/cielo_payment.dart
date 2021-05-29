@@ -25,6 +25,7 @@ class CieloPayment{
     final HttpsCallable callable = functions.getHttpsCallable(
         functionName: 'authorizeCreditCard'
     );
+    callable.timeout = const Duration(seconds: 60);
     final response = await callable.call(dataSale);
     final data = Map<String,dynamic>.from(response.data as LinkedHashMap);
     if (data['success'] as bool) {

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../data.dart';
 
@@ -27,6 +30,8 @@ class User {
 
   DocumentReference get fireStoreRef => Firestore.instance.document('users/$id');
   CollectionReference get cartReference => fireStoreRef.collection('cart');
+  CollectionReference get tokensReference => fireStoreRef.collection('tokens');
+
   Address address;
 
   Map<String, dynamic> toMap() {
@@ -53,4 +58,15 @@ class User {
     this.cpf = cpf;
     saveData();
   }
+
+  Future<void> saveToken() async {
+    final token = await FirebaseMessaging().getToken();
+    await tokensReference.document(token).setData({
+      'token': token,
+      'updateAt': FieldValue.serverTimestamp(),
+      'platform': Platform.operatingSystem,
+    });
+
+  }
+
 }
