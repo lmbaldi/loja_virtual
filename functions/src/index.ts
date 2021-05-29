@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable max-len */
 /* eslint-disable eol-last */
@@ -308,7 +309,23 @@ export const addMessage = functions.https.onCall(async (data, context) => {
 });
 
 export const onNewOrder = functions.firestore.document("/orders/{orderId}")
-  .onCreate((snapshot, context) => {
+  .onCreate( async (snapshot, context) => {
     const orderId = context.params.orderId;
-    console.log(orderId);
+    // obtendo a lista de administradores
+    const querySnapshot = await admin.firestore().collection("admins").get();
+    const admins = querySnapshot.docs.map((doc) => doc.id);
+
+    let adminisTokens: string[] = [];
+    for (let i = 0; i <admins.length; i++){
+      const tokensAdmin: string[] = await getDeviceTokens(admins[i]);
+      adminisTokens = adminisTokens.concat(tokensAdmin);
+    }
+    console.log(orderId, admins, adminisTokens);
   });
+
+  async function getDeviceTokens(uid: string) {
+    const querySnapshot = await admin.firestore()
+                          .collection("users").doc(uid).collection("tokens").get();
+    const tokens = querySnapshot.docs.map((doc) => doc.id);
+    return tokens;
+  }
