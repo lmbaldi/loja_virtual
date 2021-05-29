@@ -15,6 +15,7 @@ class PtBr implements Translations {
   String get cancel => 'Cancelar';
   String get cancelOrder => 'Cancelar Pedido';
   String get canceled => 'Cancelado';
+  String get canceling => 'Cancelando ...';
   String get cart => 'Carrrinho';
   String get checkOut => 'Finalizar Pedido';
   String get closed => 'Fechada';
@@ -59,6 +60,7 @@ class PtBr implements Translations {
   String get fullName => 'Nome completo';
   String get functionNotAvailable => 'Esta função não está disponível neste dispositivo';
   String get gallery => 'Galeria';
+  String get goBack => 'Voltar';
   String get advance => 'Avançar';
   String get greetings => 'Olá';
   String get hintTextCity => 'Curitiba';

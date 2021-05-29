@@ -14,6 +14,7 @@ abstract class Translations {
   String get camera;
   String get cancel;
   String get canceled;
+  String get canceling;
   String get cancelOrder;
   String get cart;
   String get checkOut;
@@ -59,6 +60,7 @@ abstract class Translations {
   String get fullName;
   String get functionNotAvailable;
   String get gallery;
+  String get goBack;
   String get advance;
   String get greetings;
   String get hintTextCity;

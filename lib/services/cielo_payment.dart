@@ -58,6 +58,24 @@ class CieloPayment{
     }
   }
 
+  Future<void> cancel(String payId) async {
+    final Map<String, dynamic> cancelData = {
+      'payId': payId
+    };
+    final HttpsCallable callable = functions.getHttpsCallable(
+        functionName: 'cancelCreditCard'
+    );
+    callable.timeout = const Duration(seconds: 60);
+    final response = await callable.call(cancelData);
+    final data = Map<String, dynamic>.from(response.data as LinkedHashMap);
+
+    if (data['success'] as bool) {
+      debugPrint('Cancelamento realizado com sucesso');
+    } else {
+      debugPrint('${data['error']['message']}');
+      return Future.error(data['error']['message']);
+    }
+  }
 
 
 }

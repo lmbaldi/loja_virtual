@@ -15,6 +15,7 @@ class EnUs implements Translations {
   String get camera => 'Camera';
   String get cancel => 'Cancel';
   String get canceled => 'Canceled';
+  String get canceling => 'Canceling ...';
   String get cancelOrder => 'Cancel Order';
   String get cart => 'Cart';
   String get checkOut => 'Check Out';
@@ -60,6 +61,7 @@ class EnUs implements Translations {
   String get fullName => 'Full name';
   String get functionNotAvailable => 'This function is not available on this device';
   String get gallery => 'Gallery';
+  String get goBack => 'Return';
   String get advance => 'Go';
   String get greetings => 'Hello';
   String get hintTextCity => 'Washington';
